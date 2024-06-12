@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="apple-touch-icon" sizes="76x76" href="" />
+  <link rel="icon" href="https://divisist2.ufps.edu.co/assets/img/ufps/favicon.ico" />
+  <title>Gestion de conferencias</title>
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <link rel="stylesheet" href="assets/css/index.css" />
+  <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+  <link id="pagestyle" href="assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+  <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+</head>
+
+<body class="bg-gray-200">
+  <div class="container position-sticky z-index-sticky top-0">
+    <div class="row">
+      <div class="col-12">
+        <nav
+          class="navbar navbar-expand-lg blur border-radius-xl top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+          <div class="container-fluid ps-2 pe-0" style="text-align: center; justify-content: center;" >
+            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-5" style="font-size:larger;">Gestión de Conferencias</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <main class="main-content mt-0">
+    <div class="page-header align-items-start min-vh-100 background-images">
+      <span class="mask bg-gradient-dark opacity-6"></span>
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-4 col-md-8 col-12 mx-auto">
+            <div class="card z-index-0 fadeIn3 fadeInBottom">
+              <div class="card-header p-0 position-relative mt-n4 mx-5 z-index-2">
+                <div class="bg-gradient-info shadow-info border-radius-lg py-3 pe-1">
+                  <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">
+                    Inicio Sesión
+                  </h4>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="empresa-section" class="content-section">
+                  <div class="card z-index-0 fadeIn3 fadeInBottom">
+                    <div class="card-body">
+                      <form role="form" class="text-start" id="formEmpresaCorreo" onsubmit="return iniciarSesionChair()">
+                        <div class="input-group input-group-outline mb-3">
+                          <input type="email" class="form-control" placeholder="Correo" id="correoChair" />
+                        </div>
+                        <div class="input-group input-group-outline mb-3">
+                          <input type="password" class="form-control" placeholder="Contraseña" id="passwordChair" />
+                        </div>
+                        <button type="submit" class="btn bg-gradient-info w-100 my-4 mb-2">
+                          <a style="color: white;" >Iniciar sesión</a>        
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!--   Core JS Files   -->
+  <script src="assets/js/core/popper.min.js"></script>
+  <script src="assets/js/core/bootstrap.min.js"></script>
+  <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="API/urlBackend.js"></script>
+  <script src="API/login.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var backgroundImages = [
+        "assets/img/bg1.jpg",
+        "assets/img/bg2.jpg", 
+        "assets/img/19.jpg",
+      ];
+
+      var currentIndex = 0;
+      var intervalTime = 15000;
+
+      function changeBackground() {
+        document.querySelector(".background-images").style.backgroundImage =
+          "url(" + backgroundImages[currentIndex] + ")";
+        currentIndex = (currentIndex + 1) % backgroundImages.length;
+      }
+
+      changeBackground();
+
+      setInterval(changeBackground, intervalTime);
+    });
+  </script>
+</body>
+
+<script src="API/login.js"></script>
+
+</html>

@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            var sectionInfo = document.getElementById('section-info');
+            sectionInfo.style.display = 'block';
+
+            var infoLink = document.querySelector('.navbar-nav a[href="#section-info"]');
+            infoLink.classList.add('active', 'bg-gradient-primary');
+
+            var links = document.querySelectorAll('.navbar-nav a.link');
+
+            var infoLink = document.querySelector('.navbar-nav a[href="#section-info"]');
+            infoLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                window.location.reload();
+            });
+
+            links.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    var targetId = this.getAttribute('href').substring(1);
+                    document.querySelectorAll('.row').forEach(function (section) {
+                        section.style.display = 'none';
+                    });
+                    document.getElementById(targetId).style.display = 'block';
+                    links.forEach(function (link) {
+                        link.classList.remove('active', 'bg-gradient-primary');
+                    });
+                    this.classList.add('active', 'bg-gradient-primary');
+                });
+            });
+        });
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="https://divisist2.ufps.edu.co/assets/img/ufps/favicon.ico">
+    <title>
+        Inicio Estudiante
+    </title>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <!-- Nucleo Icons -->
+    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <!-- CSS Files -->
+    <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+    <!-- Nepcha Analytics (nepcha.com) -->
+    <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+    <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+
+    <style>
+        .input-animate {
+            transition: border-color 0.3s ease, transform 0.2s ease;
+            border-color: #ced4da;
+            /* Color de borde predeterminado */
+        }
+
+        .input-animate:focus {
+            border-color: #ff69b4;
+            /* Cambia el color del borde al enfocar */
+            transform: scale(1.02);
+            /* Aumenta ligeramente el tamaño al enfocar */
+        }
+
+        .btn-animate {
+            position: relative;
+            overflow: hidden;
+            border-radius: 50px;
+            /* Bordes redondeados */
+            font-size: 1.2rem;
+            /* Tamaño de fuente */
+            font-weight: bold;
+            /* Negrita */
+            text-transform: uppercase;
+            /* Mayúsculas */
+            padding: 15px;
+            /* Espaciado interno */
+        }
+
+        .btn-kevin {
+            background-color: #f348a0;
+        }
+
+        .btn-kevin:hover {
+            background-color: #f348a0;
+        }
+
+        .btn-text {
+            color: white;
+            margin-right: 10px;
+            /* Espaciado entre el texto y el icono */
+        }
+
+        .btn-text:hover {
+            color: white;
+            margin-right: 10px;
+            /* Espaciado entre el texto y el icono */
+        }
+
+        .btn-icon {
+            animation: bounce 2s infinite;
+            /* Animación del icono */
+        }
+
+        .rainbow-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(35deg, #ff0000, #fc0255, #ff00d4, #9900ff, #4c00ff, #0004ff, #006eff);
+            /* Gradiente de colores */
+            animation: rainbow 5s linear infinite;
+            /* Animación de cambio de colores */
+            border-radius: 40%;
+            /* Borde circular */
+            z-index: -1;
+            /* Colocar detrás del contenido del botón */
+        }
+
+        @keyframes rainbow {
+            0% {
+                transform: rotate(0deg);
+                /* Inicio del gradiente */
+            }
+
+            100% {
+                transform: rotate(360deg);
+                /* Fin del gradiente */
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                /* Posición inicial y final */
+            }
+
+            50% {
+                transform: translateY(-10px);
+                /* Posición intermedia */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <aside
+        class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
+        id="sidenav-main">
+        <div class="sidenav-header">
+            <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+                aria-hidden="true" id="iconSidenav"></i>
+            <a class="navbar-brand m-0" target="_blank">
+                <img style="max-width: 1.2cm; min-height: 1.2cm; align-items: center; text-align: center; justify-content: center;"
+                    src="../assets/img/logoS.png" class="navbar-brand-img h-100" alt="main_logo">
+                <span class="ms-4 font-weight-bolder text-white">Estudiante</span>
+            </a>
+        </div>
+        <hr class="horizontal light mt-0 mb-2">
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-proyectos">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">ballot</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Proyecto</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-coordinadores">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">ballot</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Documentos del Proyecto</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-documentos">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">ballot</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Mis Documentos</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages
+                    </h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white" href="#section-info">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">contacts</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Informacion Personal
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="sidenav-footer position-absolute w-100 bottom-0 ">
+            <div class="mx-3">
+                <a class="btn bg-gradient-primary w-100" href="../index.html" type="button">Log
+                    Out</a>
+            </div>
+        </div>
+    </aside>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+            data-scroll="true">
+            <div class="container-fluid py-4 px-2">
+                <div class="collapse navbar-collapse mt-sm-0 mt-4 me-md-0 me-sm-4" id="navbar">
+                    <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item px-3 d-flex align-items-center">
+                            <h6 class="font-weight-bolder mb-0">Estudiante</h6>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid py-4">
+            <div class="row" style="display: none;" id="section-proyectos">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <div class="d-flex justify-content-between align-items-center px-3">
+                                    <h6 class="text-white text-capitalize">Proyecto</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Empresa</th>
+                                            <th
+                                                class="text-up  percase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Tutor</th>
+                                            <th
+                                                class="text-up  percase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Cedula</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Documentos Empresa</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Documentos Practicante</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Subir Documentos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="listaProyectos">
+                                    </tbody>
+                                            
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="display: none;" id="section-coordinadores">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">Documentos</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Empresa</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Tutor Id</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Titulo</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Ruta</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaProyectos">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="display: none;" id="section-documentos">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">Documentos</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Codigo</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Cedula</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Titulo</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Ruta</th>   
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaProyectos2">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="display: none;" id="section-info">
+                <div class="col-12 container-fluid px-6 px-md-6">
+                    <div class="page-header min-height-250 border-radius-xl mt-3 bg-gradient-primary">
+                    </div>
+                    <div class="card card-body mx-3 mx-md-5 mt-n9">
+                        <div class="row gx-4 mb-2">
+                            <div class="col-auto my-auto">
+                                <div class="h-100">
+                                    <!-- <h5 class="mb-1">
+                                        Richard Davis
+                                    </h5> -->
+                                    <p class="mb-0 font-weight-normal text-sm">
+                                        Usuario / Estudiante
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-12 col-xl-12">
+                                    <div class="card card-plain h-100">
+                                        <div class="card-header pb-0 p-3">
+                                            <div class="row">
+                                                <div class="col-md-8 d-flex">
+                                                    <h6 class="mb-0 text-center" id="">Informacion de Usuario</h6>
+                                                </div>
+                                                <div class="col-md-4 text-end">
+                                                    <a href="javascript:;">
+                                                        <i class="fas fa-user-edit text-secondary text-sm"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Edit Profile"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body p-5">
+                                            <hr class="horizontal gray-light my-4">
+                                            <div style="columns: 2; justify-content: center;">
+                                                <ul class="list-group" style="gap: 15px; margin-left: 25%;">
+                                                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong
+                                                            class="text-dark">Nombre:</strong>
+                                                        <span id="nombreUsuarioEst"></span>
+                                                    </li>
+                                                    <li class="list-group-item border-0 ps-0 text-sm"><strong
+                                                            class="text-dark">Correo:</strong>
+                                                        <span id="correoUsuarioEst"></span>
+                                                    </li>
+                                                    <li class="list-group-item border-0 ps-0 text-sm"><strong
+                                                            class="text-dark">Rol:</strong>
+                                                        <span id="rolUsuarioEst"></span>
+                                                    </li>
+                                                    <li class="list-group-item border-0 ps-0 text-sm"><strong
+                                                            class="text-dark">Codigo:</strong>
+                                                        <span id="codigoUsuarioEst"></span>
+                                                    </li>
+                                                    <li class="list-group-item border-0 ps-0 text-sm"><strong
+                                                            class="text-dark">Cedula:</strong>
+                                                        <span id="cedulaUsuarioEst"></span>
+                                                    </li>
+                                                    <li class="list-group-item border-0 ps-0 text-sm"><strong
+                                                            class="text-dark">Semestre:</strong>
+                                                        <span id="semestreUsuarioEst"></span>
+                                                    </li>
+                                                    <li class="list-group-item border-0 ps-0 text-sm"><strong
+                                                            class="text-dark">creditosAprobados:</strong>
+                                                        <span id="creditoAprobadoUsuarioEst"></span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer py-4 align-items">
+                <div class="container-fluid">
+                    <div class="row align-items-center justify-content-lg-between">
+                        <div class="col-lg-6 mb-lg-0 mb-4">
+                            <div class="copyright text-center text-sm text-muted text-lg-start">
+                                ©
+                                <script>
+                                    let mes = new Date().getMonth() + 1;
+                                    document.write(new Date().getDate() + "-")
+                                    document.write(mes + "-")
+                                    document.write(new Date().getFullYear())
+                                </script>,
+                                División de Practicas de Sistemas UFPS.
+                            </div>
+                        </div>
+                    </div>
+            </footer>
+
+        </div>
+    </main>
+    <!-- Modal docs-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Documentos</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table align-items-center text-center mb-0 table-responsive">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Titulo</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Ruta</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Accion</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody id="tablaDocumento">
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+             
+        </div>
+          
+    </div>
+
+    <!-- Modal proyecto -->
+    <div class="modal fade" id="modalProyecto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-3 border-0" style="background: white;">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-primary" id="exampleModalLabel">Agregar Proyecto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form role="form" class="text-start" id="formDatosProyecto">
+                        <div class="input-group input-group-outline my-3">
+                            <select class="form-control form-control-lg input-animate" id="empresaId" name="empresaId"
+                                disable required>
+                                <option value="" disabled selected>Selecciona la Empresa</option>
+                                <!-- Aquí puedes agregar las opciones de la lista desplegable para la empresa -->
+                            </select>
+                        </div>
+                        <div class="input-group input-group-outline my-3">
+                            <select class="form-control form-control-lg input-animate" id="tutorId" name="tutorId"
+                                required>
+                                <option value="" disabled selected>Selecciona el Tutor</option>
+                                <!-- Aquí puedes agregar las opciones de la lista desplegable para el tutor -->
+                            </select>
+                        </div>
+                        <div class="input-group input-group-outline my-3">
+                            <span class="form-control form-control-lg input-animate" id="estadoPostulacion"
+                                name="estadoPostulacion" required>
+                                false
+                            </span>
+                        </div>
+                        <button type="button"
+                            class="btn-kevin btn btn-lg btn-gradient-primary w-100 my-4 mb-2 btn-animate rainbow-bg"
+                            onclick="guardarProyecto()">
+                            <span class="btn-text">Guardar Proyecto</span>
+                            <span class="btn-icon">&#128640;</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal guardarP -->
+    <div class="modal fade" id="guardandoModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content rounded-3 border-0"
+                style="background: linear-gradient(50deg, #f85fae, #ff0084); box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-white" id="exampleModalLabel">¡Guardando Proyecto!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="spinner-border text-white mb-3" role="status"></div>
+                        <p class="mb-0 text-white">El proyecto ingresado esta siendo guardado!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed-plugin">
+        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+            <i class="material-icons py-2">settings</i>
+        </a>
+        <div class="card shadow-lg">
+            <div class="card-header pb-0 pt-3">
+                <div class="float-start">
+                    <h5 class="mt-3 mb-0">UI Configuracion</h5>
+                    <p>Configura a tu gusto.</p>
+                </div>
+                <div class="float-end mt-4">
+                    <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                        <i class="material-icons">clear</i>
+                    </button>
+                </div>
+                <!-- End Toggle Button -->
+            </div>
+            <hr class="horizontal dark my-1">
+            <div class="card-body pt-sm-3 pt-0">
+                <!-- Sidebar Backgrounds -->
+                <div>
+                    <h6 class="mb-0">Colores de la barra lateral</h6>
+                </div>
+                <a href="javascript:void(0)" class="switch-trigger background-color">
+                    <div class="badge-colors my-2 text-start">
+                        <span class="badge filter bg-gradient-primary active" data-color="primary"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-dark" data-color="dark"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-info" data-color="info"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-success" data-color="success"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-warning" data-color="warning"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-danger" data-color="danger"
+                            onclick="sidebarColor(this)"></span>
+                    </div>
+                </a>
+                <!-- Sidenav Type -->
+                <div class="mt-3">
+                    <h6 class="mb-0">Tipo de navegación lateral</h6>
+                    <p class="text-sm">Elija entre 3 tipos diferentes de navegación lateral.</p>
+                </div>
+                <div class="d-flex">
+                    <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark"
+                        onclick="sidebarType(this)">Dark</button>
+                    <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent"
+                        onclick="sidebarType(this)">Transparent</button>
+                    <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white"
+                        onclick="sidebarType(this)">White</button>
+                </div>
+                <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+                <!-- Navbar Fixed -->
+                <div class="mt-3 d-flex">
+                    <h6 class="mb-0">Navbar Fixed</h6>
+                    <div class="form-check form-switch ps-0 ms-auto my-auto">
+                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed"
+                            onclick="navbarFixed(this)">
+                    </div>
+                </div>
+                <hr class="horizontal dark my-3">
+                <div class="mt-2 d-flex">
+                    <h6 class="mb-0">Light / Dark</h6>
+                    <div class="form-check form-switch ps-0 ms-auto my-auto">
+                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version"
+                            onclick="darkMode(this)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../API/main.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../API/Director/estudiante.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <script>
+        var ctx = document.getElementById("chart-bars").getContext("2d");
+
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["M", "T", "W", "T", "F", "S", "S"],
+                datasets: [{
+                    label: "Sales",
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderRadius: 4,
+                    borderSkipped: false,
+                    backgroundColor: "rgba(255, 255, 255, .8)",
+                    data: [50, 20, 10, 22, 50, 10, 40],
+                    maxBarThickness: 6
+                },],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                            color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 500,
+                            beginAtZero: true,
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                            color: "#fff"
+                        },
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                            color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                            display: true,
+                            color: '#f8f9fa',
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                },
+            },
+        });
+
+
+        var ctx2 = document.getElementById("chart-line").getContext("2d");
+
+        new Chart(ctx2, {
+            type: "line",
+            data: {
+                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "Mobile apps",
+                    tension: 0,
+                    borderWidth: 0,
+                    pointRadius: 5,
+                    pointBackgroundColor: "rgba(255, 255, 255, .8)",
+                    pointBorderColor: "transparent",
+                    borderColor: "rgba(255, 255, 255, .8)",
+                    borderColor: "rgba(255, 255, 255, .8)",
+                    borderWidth: 4,
+                    backgroundColor: "transparent",
+                    fill: true,
+                    data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
+                    maxBarThickness: 6
+
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                            color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                            display: true,
+                            color: '#f8f9fa',
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            display: true,
+                            color: '#f8f9fa',
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                },
+            },
+        });
+
+        var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
+
+        new Chart(ctx3, {
+            type: "line",
+            data: {
+                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "Mobile apps",
+                    tension: 0,
+                    borderWidth: 0,
+                    pointRadius: 5,
+                    pointBackgroundColor: "rgba(255, 255, 255, .8)",
+                    pointBorderColor: "transparent",
+                    borderColor: "rgba(255, 255, 255, .8)",
+                    borderWidth: 4,
+                    backgroundColor: "transparent",
+                    fill: true,
+                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+                    maxBarThickness: 6
+
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                            color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                            display: true,
+                            padding: 10,
+                            color: '#f8f9fa',
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: false,
+                            drawOnChartArea: false,
+                            drawTicks: false,
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            display: true,
+                            color: '#f8f9fa',
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 300,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                },
+            },
+        });
+    </script>
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
+</body>
+
+</html>

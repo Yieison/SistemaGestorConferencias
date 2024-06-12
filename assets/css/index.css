@@ -1,0 +1,39 @@
+.background-images {
+  background-image: url('/assets/img/19.jpg'), url('/assets/img/bg1.jpg'), url('/assets/img/bg2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  z-index: 1; /* Agregar z-index para que el texto de entrada esté por encima del texto de la etiqueta */
+}
+
+button {
+  padding: 10px;
+}
+
+
+.color-barra{
+  background-color: #5876C4;
+}
+
+.table .text-wrap {
+  white-space: normal;
+  word-wrap: break-word;
+  max-width: 200px; /* Ajusta el valor según tus necesidades */
+}
+
+
+
+
+
