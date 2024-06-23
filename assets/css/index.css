@@ -33,6 +33,41 @@ button {
   max-width: 200px; /* Ajusta el valor según tus necesidades */
 }
 
+.imagen-conference{
+  max-width: 100px;
+  height: auto;
+}
+
+
+
+  #register-section {
+    margin-top: 100px; /* Ajusta el margen superior para evitar que se superponga con el navbar */
+  }
+  #register-section .contenedor {
+    width: 100%; /* Ajusta el ancho del formulario */
+    margin: 0 auto; /* Centra el formulario */
+  }
+
+
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Ajusta la opacidad según sea necesario */
+    z-index: 1040;
+}
+
+.modal-open {
+    overflow: hidden;
+}
+
+
+
+  
+
+
 
 
 

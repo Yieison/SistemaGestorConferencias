@@ -32,9 +32,13 @@ function guardarPresentacion() {
     const horaInicio = document.getElementById("hora-inicio").value;
     const horaFin = document.getElementById("hora-fin").value;
 
+    if (!titulo || !resumen || !palabrasClave || !fecha || !horaInicio || !horaFin) {
+        alert('Todos los campos son requeridos. Por favor, completa todos los campos.');
+        return; // Detener la función si falta algún dato requerido
+    }
+
     const presentacionData = {
         titulo: titulo,
-        articuloId: articuloSeleccionado.id_articulo,
         resumen: resumen,
         palabras_clave: palabrasClave,
         fecha_presentacion: fecha,
@@ -42,7 +46,7 @@ function guardarPresentacion() {
         horaFin: horaFin
     };
 
-    fetch('http://localhost:8080/presentaciones/guardar', {
+    fetch(`http://localhost:8080/presentaciones/guardar/${articuloSeleccionado}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

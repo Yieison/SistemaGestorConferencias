@@ -15,6 +15,9 @@ function mostrarListadoConferencias() {
             let body = "";
             for (const conferencia of data) {
                 body += `<tr>
+                     <td class="align-middle text-center text-sm">
+                        <img class="imagen-conference" src="${conferencia.imagenUrl}"></span>
+                    </td>
                     <td>
                         <h6 class="mb-0 text-sm">${conferencia.id_conferencia}</h6>
                     </td>
@@ -33,6 +36,7 @@ function mostrarListadoConferencias() {
                     <td class="align-middle text-center text-sm">
                         <span class="mb-0 text-secondary text-xs">${conferencia.fecha_fin}</span>
                     </td>
+                   
                     <td class="align-middle text-center text-sm">
                         <span class="my-2 mb-0 text-secondary text-xs" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="openModalAndFetchTopicos(${conferencia.id_conferencia})">
                             <i class="fa-solid fa-eye" style="color:blue; font-size: 1.5rem; "></i>
@@ -49,8 +53,6 @@ function mostrarListadoConferencias() {
             console.log(e);
         });
 }
-
-// Llama a la función al cargar la página
 
 function mostrarInformacion() {
     document.getElementById("section-conferencias").style.display = 'none';
@@ -109,6 +111,48 @@ function openModalAndFetchTopicos(id) {
 }
 
 
+function crearConferencia(event) {
+    event.preventDefault();
+
+    const nombre = document.getElementById("nombre").value;
+    const descripcion = document.getElementById("descripcion").value;
+    const lugar = document.getElementById("lugar").value;
+    const fechaInicio = document.getElementById("fechaInicio").value;
+    const fechaFin = document.getElementById("fechaFin").value;
+    const archivoImagen = document.getElementById("archivoImagen").files[0];
+
+    const conferenciaData = {
+        nombre: nombre,
+        descripcion: descripcion,
+        lugar: lugar,
+        fechaInicio: fechaInicio,
+        fechaFin: fechaFin
+    };
+
+    const formData = new FormData();
+    formData.append("file", archivoImagen);
+    formData.append("conferencia", new Blob([JSON.stringify(conferenciaData)], { type: "application/json" }));
+
+   
+
+    fetch("http://localhost:8080/conferencias/saveConferencia", {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al guardar la conferencia');
+        }
+        console.log('Conferencia guardada exitosamente');
+        alert('Conferencia creada exitosamente.');
+    })
+    .catch(error => {
+        console.error('Error al realizar la solicitud POST:', error);
+    });
+}
+
+
+
 
 function guardarChair() {
     const nombre = document.getElementById("nombre").value;
@@ -153,3 +197,5 @@ function guardarChair() {
     });
     
 }
+
+

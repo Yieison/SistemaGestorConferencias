@@ -17,7 +17,10 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
   <link id="pagestyle" href="assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <script src="https://kit.fontawesome.com/3eeb91c510.js" crossorigin="anonymous"></script>
 </head>
+
+
 
 <body class="bg-gray-200">
   <div class="container position-sticky z-index-sticky top-0">
@@ -25,8 +28,10 @@
       <div class="col-12">
         <nav
           class="navbar navbar-expand-lg blur border-radius-xl top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
-          <div class="container-fluid ps-2 pe-0" style="text-align: center; justify-content: center;" >
-            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-5" style="font-size:larger;">Gestión de Conferencias</a>
+          <div class="container-fluid ps-2 pe-0" style="text-align: center; justify-content: between;" >
+            <a href="index.html" class="navbar-brand font-weight-bolder ms-lg-0 ms-5" style="font-size:larger;">Gestión de Conferencias</a>
+            <a href="#" id="register-link" class="navbar-brand font-weight-bolder ms-lg-0 ms-5" style="font-size:larger;"><i class="m-1 fa-solid fa-user-plus"></i>
+            Registrate</a>
           </div>
         </nav>
       </div>
@@ -38,7 +43,8 @@
       <div class="container my-auto">
         <div class="row">
           <div class="col-lg-4 col-md-8 col-12 mx-auto">
-            <div class="card z-index-0 fadeIn3 fadeInBottom">
+
+            <div class="card z-index-0 fadeIn3 fadeInBottom" id="login-section">
               <div class="card-header p-0 position-relative mt-n4 mx-5 z-index-2">
                 <div class="bg-gradient-info shadow-info border-radius-lg py-3 pe-1">
                   <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">
@@ -66,18 +72,111 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+
+            <!-- Registro -->
+            <div class="contenedor card z-index-0 fadeIn3 fadeInBottom" id="register-section" style="display: none;">
+              <div class="card-header p-0 position-relative mt-n4 mx-5 z-index-2">
+                <div class="bg-gradient-info shadow-info border-radius-lg py-3 pe-1">
+                  <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Regístrate</h4>
+                </div>
+              </div>
+              <div class="card-body">
+                <form role="form" class="text-start" id="formRegistro" onsubmit="return guardarUsuario()">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="input-group input-group-outline mb-3">
+                        <input type="text" class="form-control" placeholder="Nombre" id="nombre" required>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="input-group input-group-outline mb-3">
+                        <input type="text" class="form-control" placeholder="Apellido" id="apellido" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="input-group input-group-outline mb-3">
+                        <select class="form-control" id="tipo_documento" required>
+                          <option value="" disabled selected>Tipo de Documento</option>
+                          <option value="DNI">DNI</option>
+                          <option value="Pasaporte">Pasaporte</option>
+                          <option value="Cedula">Cédula</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="input-group input-group-outline mb-3">
+                        <input type="text" class="form-control" placeholder="Número de Documento" id="documento" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="input-group input-group-outline mb-3">
+                        <input type="text" class="form-control" placeholder="Institución" id="institucion" required>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="input-group input-group-outline mb-3">
+                        <input type="text" class="form-control" placeholder="País" id="pais" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="input-group input-group-outline mb-3">
+                        <input type="text" class="form-control" placeholder="Ciudad" id="ciudad" required>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="input-group input-group-outline mb-3">
+                        <select class="form-control" id="rol" required>
+                          <option value="" disabled selected>Tipo de Usuario</option>
+                          <option value="ASISTENTE">Asistente</option>
+                          <option value="AUTOR">Autor</option>
+                          <option value="EVALUADOR">Evaluador</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="input-group input-group-outline mb-3">
+                        <input type="email" class="form-control" placeholder="Correo" id="correo" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="input-group input-group-outline mb-3">
+                        <input type="password" class="form-control" placeholder="Contraseña" id="password" required>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn bg-gradient-info w-100 my-4 mb-2">
+                    <span style="color: white;">Registrarse</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+
+
+            
+
+
+
+
+    
   </main>
+
+  
   <!--   Core JS Files   -->
   <script src="assets/js/core/popper.min.js"></script>
   <script src="assets/js/core/bootstrap.min.js"></script>
   <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="API/urlBackend.js"></script>
-  <script src="API/login.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       var backgroundImages = [
@@ -98,10 +197,22 @@
       changeBackground();
 
       setInterval(changeBackground, intervalTime);
+
+       // Mostrar sección de registro
+       var registerLink = document.querySelector('#register-link');
+      registerLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevenir el comportamiento por defecto del enlace
+        document.querySelector('#login-section').style.display = 'none'; // Ocultar formulario de inicio de sesión
+        document.querySelector('#register-section').style.display = 'block'; // Mostrar formulario de registro
+      });
     });
+
   </script>
+
+
 </body>
 
 <script src="API/login.js"></script>
+<script src="API/Director/register.js"></script>
 
 </html>

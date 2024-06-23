@@ -41,9 +41,10 @@ function iniciarSesionChair() {
   loginUser1(Usuario)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
-      console.log(data.rol.id_rol)
-      window.location.href = "../Paginas/InicioChair.html"
+      
+       // Almacenar los datos del usuario en localStorage
+       localStorage.setItem("Data", JSON.stringify(data));
+      
       if (data.rol.id_rol === 3) {
         localStorage.setItem("Data", JSON.stringify(data))
         window.location.href = "../Paginas/InicioChair.html";
@@ -61,4 +62,8 @@ function iniciarSesionChair() {
       console.log(e)
       alert("Contraseña o email incorrecto")
     })
+    return false;
 }
+
+
+

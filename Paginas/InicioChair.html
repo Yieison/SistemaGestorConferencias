@@ -92,11 +92,14 @@
     }
 
     .btn-kevin {
-        background-color: #f348a0;
+        color: #fff;
+        background-color: #0d6efd;
+        border-color: #0d6efd;
     }
 
     .btn-kevin:hover {
-        background-color: #f348a0;
+        background-color: #0b5ed7;
+        border-color: #0b5ed7;
     }
 
     .btn-text {
@@ -178,7 +181,7 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link link text-white " href="#section-conferencias">
+                    <a class="nav-link link text-white " href="#section-conferenciasChair">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-file-lines"></i>
                         </div>
@@ -214,7 +217,7 @@
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-square-check"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Evaluaciones aprobadas</span>
+                        <span class="nav-link-text ms-1">Evaluaciones</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -223,6 +226,14 @@
                             <i class="material-icons opacity-100">person</i>
                         </div>
                         <span class="nav-link-text ms-1">Articulos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-presentaciones">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-100">person</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Presentaciones</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -333,7 +344,53 @@
                 </div>
             </div>
 
-            <div class="row" style="display: none;" id="section-conferencias">
+            <div class="row" id="section-presentaciones" style="display: none;">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">Lista Presentaciones</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Id Usuario</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Tipo de Documento</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Documento</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Nombre</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Correo</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Rol</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaPresentaciones">
+                                        <!-- Aquí se insertarán los datos -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="display: none;" id="section-conferenciasChair">
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -346,6 +403,9 @@
                                 <table class="table align-items-center text-center mb-0">
                                     <thead>
                                         <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Imagen Conferencia</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Id</th>
@@ -370,7 +430,7 @@
                                                 Acciones</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="tablaConferencias">
+                                    <tbody id="tablaConferenciasChair">
                                         <!-- Aquí se insertarán los datos -->
                                     </tbody>
                                 </table>
@@ -515,7 +575,7 @@
                                         <input type="text" id="estado" name="estado" class="form-control"
                                             value="Pendiente" readonly>
                                     </div>
-                                    <button class="btn bg-gradient-success m-2" onclick="guardarEvaluacion(event)"
+                                    <button class="btn bg-gradient-info m-2" onclick="guardarEvaluacion(event)"
                                         type="submit">Asignar Evaluación</button>
                                 </form>
                             </div>
@@ -535,7 +595,7 @@
                             La evaluación ha sido guardada exitosamente.
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                 </div>
@@ -618,7 +678,7 @@
                                 <h5 class="card-title">Agregar Evaluador</h5>
                                 <p class="card-text">Registra a nuevos evaluadores en la plataforma de gestion de
                                     conferencias.</p>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-info" data-bs-toggle="modal"
                                     data-bs-target="#modalEstudiante">
                                     Agregar
                                 </button>
@@ -634,7 +694,7 @@
                                 <h5 class="card-title">Agregar presentacion Articulos</h5>
                                 <p class="card-text">Registra la presentacion de un articulo el la plataforma de
                                     conferencias.</p>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-info" data-bs-toggle="modal"
                                     data-bs-target="#modalPresentacion">
                                     Agregar
                                 </button>
@@ -668,7 +728,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-3 border-0" style="background: white;">
                 <div class="modal-header border-0">
-                    <h4 class="modal-title fw-bold text-primary" id="exampleModalLabel">Agregar Evaluador</h5>
+                    <h4 class="modal-title fw-bold text-info" id="exampleModalLabel">Agregar Evaluador</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -699,7 +759,7 @@
                         </div>
                         <input type="hidden" value="5" id="rol" name="rol">
                         <button type="button"
-                            class="btn-kevin btn btn-lg btn-gradient-primary w-100 my-4 mb-2 btn-animate rainbow-bg"
+                            class="btn-kevin btn btn-lg btn-gradient-info w-100 my-4 mb-2 btn-animate rainbow-bg"
                             onclick="guardarEvaluador()">
                             <span class="btn-text">Guardar Evaluador</span>
                             <span class="btn-icon">&#128640;</span>
@@ -715,7 +775,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-3 border-0" style="background: white;">
                 <div class="modal-header border-0">
-                    <h4 class="modal-title fw-bold text-primary" id="exampleModalLabel">Registrar Presentacion</h4>
+                    <h4 class="modal-title fw-bold text-info" id="exampleModalLabel">Registrar Presentacion</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -749,7 +809,7 @@
                                 name="presentationDuration" required>
                         </div>
                         <button type="button"
-                            class="btn-kevin btn btn-lg btn-gradient-primary w-100 my-4 mb-2 btn-animate rainbow-bg"
+                            class="btn-kevin btn btn-lg btn-gradient-info w-100 my-4 mb-2 btn-animate rainbow-bg"
                             onclick="guardarPresentacion()">
                             <span class="btn-text">Guardar Presentacion</span>
                             <span class="btn-icon">&#128640;</span>
@@ -761,7 +821,7 @@
     </div>
 
     <!-- Modal TOPICOS-->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="staticBackdropTopicos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -786,9 +846,10 @@
 
                         </tbody>
                     </table>
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn  btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
              
@@ -1162,7 +1223,7 @@
     <script src="../API/Director/articulos.js"></script>
     <script src="../API/Director/evaluacion.js"></script>
     <script src="../API/Director/Presentacion.js"></script>
-    <script src="../API/Director/conferencia.js"></script>
+    <script src="/API/Chair/chairConferencia.js"></script>
 </body>
 
 </html>

@@ -39,6 +39,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="stylesheet" href="/assets/css/index.css">
     <link rel="icon" type="image/png" href="https://divisist2.ufps.edu.co/assets/img/ufps/favicon.ico">
     <title>
         Inicio Administrador
@@ -50,7 +51,7 @@
     <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/3eeb91c510.js" crossorigin="anonymous"></script>
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
@@ -187,11 +188,43 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link link text-white " href="#section-proyectos">
+                    <a class="nav-link link text-white " href="#section-conferencias">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">ballot</i>
                         </div>
                         <span class="nav-link-text ms-1">Conferencias</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-chairs">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">ballot</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Chairs</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-evaluadores">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">ballot</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Evaluadores</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-asistentes">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">ballot</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Asistentes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-autores">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">ballot</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Autores</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -248,7 +281,7 @@
                             </a>
                         </li>
                         <li class="nav-item px-3 d-flex align-items-center">
-                            <h6 class="font-weight-bolder mb-0">Coordinador</h6>
+                            <h6 class="font-weight-bolder mb-0">Administrador</h6>
                         </li>
                     </ul>
                 </div>
@@ -300,12 +333,12 @@
                 </div>
             </div>
             
-            <div class="row" style="display: none;" id="section-coordinadores">
+            <div class="row" style="display: none;" id="section-conferencias">
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Documentos</h6>
+                                <h6 class="text-white text-capitalize ps-3">Lista Conferencias</h6>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
@@ -315,19 +348,32 @@
                                         <tr>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Empresa</th>
+                                                Imagen Conferencia</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Tutor Id</th>
+                                                Id</th>
+                                                <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Chair Asignado</th>
                                             <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Titulo</th>
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Nombre</th>
                                             <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Ruta</th>
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Lugar</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Fecha Inicio</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Fecha Fin</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Ver Detalles</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="tablaProyectos">
+                                    <tbody id="tablaConferencias">
+                                        <!-- Aquí se insertarán los datos -->
                                     </tbody>
                                 </table>
                             </div>
@@ -335,6 +381,198 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="row" id="section-chairs" style="display: none;">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">Lista Chairs</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Id Usuario</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Tipo de Documento</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Documento</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Nombre</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Correo</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Rol</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaChairs">
+                                        <!-- Aquí se insertarán los datos -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row" id="section-evaluadores" style="display: none;">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">Lista Evaluadores</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Id Usuario</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Tipo de Documento</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Documento</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Nombre</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Correo</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Rol</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaEvaluadores">
+                                        <!-- Aquí se insertarán los datos -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row" id="section-asistentes" style="display: none;">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">Lista Asistentes</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Id Usuario</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Tipo de Documento</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Documento</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Nombre</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Correo</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Rol</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaAsistentes">
+                                        <!-- Aquí se insertarán los datos -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row" id="section-autores" style="display: none;">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">Lista Autores</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Id Usuario</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Tipo de Documento</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Documento</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Nombre</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Correo</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Rol</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaAutores">
+                                        <!-- Aquí se insertarán los datos -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
             <div class="row" style="display: none;" id="section-info">
                 <div class="col-12 container-fluid px-6 px-md-6">
                     <div class="page-header min-height-250 border-radius-xl mt-3 bg-gradient-info">
@@ -394,6 +632,7 @@
                                                             class="text-dark">Cedula:</strong>
                                                         <span id="cedulaUsuarioCor"></span>
                                                     </li>
+                                                    
                                                 </ul>
                                             </div>
                                         </div>
@@ -419,7 +658,7 @@
                                 <h5 class="card-title">Agregar Chair</h5>
                                 <p class="card-text">Registra a nuevos chairs en la plataforma de gestion de
                                     conferencias.</p>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-info" data-bs-toggle="modal"
                                     data-bs-target="#modalChair">
                                     Agregar
                                 </button>
@@ -434,7 +673,7 @@
                             <div class="card-body text-center">
                                 <h5 class="card-title">Agregar Conferencias</h5>
                                 <p class="card-text">Registra nuevas conferencias en la plataforma gestion de conferencias</p>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-info" data-bs-toggle="modal"
                                     data-bs-target="#modalConferencia">
                                     Agregar
                                 </button>
@@ -466,12 +705,12 @@
 
     </main>
 
-     <!-- Modal estudiante -->
+     <!-- Modal CHAIR -->
      <div class="modal fade" id="modalChair" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-3 border-0" style="background: white;">
                 <div class="modal-header border-0">
-                    <h4 class="modal-title fw-bold text-primary" id="exampleModalLabel">Agregar Chair</h5>
+                    <h4 class="modal-title fw-bold text-info" id="exampleModalLabel">Agregar Chair</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -502,7 +741,7 @@
                         </div>
                         <input type="hidden" value="5" id="rol" name="rol">
                         <button type="button"
-                            class="btn-kevin btn btn-lg btn-gradient-primary w-100 my-4 mb-2 btn-animate rainbow-bg"
+                            class="btn-info btn btn-lg btn-gradient-info w-100 my-4 mb-2 btn-animate rainbow-bg"
                             onclick="guardarChair()">
                             <span class="btn-text">Guardar Chair</span>
                             <span class="btn-icon">&#128640;</span>
@@ -513,41 +752,101 @@
         </div>
     </div>
 
-    <!-- Modal docs-->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Documentos</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <table class="table align-items-center text-center mb-0 table-responsive">
-                        <thead>
-                            <tr>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Titulo</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Ruta</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Accion</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaDocumento">
-
-
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+        <!-- Modal CONFERENCIA -->
+        <div class="modal fade" id="modalConferencia"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-3 border-0" style="background: white;">
+                    <div class="modal-header border-0">
+                        <h4 class="modal-title fw-bold text-info" id="exampleModalLabel">Agregar Conferencia</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" class="text-start" id="formularioConferencia" onsubmit="return crearConferencia(event)">
+                            <div class="input-group input-group-outline my-3">
+                                <input type="text" class="form-control form-control-lg input-animate" placeholder="Nombre de la conferencia" id="nombreConferencia" name="nombreConferencia" required>
+                            </div>
+                            <div class="input-group input-group-outline my-3">
+                                <textarea class="form-control form-control-lg input-animate" placeholder="Descripción de la conferencia" id="descripcion" name="descripcion" rows="4" required></textarea>
+                            </div>
+                            <div class="input-group input-group-outline my-3">
+                                <input type="text" class="form-control form-control-lg input-animate" placeholder="Lugar" id="lugar" name="lugar" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="fechaInicio">Fecha Inicio</label>
+                                <input type="date" class="form-control form-control-lg input-animate" id="fechaInicio" name="fechaInicio" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="fechaFin">Fecha Fin</label>
+                                <input type="date" class="form-control form-control-lg input-animate" id="fechaFin" name="fechaFin" required>
+                            </div>
+                            <div class="input-group input-group-outline my-3">
+                                <input type="file" class="form-control form-control-lg input-animate" id="archivoImagen" name="archivoImagen" accept="image/*" required>
+                            </div>
+                            <button type="submit" class="btn-info btn btn-lg btn-gradient-info w-100 my-4 mb-2 btn-animate rainbow-bg">
+                                <span class="btn-text">Crear Conferencia</span>
+                                <span class="btn-icon">&#128640;</span>
+                            </button>
+                        </form>
+                        
+                    </div>
                 </div>
             </div>
-             
         </div>
-          
-    </div>
+
+    <!-- Modal docs-->
+    <div class="modal fade" id="modalConferenciaDetalles" tabindex="-1" aria-labelledby="modalConferenciaDetallesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalConferenciaDetallesLabel">Detalles de la Conferencia</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Barra de navegación -->
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" role="tab" aria-controls="details" aria-selected="true">Detalles</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="topics-tab" data-bs-toggle="tab" data-bs-target="#topics" type="button" role="tab" aria-controls="topics" aria-selected="false" onclick="openModalAndFetchTopicos(conferenciaId)">Tópicos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="committees-tab" data-bs-toggle="tab" data-bs-target="#committees" type="button" role="tab" aria-controls="committees" aria-selected="false">Comités</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="dates-tab" data-bs-toggle="tab" data-bs-target="#dates" type="button" role="tab" aria-controls="dates" aria-selected="false">Fechas</button>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+                  <!-- Detalles de la conferencia -->
+                  <div id="details-content"></div>
+                </div>
+                <div class="tab-pane fade" id="topics" role="tabpanel" aria-labelledby="topics-tab">
+                  <!-- Tópicos de la conferencia -->
+                  <div id="topics-content">
+                    <table id="tablaTopicosAdmin" class="table">
+                      <!-- Aquí se cargarán los tópicos -->
+                    </table>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="committees" role="tabpanel" aria-labelledby="committees-tab">
+                  <!-- Comités de la conferencia -->
+                  <div id="committees-content"></div>
+                </div>
+                <div class="tab-pane fade" id="dates" role="tabpanel" aria-labelledby="dates-tab">
+                  <!-- Fechas de la conferencia -->
+                  <div id="dates-content"></div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
 
     <!-- Modal comentarios -->
     <!-- Modal comentarios como tarjeta -->
@@ -756,9 +1055,13 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script src="../API/main.js"></script>
+
     <script src="../assets/js/core/bootstrap.min.js"></script>
+
     <script src="../API/Director/coordinador.js"></script>
+
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
@@ -1019,12 +1322,19 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
     </script>
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
-    <script src="../API/Director/conferencia.js"></script>
+    <script src="/API/Administrador/conferenciasAdmin.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/API/Director/files.js"></script>
+    <script src="/API/Administrador/infochairs.js"></script>
+    <script src="/API/Administrador/infoEvaluadores.js"></script>
+    <script src="/API/Administrador/infoAsistentes.js"></script>
+    <script src="/API/Administrador/infoAutores.js"></script>
+
 </body>
 
 </html>
