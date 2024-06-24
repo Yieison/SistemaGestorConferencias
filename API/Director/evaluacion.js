@@ -1,14 +1,14 @@
 
 
 async function obtenerArticulos() {
-    const response = await fetch('http://localhost:8080/articulos');
+    const response = await fetch('https://unique-courage-production.up.railway.app/articulos');
     const articulos = await response.json();
     return articulos;
 }
 
 // Obtener lista de evaluadores
 async function obtenerEvaluadores() {
-    const response = await fetch('http://localhost:8080/usuarios/findUsuarios/EVALUADOR');
+    const response = await fetch('https://unique-courage-production.up.railway.app/usuarios/findUsuarios/EVALUADOR');
     const evaluadores = await response.json();
     return evaluadores;
 }
@@ -76,7 +76,7 @@ console.log('Evaluador seleccionado:', evaluadorSeleccionado);
     };
 
     try {
-        const response = await fetch(`http://localhost:8080/evaluacion/asignar/${evaluadorSeleccionado}/evaluacion/${articuloSeleccionado}`, {
+        const response = await fetch(`https://unique-courage-production.up.railway.app/evaluacion/asignar/${evaluadorSeleccionado}/evaluacion/${articuloSeleccionado}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

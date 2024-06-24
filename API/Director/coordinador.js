@@ -1,3 +1,5 @@
+/**
+
 var urlBackend = "https://practicasapi-production.up.railway.app/";
 cargarInformacion()
 
@@ -639,3 +641,4 @@ function mostrarListadoProyectos2() {
             console.log(e)
         })
 }
+*/

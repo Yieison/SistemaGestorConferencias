@@ -1,4 +1,4 @@
-const urlBackendeva = "http://localhost:8080/usuarios";
+const urlBackendeva = "https://unique-courage-production.up.railway.app/usuarios";
 
 async function findListChairs() {
     const result = await fetch(urlBackendeva + "/findUsuarios/CHAIR", {

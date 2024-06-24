@@ -1,4 +1,4 @@
-const urlBackendConferencia = "http://localhost:8080/conferencias";
+const urlBackendConferencia = "https://unique-courage-production.up.railway.app/conferencias";
 
 async function findListConferencias() {
     const result = await fetch(urlBackendConferencia , {
@@ -73,7 +73,7 @@ function openModalConferencias(idConferencia) {
     const myModal = new bootstrap.Modal(document.getElementById('modalConferenciaDetalles'));
 
     // Realizar la llamada fetch para obtener los detalles de la conferencia seleccionada
-    fetch(`http://localhost:8080/conferencias/${idConferencia}`)
+    fetch(`https://unique-courage-production.up.railway.app/conferencias/${idConferencia}`)
         .then(response => response.json())
         .then(conferencia => {
             // Rellenar el contenido de la pestaña "Detalles"
@@ -98,7 +98,7 @@ function openModalConferencias(idConferencia) {
             // Mostrar los tópicos cuando se hace clic en la pestaña "Tópicos"
             document.getElementById('topics-tab').addEventListener('click', function topicsTabClickHandler() {
                 // Obtener los tópicos de la conferencia seleccionada
-                fetch(`http://localhost:8080/conferencias/${idConferencia}/topicos`)
+                fetch(`https://unique-courage-production.up.railway.app/conferencias/${idConferencia}/topicos`)
                     .then(response => response.json())
                     .then(topicos => {
                         // Limpiar la tabla existente

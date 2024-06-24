@@ -1,6 +1,6 @@
 // Función para obtener artículos desde la API
 async function obtenerArticulosPresentacion() {
-    const response = await fetch('http://localhost:8080/articulos');
+    const response = await fetch('https://unique-courage-production.up.railway.app/articulos');
     const articulos = await response.json();
     return articulos;
 }
@@ -46,7 +46,7 @@ function guardarPresentacion() {
         horaFin: horaFin
     };
 
-    fetch(`http://localhost:8080/presentaciones/guardar/${articuloSeleccionado}`, {
+    fetch(`https://unique-courage-production.up.railway.app/presentaciones/guardar/${articuloSeleccionado}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -65,3 +65,63 @@ function guardarPresentacion() {
         console.error('Error al realizar la solicitud POST:', error);
     });
 }
+
+
+
+
+
+async function cargarPresentaciones() {
+    try {
+        const response = await fetch('https://unique-courage-production.up.railway.app/presentaciones');
+        const presentaciones = await response.json();
+        
+        const tablaPresentaciones = document.getElementById('tablaPresentaciones');
+        tablaPresentaciones.innerHTML = ''; // Limpiar tabla actual
+        
+        presentaciones.forEach(presentacion => {
+            const row = document.createElement('tr');
+            
+            // Columnas de la tabla
+            row.innerHTML = `
+                <td>${presentacion.id_presentacion}</td>
+                <td>${presentacion.titulo}</td>
+                <td>${presentacion.palabras_clave}</td>
+                <td>${presentacion.fecha_presentacion}</td>
+                <td><a href="${presentacion.articulo.url}" target="_blank">Ver Articulo</a></td>
+                <td>${presentacion.horaInicio}</td>
+                <td>${presentacion.horaFin}</td>
+                <td>${presentacion.articulo.conferencia.nombre}</td>
+                <td>
+                    <button class="btn btn-sm btn-info" onclick="verDetalles(${presentacion.id_presentacion})">Ver detalles</button>
+                </td>
+            `;
+            
+            tablaPresentaciones.appendChild(row);
+        });
+        
+        // Mostrar la sección de presentaciones después de cargar los datos
+        document.getElementById('section-presentaciones').style.display = 'none';
+        
+    } catch (error) {
+        console.error('Error al cargar las presentaciones:', error);
+        alert('Error al cargar las presentaciones. Inténtalo de nuevo más tarde.');
+    }
+}
+
+function verDetalles(idPresentacion) {
+    // Aquí puedes implementar la lógica para mostrar los detalles de una presentación específica
+    console.log('Ver detalles de la presentación con ID:', idPresentacion);
+    // Puedes abrir un modal, cargar más datos, etc.
+}
+
+function mostrarInformacion() {
+    document.getElementById("section-presentaciones").style.display = 'none';
+    document.getElementById("section-info").style.display = 'block';
+}
+
+// Mostrar la información del usuario al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    mostrarInformacion();
+    cargarPresentaciones();
+});
+console.log(body)

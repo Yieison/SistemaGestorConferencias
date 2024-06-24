@@ -1,4 +1,4 @@
-const urlAPIAsistentes = "http://localhost:8080/usuarios";
+const urlAPIAsistentes = "https://unique-courage-production.up.railway.app/usuarios";
 
 async function findListAsistentes() {
     const result = await fetch(urlAPIAsistentes + "/findUsuarios/ASISTENTE", {

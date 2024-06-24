@@ -1,4 +1,4 @@
-const urlBackendConferencia = "http://localhost:8080/conferencias"
+const urlBackendConferencia = "https://unique-courage-production.up.railway.app/conferencias"
 
 // Obtener los datos del usuario desde localStorage
 var userDataString = localStorage.getItem('Data');
@@ -9,7 +9,7 @@ if (userData) {
     console.log(userData.id_usuarios)
 
     async function findListConferenciasChair() {
-        const result = await fetch( `http://localhost:8080/conferencias/lista/${idChair}`, {
+        const result = await fetch( `https://unique-courage-production.up.railway.app//lista/${idChair}`, {
             method: 'GET'
         });
         return result;

@@ -1,3 +1,7 @@
+
+
+
+/**
 var urlBackend = "https://practicasapi-production.up.railway.app/";
 cargarInformacion()
 
@@ -178,7 +182,7 @@ async function actulizarEstudiante(estudiante) {
     })
     return result;
 }
-
+*/
 
 
 

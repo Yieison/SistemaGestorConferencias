@@ -1,3 +1,6 @@
+/**
+
+
 var  urlBackend = "https://practicasapi-production.up.railway.app/";
 cargarInformacion()
 
@@ -1014,7 +1017,7 @@ async function actulizarDirector(director){
     })
     return result;
 }
-
+*/
 
 
 

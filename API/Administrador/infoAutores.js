@@ -1,4 +1,4 @@
-const urlBackendAut = "http://localhost:8080/usuarios";
+const urlBackendAut = "https://unique-courage-production.up.railway.app/usuarios";
 
 async function findListAutores() {
     const result = await fetch(urlBackendAut + "/findUsuarios/AUTOR", {

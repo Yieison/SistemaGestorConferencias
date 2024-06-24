@@ -1,3 +1,5 @@
+
+/**
 var  urlBackend = "https://practicasapi-production.up.railway.app/";
 cargarInformacion()
 
@@ -524,3 +526,4 @@ fetch('https://practicasapi-production.up.railway.app/datos-empresa/list-empresa
         });
     })
     .catch(error => console.error('Error al obtener la lista de tutores:', error));
+    */
