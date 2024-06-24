@@ -164,7 +164,7 @@ function crearConferencia(event) {
 
    
 
-    fetch("http://localhost:8080/conferencias/saveConferencia", {
+    fetch("https://unique-courage-production.up.railway.app/conferencias/saveConferencia", {
         method: 'POST',
         body: formData
     })
@@ -214,7 +214,7 @@ function guardarChair() {
     const tipo_documento = document.getElementById("tipo_documento").value;
     const documento = document.getElementById("documento").value;
     const rol_id = {
-        id_rol: 3,
+        id_rol: 2,
         nombre: "CHAIR"
     };
     
@@ -229,7 +229,7 @@ function guardarChair() {
         rol : rol_id
     };
 
-    fetch('http://localhost:8080/usuarios/save', {
+    fetch('https://unique-courage-production.up.railway.app/usuarios/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -45,15 +45,15 @@ function iniciarSesionChair() {
        // Almacenar los datos del usuario en localStorage
        localStorage.setItem("Data", JSON.stringify(data));
       
-      if (data.rol.id_rol === 3) {
+      if (data.rol.id_rol === 2) {
         localStorage.setItem("Data", JSON.stringify(data))
         window.location.href = "../Paginas/InicioChair.html";
       }else if(data.rol.id_rol === 1){
         window.location.href = "../Paginas/InicioAdministrador.html";
-      }else if(data.rol.id_rol === 5){
+      }else if(data.rol.id_rol === 3){
         window.location.href = "../Paginas/InicioEvaluador.html";
-      }else if(data.rol.id_rol === 2){
-        window.location.href = "../Paginas/InicioEvaluador.html";
+      }else if(data.rol.id_rol === 4){
+        window.location.href = "../Paginas/InicioTut.html";
       } else {
         alert("usuario no autorizado")
       }

@@ -1,4 +1,4 @@
-const urlBackendConferencia = "http://localhost:8080/conferencias";
+const urlBackendConferencia = "https://unique-courage-production.up.railway.app/conferencias";
 
 async function findListConferencias() {
     const result = await fetch(urlBackendConferencia , {
@@ -135,7 +135,7 @@ function crearConferencia(event) {
 
    
 
-    fetch("http://localhost:8080/conferencias/saveConferencia", {
+    fetch("https://unique-courage-production.up.railway.app/conferencias/saveConferencia", {
         method: 'POST',
         body: formData
     })
@@ -177,7 +177,7 @@ function guardarChair() {
         rol : rol_id
     };
 
-    fetch('http://localhost:8080/usuarios/save', {
+    fetch('https://unique-courage-production.up.railway.app/usuarios/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

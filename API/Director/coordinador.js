@@ -1,10 +1,10 @@
-/**
 
-var urlBackend = "https://practicasapi-production.up.railway.app/";
+
+var urlBackend = "https://unique-courage-production.up.railway.app/";
 cargarInformacion()
 
 async function getTutorId(id) {
-    const result = await fetch(urlBackend + "coordinador/" + id, {
+    const result = await fetch(urlBackend + "usuarios/" + id, {
         method: 'GET'
     })
     return result;
@@ -17,6 +17,9 @@ function cargarInformacion() {
     const usuario = JSON.parse(localStorage.getItem("Data"))
     document.getElementById("nombreUsuarioCor").innerHTML = usuario.nombre
     document.getElementById("correoUsuarioCor").innerHTML = usuario.correo
+    document.getElementById("documentoUsuarioCor").innerHTML = usuario.documento
+    document.getElementById("rolUsuarioCor").innerHTML = usuario.rol.nombre
+    document.getElementById("apellidoUsuarioCor").innerHTML = usuario.apellido
     if (usuario.rolId === 6) {
 
         document.getElementById("rolUsuarioCor").innerHTML = "Coordinador"
@@ -43,7 +46,7 @@ function cargarInformacion() {
 
 
 
-
+/** 
 
 $(document).ready(function () {
     // Variable para almacenar el estado actual de la edición

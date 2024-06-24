@@ -212,6 +212,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-articulo-aprobado">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-square-check"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Evaluaciones</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link link text-white " href="#section-asistentes">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">ballot</i>
@@ -225,6 +233,14 @@
                             <i class="material-icons opacity-10">ballot</i>
                         </div>
                         <span class="nav-link-text ms-1">Autores</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-articulo">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-100">person</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Articulos</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -381,6 +397,106 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row" style="display: none;" id="section-articulo">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">Lista Articulos</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="m-2 d-flex align-items-center">
+                                <select class="m-2 form-select w-25" id="estado">
+                                    <option value="">Todos</option>
+                                    <option value="ENVIADO">Enviado</option>
+                                    <option value="APROBADO">Aprobado</option>
+                                    <option value="CORRECCIONES">Correcciones</option>
+                                    <option value="RECHAZADO">Rechazado</option>
+                                    <option value="PRESENTADO">Presentado</option>
+                                    <option value="PUBLICADO">Publicado</option>
+                                </select>
+                                <button class="btn btn-info btn-sm" onclick="buscarArticulosPorEstado()">Buscar</button>
+                            </div>
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Id</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Nombre</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Estado</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Conferencia</th>
+                                                <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Autor</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Detalles</th>
+                                            <th class="text-secondary opacity-7"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabla-articulos"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="display: none;" id="section-articulo-aprobado">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">Lista Evaluaciones</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Id Articulo</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Fecha de evaluacion</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Evaluador</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Estado</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Nombre articulo</th>
+
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Detalles articulo</th>
+
+                                            <th class="text-secondary opacity-7"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaArticulosAprobados">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
 
             <div class="row" id="section-chairs" style="display: none;">
@@ -625,12 +741,12 @@
                                                         <span id="rolUsuarioCor"></span>
                                                     </li>
                                                     <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong
-                                                            class="text-dark">Codigo:</strong>
-                                                        <span id="codigoUsuarioCor"></span>
+                                                            class="text-dark">Apellido</strong>
+                                                        <span id="apellidoUsuarioCor"></span>
                                                     </li>
                                                     <li class="list-group-item border-0 ps-0 text-sm"><strong
                                                             class="text-dark">Cedula:</strong>
-                                                        <span id="cedulaUsuarioCor"></span>
+                                                        <span id="documentoUsuarioCor"></span>
                                                     </li>
                                                     
                                                 </ul>
@@ -1334,6 +1450,7 @@
     <script src="/API/Administrador/infoEvaluadores.js"></script>
     <script src="/API/Administrador/infoAsistentes.js"></script>
     <script src="/API/Administrador/infoAutores.js"></script>
+    <script src="/API/Director/articulos.js"></script>
 
 </body>
 

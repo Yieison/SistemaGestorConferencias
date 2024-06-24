@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', mostrarListadoEvaluacionesAprobada
 
 
 
-const urlBackendaprobados = "http://localhost:8080/evaluacion";
+const urlBackendaprobados = "https://unique-courage-production.up.railway.app/evaluacion";
 
 async function findArticulosAprobados() {
     const result = await fetch(urlBackendaprobados, {
@@ -76,7 +76,7 @@ async function findArticulosAprobados() {
 }
 
 async function buscarArticulosEstado(estado = '') {
-    const url = estado ? `http://localhost:8080/articulos/estado/${estado}` : 'http://localhost:8080/articulos';
+    const url = estado ? `https://unique-courage-production.up.railway.app/articulos/estado/${estado}` : 'https://unique-courage-production.up.railway.app/articulos';
     const result = await fetch(url, { method: 'GET' });
     return result.json();
 }
@@ -91,12 +91,13 @@ function mostrarArticulos(articulos) {
         const cellEstado = row.insertCell(2);
         const cellConferencia = row.insertCell(3);
         const cellVerArticulo = row.insertCell(4);
+        const cellVerAutor = row.insertCell(5);
 
         cellId.textContent = articulo.id_articulo;
         cellNombre.textContent = articulo.nombre;
         cellEstado.textContent = articulo.estado;
         cellConferencia.textContent = articulo.conferencia.nombre;
-
+       cellVerAutor.textContent = articulo.autor.nombre + " " + articulo.autor.apellido;
         // Crear el enlace "Ver Artículo"
         const enlace = document.createElement('a');
         enlace.textContent = 'Ver Artículo';

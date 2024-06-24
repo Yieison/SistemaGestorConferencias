@@ -9,7 +9,7 @@ if (userData) {
     console.log(userData.id_usuarios)
 
     async function findListConferenciasChair() {
-        const result = await fetch( `https://unique-courage-production.up.railway.app//lista/${idChair}`, {
+        const result = await fetch( `https://unique-courage-production.up.railway.app/lista/${idChair}`, {
             method: 'GET'
         });
         return result;

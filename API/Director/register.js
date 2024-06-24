@@ -12,11 +12,11 @@ function guardarUsuario() {
     let rol_id = 0;
 
     if(rol == "EVALUADOR"){
-        rol_id = 5;
+        rol_id = 3;
     }else if(rol == "ASISTENTE"){
-        rol_id=4;
+        rol_id=5;
     }else if(rol == "AUTOR"){
-        rol_id =2;
+        rol_id =4;
     }
     
 
@@ -29,7 +29,7 @@ function guardarUsuario() {
         documento : documento,
     };
 
-    fetch(`http://localhost:8080/usuarios/register/${rol_id}`, {
+    fetch(`https://unique-courage-production.up.railway.app/usuarios/register/${rol_id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
