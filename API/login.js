@@ -47,7 +47,7 @@ function iniciarSesionChair() {
       
       if (data.rol.id_rol === 1) {
         localStorage.setItem("Data", JSON.stringify(data))
-        window.location.href = "../Paginas/InicioAdministrador.html";
+        window.location.href = "/Paginas/InicioAdministrador.html";
       }else if(data.rol.id_rol === 2){
         localStorage.setItem("Data", JSON.stringify(data))
         window.location.href = "../Paginas/InicioChair.html";
