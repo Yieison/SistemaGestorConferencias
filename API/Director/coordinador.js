@@ -1,10 +1,13 @@
+var userDataString = localStorage.getItem('Data');
+var userData = userDataString ? JSON.parse(userDataString) : null;
 
+var idUsuario = userData.id_usuarios;
 
 var urlBackend = "https://unique-courage-production.up.railway.app/";
 cargarInformacion()
 
-async function getTutorId(id) {
-    const result = await fetch(urlBackend + "usuarios/" + id, {
+async function getTutorId(idUsuario) {
+    const result = await fetch(urlBackend + "usuarios/" + idUsuario, {
         method: 'GET'
     })
     return result;
