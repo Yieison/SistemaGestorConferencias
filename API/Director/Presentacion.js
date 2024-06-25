@@ -32,10 +32,7 @@ function guardarPresentacion() {
     const horaInicio = document.getElementById("hora-inicio").value;
     const horaFin = document.getElementById("hora-fin").value;
 
-    if (!titulo || !resumen || !palabrasClave || !fecha || !horaInicio || !horaFin) {
-        alert('Todos los campos son requeridos. Por favor, completa todos los campos.');
-        return; // Detener la función si falta algún dato requerido
-    }
+   
 
     const presentacionData = {
         titulo: titulo,
