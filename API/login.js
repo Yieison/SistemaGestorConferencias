@@ -52,7 +52,7 @@ function iniciarSesionChair() {
         localStorage.setItem("Data", JSON.stringify(data))
         window.location.href = "../Paginas/InicioChair.html";
       }else if(data.rol.id_rol === 3){
-        window.location.href = "../Paginas/InicioEvaluador.html";
+        window.location.href = "../Paginas/inicioEvaluador.html";
       }else if(data.rol.id_rol === 4){
         window.location.href = "../Paginas/InicioTut.html";
       } else {
