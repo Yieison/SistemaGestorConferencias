@@ -1,4 +1,5 @@
-const urlBackendConferencia = "https://unique-courage-production.up.railway.app/conferencias"
+const urlBackendConferencia = "http://localhost:8080/conferencias"
+const urlRailway = "https://remarkable-commitment-production.up.railway.app"
 
 // Obtener los datos del usuario desde localStorage
 var userDataString = localStorage.getItem('Data');
@@ -9,7 +10,7 @@ if (userData) {
     console.log(userData.id_usuarios)
 
     async function findListConferenciasChair() {
-        const result = await fetch( `https://unique-courage-production.up.railway.app/conferencias/lista/${idChair}`, {
+        const result = await fetch( `${urlRailway}/conferencias/lista/${idChair}`, {
             method: 'GET'
         });
         return result;
@@ -82,7 +83,7 @@ if (userData) {
 
 
 async function getTopicos(id) {
-    const response = await fetch(`${urlBackendConferencia}/${id}/topicos`, {
+    const response = await fetch(`${urlRailway}/conferencias/${id}/topicos`, {
         method: 'GET'
     });
     if (!response.ok) {

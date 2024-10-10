@@ -16,20 +16,22 @@ async function findListUsuarios() {
     return result.json;
 }
 
-async function cargarUsuarios() {
-    try {
-        usuarios = await findListUsuarios(); // Llama a la función para obtener todos los usuarios
-        mostrarUsuarios(usuarios);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
+ 
 
 async function buscarUsuarios() {
     const rolSeleccionado = document.getElementById('rol').value;
     try {
         const data = await buscarUsuariosporRol(rolSeleccionado);
         mostrarUsuarios(data);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+async function cargarUsuarios() {
+    try {
+        const usuarios = await findListUsuarios(); // Obtiene todos los usuarios
+        mostrarUsuarios(usuarios); // Muestra los usuarios en la tabla
     } catch (error) {
         console.error('Error:', error);
     }
@@ -73,34 +75,4 @@ function mostrarUsuarios(usuarios) {
     });
 }
 
-
-
-
-
-function filtrarPersonas() {
-    const nombreBusqueda = document.getElementById('nombre').value.toLowerCase();
-    const personasFiltradas = usuarios.filter(usuario => usuario.nombre.toLowerCase().includes(nombreBusqueda));
-     cargarUsuarios(personasFiltradas);
-}
-
-
-
-
-// Llama a la función al cargar la página
-
-function mostrarInformacion() {
-    document.getElementById("section-usuarios").style.display = 'none';
-    document.getElementById("section-info").style.display = 'block';
-}
-
-// Mostrar la información del usuario al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-    mostrarInformacion();
-    cargarUsuarios();
-});
-
-// Agrega un evento de entrada al campo de búsqueda para filtrar en tiempo real
-document.getElementById('nombre').addEventListener('input', filtrarPersonas);
-
-
-
+export { buscarUsuariosporRol, buscarUsuarios, mostrarUsuarios , findListUsuarios , cargarUsuarios };

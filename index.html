@@ -103,6 +103,7 @@
                           <option value="DNI">DNI</option>
                           <option value="Pasaporte">Pasaporte</option>
                           <option value="Cedula">Cédula</option>
+                          <option value="TI">TI</option>
                         </select>
                       </div>
                     </div>
@@ -115,21 +116,26 @@
                   <div class="row">
                     <div class="col-6">
                       <div class="input-group input-group-outline mb-3">
-                        <input type="text" class="form-control" placeholder="Institución" id="institucion" required>
+                        <select class="form-control" id="paisSelect" required>
+                          <option value="">Seleccione un pais</option>
+                        </select>
                       </div>
                     </div>
-                    <div class="col-6">
-                      <div class="input-group input-group-outline mb-3">
-                        <input type="text" class="form-control" placeholder="País" id="pais" required>
-                      </div>
+                  <div class="col-6">
+                    <div class="input-group input-group-outline mb-3">
+                      <select class="form-control" id="ciudadSelect" required>
+                        <option value="">Seleccione una ciudad</option>
+                      </select>
                     </div>
-                  </div>
+                  </div> 
+                  </div> 
                   <div class="row">
-                    <div class="col-6">
+                    <div class="col-6"></div>
                       <div class="input-group input-group-outline mb-3">
-                        <input type="text" class="form-control" placeholder="Ciudad" id="ciudad" required>
+                        <select class="form-control" id="institucionSelect" required>
+                          <option value="">Seleccione una institucion</option>
+                        </select>
                       </div>
-                    </div>
                     <div class="col-6">
                       <div class="input-group input-group-outline mb-3">
                         <select class="form-control" id="rol" required>

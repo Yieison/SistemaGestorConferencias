@@ -3,7 +3,7 @@ var userData = userDataString ? JSON.parse(userDataString) : null;
 
 var idUsuario = userData.id_usuarios;
 
-var urlBackend = "https://unique-courage-production.up.railway.app/";
+var urlBackend = "http://localhost:8080/";
 cargarInformacion()
 
 async function getTutorId(idUsuario) {
@@ -13,7 +13,7 @@ async function getTutorId(idUsuario) {
     return result;
 }
 
-function cargarInformacion() {
+async function cargarInformacion() {
 
 
 

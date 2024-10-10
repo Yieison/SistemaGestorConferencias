@@ -1,4 +1,4 @@
-const urlBackendConferencia = "https://unique-courage-production.up.railway.app/conferencias";
+const urlBackendConferencia = "http://localhost:8080/conferencias";
 
 async function findListConferencias() {
     const result = await fetch(urlBackendConferencia , {
@@ -135,7 +135,7 @@ function crearConferencia(event) {
 
    
 
-    fetch("https://unique-courage-production.up.railway.app/conferencias/saveConferencia", {
+    fetch(urlBackendConferencia + "/saveConferencia", {
         method: 'POST',
         body: formData
     })
@@ -148,6 +148,7 @@ function crearConferencia(event) {
     })
     .catch(error => {
         console.error('Error al realizar la solicitud POST:', error);
+        alert("No se pudo crear la conferencia")
     });
 }
 
@@ -162,7 +163,7 @@ function guardarChair() {
     const tipo_documento = document.getElementById("tipo_documento").value;
     const documento = document.getElementById("documento").value;
     const rol_id = {
-        id_rol: 3,
+        id_rol: 2,
         nombre: "CHAIR"
     };
     
@@ -177,7 +178,7 @@ function guardarChair() {
         rol : rol_id
     };
 
-    fetch('https://unique-courage-production.up.railway.app/usuarios/save', {
+    fetch('https://localhost:8080/usuarios/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

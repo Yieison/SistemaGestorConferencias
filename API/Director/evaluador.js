@@ -1,5 +1,5 @@
 
-const urlBackendeva = "https://unique-courage-production.up.railway.app/usuarios";
+const urlBackendeva = "http://localhost:8080/usuarios";
 
 async function findListEvaluadores() {
     const result = await fetch(urlBackendeva + "/findUsuarios/EVALUADOR", {
@@ -93,7 +93,7 @@ function guardarEvaluador() {
         rol : rol_id
     };
 
-    fetch('https://unique-courage-production.up.railway.app/usuarios/save', {
+    fetch(`${urlBackendeva}/save`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -1,4 +1,4 @@
-const urlBackendeva = "https://unique-courage-production.up.railway.app/usuarios";
+const urlBackendeva = "https://remarkable-commitment-production.up.railway.app/usuarios";
 
 /**
 async function loginUser(loginDTO) {
@@ -54,7 +54,9 @@ function iniciarSesionChair() {
       }else if(data.rol.id_rol === 3){
         window.location.href = "../Paginas/inicioEvaluador.html";
       }else if(data.rol.id_rol === 4){
-        window.location.href = "../Paginas/InicioTut.html";
+        window.location.href = "../Paginas/InicioAutor.html";
+      }else if(data.rol.id_rol === 5){
+        window.location.href = "../Paginas/InicioAsistente.html";
       } else {
         alert("usuario no autorizado")
       }

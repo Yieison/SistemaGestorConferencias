@@ -1,4 +1,34 @@
-const urlBackendConferencia = "https://unique-courage-production.up.railway.app/conferencias";
+const urlBackendConferencia = "https://remarkable-commitment-production.up.railway.app/conferencias";
+const urlRailway = "https://remarkable-commitment-production.up.railway.app"
+
+
+/* document.addEventListener('DOMContentLoaded', () => {
+    // Manejador para los enlaces del menú de navegación
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();  // Previene el comportamiento predeterminado del enlace
+
+            // Ocultar todas las sections
+            hideAllSections();
+
+            // Muestra la sección correspondiente
+            const sectionId = this.getAttribute('href').replace('#', '');
+            document.getElementById(sectionId).style.display = 'block';
+
+            // Verifica si se hizo clic en Conferencias para cargar los datos
+            if (sectionId === 'section-conferencias') {
+                mostrarListadoConferencias();
+            }
+        });
+    });
+});
+
+// Función para ocultar todas las sections
+function hideAllSections() {
+    document.querySelectorAll('div[id^="section-"]').forEach(section => {
+        section.style.display = 'none';
+    });
+} */
 
 async function findListConferencias() {
     const result = await fetch(urlBackendConferencia , {
@@ -8,10 +38,10 @@ async function findListConferencias() {
 }
 
 function mostrarListadoConferencias() {
+    if (!document.getElementById('section-conferencias').hasAttribute('data-loaded')) {
     findListConferencias()
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             let body = "";
             for (const conferencia of data) {
                 body += `<tr>
@@ -28,9 +58,6 @@ function mostrarListadoConferencias() {
                         <p class="text-xs text-secondary mb-0">${conferencia.nombre}</p>
                     </td>
                     <td>
-                        <p class="text-xs text-secondary mb-0">${conferencia.lugar}</p>
-                    </td>
-                    <td>
                         <p class="text-xs text-secondary mb-0">${conferencia.fecha_inicio}</p>
                     </td>
                     <td class="align-middle text-center text-sm">
@@ -40,19 +67,23 @@ function mostrarListadoConferencias() {
                    
                     <td class="align-middle text-center text-sm">
                         <span class="my-2 mb-0 text-secondary text-xs" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="openModalConferencias(${conferencia.id_conferencia})">
-                            <i class="fa-solid fa-eye" style="color:blue; font-size: 1.5rem; "></i>
+                            <i class="fa-solid fa-eye" style="color:blue; font-size:1rem;"></i>
                         </span>
+                        <span class="my-2 mb-0 text-secondary text-xs" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="editarConferencia(${conferencia.id_conferencia})">
+                            <i class="fa-solid fa-pen-to-square" style="color:orange; font-size:1rem;"></i>
+                    </span>
+                    <span class="my-2 mb-0 text-secondary text-xs" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="eliminarConferencia(${conferencia.id_conferencia})">
+                            <i class="fa-solid fa-trash" style="color:red; font-size:1rem;"></i>
+                    </span>
                     </td>
                 </tr>`;
             }
             document.getElementById("tablaConferencias").innerHTML = body;
-
-            // Mostrar la sección de evaluadores
-            document.getElementById("section-conferencias").style.display = 'none';
         })
         .catch(e => {
             console.log(e);
         });
+    }
 }
 
 function mostrarInformacion() {
@@ -64,16 +95,15 @@ function mostrarInformacion() {
 document.addEventListener('DOMContentLoaded', () => {
     mostrarInformacion();
     mostrarListadoConferencias();
-});
+}); 
 
-console.log(body)
 
 function openModalConferencias(idConferencia) {
     // Mostrar el modal de detalles de la conferencia
     const myModal = new bootstrap.Modal(document.getElementById('modalConferenciaDetalles'));
 
     // Realizar la llamada fetch para obtener los detalles de la conferencia seleccionada
-    fetch(`https://unique-courage-production.up.railway.app/conferencias/${idConferencia}`)
+    fetch(`${urlBackendConferencia}/${idConferencia}`)
         .then(response => response.json())
         .then(conferencia => {
             // Rellenar el contenido de la pestaña "Detalles"
@@ -98,7 +128,7 @@ function openModalConferencias(idConferencia) {
             // Mostrar los tópicos cuando se hace clic en la pestaña "Tópicos"
             document.getElementById('topics-tab').addEventListener('click', function topicsTabClickHandler() {
                 // Obtener los tópicos de la conferencia seleccionada
-                fetch(`https://unique-courage-production.up.railway.app/conferencias/${idConferencia}/topicos`)
+                fetch(`${urlBackendConferencia}/${idConferencia}/topicos`)
                     .then(response => response.json())
                     .then(topicos => {
                         // Limpiar la tabla existente
@@ -133,11 +163,26 @@ function openModalConferencias(idConferencia) {
 }
 
 
+async function obtenerChairs() {
+    const response = await fetch(`${urlRailway}/usuarios/findUsuarios/CHAIR`);
+    const chairs = await response.json();
+    return chairs;
+}
+
+async function cargarChairs() {
+    const chairs = await obtenerChairs();
+    const chairsSelect = document.getElementById('selectChair');
+    chairsSelect.innerHTML = ''; // Limpiar opciones existentes
+    chairs.forEach(chair => {
+        const option = document.createElement('option');
+        option.text = `Asignar CHAIR : ${chair.nombre} ${chair.apellido}`;
+        option.value = chair.id_usuarios;
+        chairsSelect.appendChild(option);
+    });
+}
 
 
-
-
-
+    cargarChairs(); 
 
 
 function crearConferencia(event) {
@@ -149,6 +194,8 @@ function crearConferencia(event) {
     const fechaInicio = document.getElementById("fechaInicio").value;
     const fechaFin = document.getElementById("fechaFin").value;
     const archivoImagen = document.getElementById("archivoImagen").files[0];
+    const chairSeleccionado = document.getElementById("selectChair").value;
+    
 
     const conferenciaData = {
         nombre: nombre,
@@ -164,7 +211,7 @@ function crearConferencia(event) {
 
    
 
-    fetch("https://unique-courage-production.up.railway.app/conferencias/saveConferencia", {
+    fetch(`${urlBackendConferencia}/saveConferencia/${chairSeleccionado}`, {
         method: 'POST',
         body: formData
     })
@@ -189,7 +236,7 @@ function crearConferencia(event) {
 
         // Reflejar los cambios automáticamente llamando a la función para obtener conferencias
         mostrarListadoConferencias(); // Asegúrate de que esta función actualice la lista de conferencias en tu página
-
+        location.reload(); // Recarga la página para mostrar los cambios
         // Limpiar el formulario
         document.getElementById("nombreConferencia").value = "";
         document.getElementById("descripcion").value = "";
@@ -229,7 +276,7 @@ function guardarChair() {
         rol : rol_id
     };
 
-    fetch('https://unique-courage-production.up.railway.app/usuarios/save', {
+    fetch(`${urlRailway}/usuarios/save`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -238,16 +285,148 @@ function guardarChair() {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Error al guardar el evaluador');
+            throw new Error('Error al guardar el chair');
         }
         console.log('chair guardado exitosamente');
         // Cerrar el modal u otra lógica de tu aplicación
         $('#modalChair').modal('hide');
+
+        document.body.classList.remove('modal-open');
+        const modalBackdrop = document.querySelector('.modal-backdrop');
+        if (modalBackdrop) {
+            modalBackdrop.parentNode.removeChild(modalBackdrop);
+        }
+
     })
     .catch(error => {
         console.error('Error al realizar la solicitud POST:', error);
     });
     
+}
+
+
+
+function eliminarConferencia(idConferencia){
+    const myModalEliminar = new bootstrap.Modal(document.getElementById('modalEliminarConferencia'));
+    myModalEliminar.show();
+    // Asigna un evento al botón de confirmación dentro del modal
+    document.getElementById('btnConfirmarEliminar').onclick = async function() {
+        try {
+            // Realiza la solicitud DELETE al backend
+            const response = await fetch(`${urlRailway}/conferencias/eliminar/${idConferencia}`, {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                const mensaje = await response.text();
+                alert(mensaje); // Muestra un mensaje de éxito
+
+                // Aquí puedes agregar código para actualizar la interfaz, por ejemplo, eliminar la conferencia de una lista en la UI
+
+                // Oculta el modal después de la eliminación
+                myModalEliminar.hide();
+            } else {
+                const mensaje = await response.text();
+                alert(mensaje); // Muestra un mensaje de error
+            }
+        } catch (error) {
+            console.error('Error al eliminar la conferencia:', error);
+            alert('Error al eliminar la conferencia');
+        }
+    }
+
+}
+
+
+async function cargarChairsEdit() {
+    const chairs = await obtenerChairs();
+    const chairsSelect = document.getElementById('selectChairEdit');
+    chairsSelect.innerHTML = ''; // Limpiar opciones existentes
+    chairs.forEach(chair => {
+        const option = document.createElement('option');
+        option.text = `Asignar CHAIR : ${chair.nombre} ${chair.apellido}`;
+        option.value = chair.id_usuarios;
+        chairsSelect.appendChild(option);
+    });
+    const newOption = document.createElement('option');
+    newOption.text = 'Sin Chair';
+    newOption.value  = 'Sin Chair';
+    chairsSelect.appendChild(newOption);
+}
+
+function editarConferencia(idConferencia){
+    const myModalEditar = new bootstrap.Modal(document.getElementById('modalConferenciaEditar'));
+    myModalEditar.show();
+    cargarChairsEdit();
+    // Obtener los datos de la conferencia desde el servidor
+    fetch(`${urlRailway}/conferencias/${idConferencia}`)
+        .then(response => response.json())
+        .then(data => {
+            // Cargar los datos en los campos del formulario
+            document.getElementById('nombreConferenciaEdit').value = data.nombre;
+            document.getElementById('descripcionEdit').value = data.descripcion;
+            document.getElementById('lugarEdit').value = data.lugar;
+            document.getElementById('fechaInicioEdit').value = data.fecha_inicio;
+            document.getElementById('fechaFinEdit').value = data.fecha_fin;
+            document.getElementById('idConferenciaEdit').value = data.id_conferencia;
+            // Si tienes opciones para el select, cargarlas aquí
+            const selectChairEdit = document.getElementById('selectChairEdit');
+            // Aquí deberías cargar las opciones del select, y luego seleccionar la opción actual
+            selectChairEdit.value = data.chair.id_usuarios; // Esto es solo un ejemplo, ajusta según tu estructura de datos
+        })
+        .catch(error => console.error('Error al cargar los datos de la conferencia:', error));
+    
+}
+
+
+function enviarEdicionConferencia(event) {
+    const myModalEditar = new bootstrap.Modal(document.getElementById('modalConferenciaEditar'));
+    event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
+
+    const idConferencia = document.getElementById('idConferenciaEdit').value;
+    console.log(idConferencia);
+    const nombre = document.getElementById("nombreConferenciaEdit").value;
+    const descripcion = document.getElementById("descripcionEdit").value;
+    const lugar = document.getElementById("lugarEdit").value;
+    const fechaInicio = document.getElementById("fechaInicioEdit").value;
+    const fechaFin = document.getElementById("fechaFinEdit").value;
+    const archivoImagen = document.getElementById("archivoImagenEdit").files[0];
+    const chairId = document.getElementById("selectChairEdit").value;
+    
+
+    const conferenciaDataEdit = {
+        nombre,
+        descripcion,
+        lugar,
+        fechaInicio,
+        fechaFin,
+        chairId
+        // Si estás manejando archivos:
+        //archivoImagen : formData.get('archivoImagen') // Este es un archivo, así que necesitas un manejo especial en backend.
+    };
+
+    const formData = new FormData();
+    formData.append("file", archivoImagen);
+    formData.append("conferencia", new Blob([JSON.stringify(conferenciaDataEdit)], { type: "application/json" }));
+
+
+    fetch(`${urlRailway}/conferencias/editar/${idConferencia}`, {
+        method: 'PUT', // O 'POST', dependiendo de cómo esté configurado tu backend
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            // Manejar éxito, por ejemplo, cerrar el modal y recargar la lista de conferencias
+            myModalEditar.hide();
+            alert('Conferencia actualizada exitosamente');
+        } else {
+            throw new Error('Error al actualizar la conferencia');
+        }
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 

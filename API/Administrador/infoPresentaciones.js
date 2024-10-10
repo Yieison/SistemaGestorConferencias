@@ -1,11 +1,9 @@
-const urlBackendArticle = "http://localhost:8080/articulos"
-
 const urlBackendPresentaciones = "http://localhost:8080/presentaciones"
 
 
 // Función para obtener artículos desde la API
 async function obtenerArticulosPresentacion() {
-    const response = await fetch(`${urlBackendArticle}`);
+    const response = await fetch(`${urlRailway}/articulos`);
     const articulos = await response.json();
     return articulos;
 }
@@ -48,7 +46,7 @@ function guardarPresentacion() {
         horaFin: horaFin
     };
 
-    fetch(`${urlBackendPresentaciones}/guardar/${articuloSeleccionado}`, {
+    fetch(`${urlRailway}/presentaciones/guardar/${articuloSeleccionado}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -74,7 +72,7 @@ function guardarPresentacion() {
 
 async function cargarPresentaciones() {
     try {
-        const response = await fetch(`${urlBackendPresentaciones}`);
+        const response = await fetch(`${urlRailway}/presentaciones`);
         const presentaciones = await response.json();
         
         const tablaPresentaciones = document.getElementById('tablaPresentaciones');

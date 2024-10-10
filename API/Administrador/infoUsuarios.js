@@ -1,10 +1,13 @@
-const urlBackendeva = "http://localhost:8080/usuarios";
+const urlBackendeva = "https://remarkable-commitment-production.up.railway.app/usuarios";
 
 
 let usuarios = [];
 
+
+
+
 async function buscarUsuariosporRol(rol = '') {
-    const url = rol === "TODOS" || !rol ?  urlBackendeva : `http://localhost:8080/usuarios/findUsuarios/${rol}`;
+    const url = rol === "TODOS" || !rol ?  urlBackendeva : `${urlBackendeva}/findUsuarios/${rol}`;
     const result = await fetch(url, { method: 'GET' });
     return result.json();
 }
@@ -73,10 +76,6 @@ function mostrarUsuarios(usuarios) {
     });
 }
 
-
-
-
-
 function filtrarPersonas() {
     const nombreBusqueda = document.getElementById('nombre').value.toLowerCase();
     const personasFiltradas = usuarios.filter(usuario => usuario.nombre.toLowerCase().includes(nombreBusqueda));
@@ -101,6 +100,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Agrega un evento de entrada al campo de búsqueda para filtrar en tiempo real
 document.getElementById('nombre').addEventListener('input', filtrarPersonas);
-
-
-

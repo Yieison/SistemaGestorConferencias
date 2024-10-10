@@ -1,17 +1,18 @@
-
+const urlBackendEvaluacion = "http://localhost:8080"
 
 async function obtenerArticulos() {
-    const response = await fetch('https://unique-courage-production.up.railway.app/articulos');
+    const response = await fetch(`${urlBackendEvaluacion}/articulos`);
     const articulos = await response.json();
     return articulos;
 }
 
 // Obtener lista de evaluadores
 async function obtenerEvaluadores() {
-    const response = await fetch('https://unique-courage-production.up.railway.app/usuarios/findUsuarios/EVALUADOR');
+    const response = await fetch(`${urlBackendEvaluacion}/usuarios/findUsuarios/EVALUADOR`);
     const evaluadores = await response.json();
     return evaluadores;
 }
+
 
 // Función para cargar los artículos en el dropdown
 async function cargarArticulos() {
@@ -64,10 +65,7 @@ async function guardarEvaluacion(event) {
     const fechaHora = `${fechaSeleccionada} ${horaSeleccionada}:00`;
     const estado = 'PENDIENTE'; // Estado por defecto
 
-    console.log('Artículo seleccionado:', articuloSeleccionado);
-console.log('Evaluador seleccionado:', evaluadorSeleccionado);
-
-
+    
     const evaluacion = {
         articulo_id_articulo: articuloSeleccionado,
         evaluador_id: evaluadorSeleccionado,
@@ -76,7 +74,7 @@ console.log('Evaluador seleccionado:', evaluadorSeleccionado);
     };
 
     try {
-        const response = await fetch(`https://unique-courage-production.up.railway.app/evaluacion/asignar/${evaluadorSeleccionado}/evaluacion/${articuloSeleccionado}`, {
+        const response = await fetch(`${urlBackendEvaluacion}/evaluacion/asignar/${evaluadorSeleccionado}/evaluacion/${articuloSeleccionado}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -84,13 +82,12 @@ console.log('Evaluador seleccionado:', evaluadorSeleccionado);
             body: JSON.stringify(evaluacion)
         });
 
-        if (!response.ok) {
-            throw new Error('Error en la solicitud: ' + response.status);
-        }
+     
 
         const data = await response.json();
         console.log('Evaluación guardada:', data);
         alert('Evaluación guardada exitosamente.');
+   
     } catch (error) {
         console.error('Error al guardar la evaluación:', error);
         const successModal = new bootstrap.Modal(document.getElementById('successModal'));

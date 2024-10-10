@@ -9,7 +9,7 @@
                 sectionInfo.style.display = 'block';
     
                 var infoLink = document.querySelector('.navbar-nav a[href="#section-info"]');
-                infoLink.classList.add('active', 'bg-gradient-primary');
+                infoLink.classList.add('active', 'bg-gradient-info');
     
                 var links = document.querySelectorAll('.navbar-nav a.link');
     
@@ -28,9 +28,9 @@
                         });
                         document.getElementById(targetId).style.display = 'block';
                         links.forEach(function (link) {
-                            link.classList.remove('active', 'bg-gradient-primary');
+                            link.classList.remove('active', 'bg-gradient-info');
                         });
-                        this.classList.add('active', 'bg-gradient-primary');
+                        this.classList.add('active', 'bg-gradient-info');
                     });
                 });
             });
@@ -166,7 +166,7 @@
             <a class="navbar-brand m-0" target="_blank">
                 <img style="max-width: 1.2cm; min-height: 1.2cm; align-items: center; text-align: center; justify-content: center;"
                     src="../assets/img/logoS.png" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-4 font-weight-bolder text-white">Empresa</span>
+                <span class="ms-4 font-weight-bolder text-white">Autor</span>
             </a>
         </div>
         <hr class="horizontal light mt-0 mb-2">
@@ -177,7 +177,7 @@
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">ballot</i>
                         </div>
-                        <span class="nav-link-text ms-1">Proyectos</span>
+                        <span class="nav-link-text ms-1">Articulos</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -205,7 +205,7 @@
         </div>
         <div class="sidenav-footer position-absolute w-100 bottom-0 ">
             <div class="mx-3">
-                <a class="btn bg-gradient-primary w-100" href="../index.html" type="button">Log
+                <a class="btn bg-gradient-info w-100" href="../index.html" type="button">Log
                     Out</a>
             </div>
         </div>
@@ -226,7 +226,7 @@
                             </a>
                         </li>
                         <li class="nav-item px-3 d-flex align-items-center">
-                            <h6 class="font-weight-bolder mb-0">Empresa</h6>
+                            <h6 class="font-weight-bolder mb-0">Articulos</h6>
                         </li>
                     </ul>
                 </div>
@@ -237,7 +237,7 @@
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3" >
+                            <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3" >
                                 <div class="d-flex justify-content-between align-items-center px-3">
                                     <h6 class="text-white text-capitalize">Lista Proyectos</h6>
                                     <button type="button" class="btn btn-sm btn-light text-rose" data-bs-toggle="modal" data-bs-target="#modalProyecto">
@@ -285,7 +285,7 @@
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                            <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3">
                                 <h6 class="text-white text-capitalize ps-3">Documentos</h6>
                             </div>
                         </div>
@@ -322,7 +322,7 @@
             </div>
             <div class="row" style="display: none;" id="section-info">
                 <div class="col-12 container-fluid px-6 px-md-6">
-                    <div class="page-header min-height-250 border-radius-xl mt-3 bg-gradient-primary">
+                    <div class="page-header min-height-250 border-radius-xl mt-3 bg-gradient-info">
                     </div>
                     <div class="card card-body mx-3 mx-md-5 mt-n9">
                         <div class="row gx-4 mb-2">
@@ -440,7 +440,7 @@
                  </table>
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                 <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cerrar</button>
              </div>
          </div>
           
@@ -453,7 +453,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-3 border-0" style="background: white;">
                 <div class="modal-header border-0">
-                    <h5 class="modal-title fw-bold text-primary" id="exampleModalLabel">Agregar Proyecto</h5>
+                    <h5 class="modal-title fw-bold text-info" id="exampleModalLabel">Agregar Proyecto</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -478,7 +478,7 @@
                             </span>
                         </div>
                         <button type="button"
-                            class="btn-kevin btn btn-lg btn-gradient-primary w-100 my-4 mb-2 btn-animate rainbow-bg"
+                            class="btn-kevin btn btn-lg btn-gradient-info w-100 my-4 mb-2 btn-animate rainbow-bg"
                             onclick="guardarProyecto()">
                             <span class="btn-text">Guardar Proyecto</span>
                             <span class="btn-icon">&#128640;</span>

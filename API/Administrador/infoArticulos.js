@@ -1,82 +1,17 @@
-/**
-const urlBackendarticulos = "http://localhost:8080";
-
-// Función para obtener la lista de evaluaciones aprobadas
-async function findEvaluacionesAprobadas() {
-    try {
-        const result = await fetch(urlBackendarticulos + "/evaluacion", {
-            method: 'GET'
-        });
-        return result.json(); // Devolver el resultado como JSON
-    } catch (error) {
-        console.error('Error al obtener la lista de evaluaciones aprobadas:', error);
-        throw error;
-    }
-}
-
-// Función para obtener la información de un artículo por su ID
-async function findArticuloById(articuloId) {
-    try {
-        const result = await fetch(urlBackendarticulos + `/articulos/${articuloId}`, {
-            method: 'GET'
-        });
-        return result.json();
-    } catch (error) {
-        console.error(`Error al obtener el artículo con ID ${articuloId}:`, error);
-        throw error;
-    }
-}
-
-// Función para obtener la información de un evaluador por su ID
-async function findEvaluadorById(evaluadorId) {
-    try {
-        const result = await fetch(urlBackendarticulos + `/usuarios/evaluadores/${evaluadorId}`, {
-            method: 'GET'
-        });
-        return result.json();
-    } catch (error) {
-        console.error(`Error al obtener el evaluador con ID ${evaluadorId}:`, error);
-        throw error;
-    }
-}
-
-// Función para mostrar la lista de evaluaciones aprobadas en la tabla
-async function mostrarListadoEvaluacionesAprobadas() {
-    try {
-        const evaluaciones = await findEvaluacionesAprobadas();
-        let body = "";
-        for (const evaluacion of evaluaciones) {
-            const articulo = await findArticuloById(evaluacion.articulo.id_articulo);
-            const evaluador = await findEvaluadorById(evaluacion.evaluador.id_usuarios);
-            body += `<tr>
-                <td>${evaluacion.id}</td>
-                <td>${articulo.titulo}</td>
-                <td>${evaluador.nombre}</td>
-            </tr>`;
-        }
-        document.getElementById("tablaEvaluacionesAprobadas").innerHTML = body;
-    } catch (error) {
-        console.error('Error al mostrar la lista de evaluaciones aprobadas:', error);
-    }
-}
-
-// Llama a la función al cargar la página
-document.addEventListener('DOMContentLoaded', mostrarListadoEvaluacionesAprobadas);
-*/
+const url = "http://localhost:8080/evaluacion";
+const urlBackendEvaluadoresArticulos = "http://localhost:8080";
 
 
-
-const urlBackendaprobados = "http://localhost:8080/evaluacion";
 
 async function findArticulosAprobados() {
-    const result = await fetch(urlBackendaprobados, {
+    const result = await fetch(`${urlRailway}/evaluacion`, {
         method: 'GET'
     });
     return result;
 }
 
 async function buscarArticulosEstado(estado = '') {
-    const url = estado ? `http://localhost:8080/articulos/estado/${estado}` : 'http://localhost:8080/articulos';
+    const url = estado ? `${urlRailway}/articulos/estado/${estado}` : `${urlRailway}/articulos`;
     const result = await fetch(url, { method: 'GET' });
     return result.json();
 }
@@ -92,6 +27,7 @@ function mostrarArticulos(articulos) {
         const cellConferencia = row.insertCell(3);
         const cellVerArticulo = row.insertCell(4);
         const cellVerAutor = row.insertCell(5);
+        const cellEvaluacion = row.insertCell(6);
 
         cellId.textContent = articulo.id_articulo;
         cellNombre.textContent = articulo.nombre;
@@ -104,8 +40,87 @@ function mostrarArticulos(articulos) {
         enlace.href = articulo.url;
         enlace.target = '_blank'; // Para abrir en una nueva pestaña
         cellVerArticulo.appendChild(enlace);
+        const span = document.createElement('span');
+        span.classList.add('my-2', 'mb-0', 'text-secondary', 'text-xs');
+        span.innerHTML = '<i class="fa-solid fa-pen-to-square" style="color: orange; font-size: 1rem;"></i>';
+        span.onclick = function() {
+            asignarEvaluacion(articulo.id_articulo); // Llamar a la función de edición pasando el id del artículo
+        };
+    
+        // Añadir el <span> a la celda de la fila
+        cellEvaluacion.appendChild(span);
+
     });
 }
+
+let idArticuloGlobal;
+
+function asignarEvaluacion (idArticulo) {
+    var modalAsignarEvaluador = new bootstrap.Modal(document.getElementById('modalAsignarEvaluador'));
+    modalAsignarEvaluador.show();
+
+    idArticuloGlobal = idArticulo; 
+
+    cargarEvaluadores();
+
+   async function obtenerEvaluadores() {
+    const response = await fetch(`${urlRailway}/usuarios/findUsuarios/EVALUADOR`);
+    const evaluadores = await response.json();
+    return evaluadores;
+    } 
+
+    async function cargarEvaluadores() {
+        const evaluadores = await obtenerEvaluadores();
+        const evaluadoresSelect = document.getElementById('evaluador');
+        evaluadoresSelect.innerHTML = ''; // Limpiar opciones existentes
+        evaluadores.forEach(evaluador => {
+            const option = document.createElement('option');
+            option.text = `${evaluador.nombre} ${evaluador.apellido} `;
+            option.value = evaluador.id_usuarios;
+            evaluadoresSelect.appendChild(option);
+        });
+    }
+}
+
+
+async function guardarEvaluacion(event) {
+    event.preventDefault(); // Evitar que el formulario se envíe automáticamente
+    
+    const articuloSeleccionado = idArticuloGlobal;
+    console.log(articuloSeleccionado)
+    const evaluadorSeleccionado = document.getElementById('evaluador').value;
+    console.log(evaluadorSeleccionado)
+    const fechaSeleccionada = document.getElementById('fecha').value;
+    const horaSeleccionada = document.getElementById('hora').value;
+
+    // Combinar la fecha y la hora seleccionadas en un formato completo
+    const fechaHora = `${fechaSeleccionada} ${horaSeleccionada}:00`;
+    const estado = 'PENDIENTE'; // Estado por defecto
+
+    
+    const evaluacion = {
+        fechaHora: fechaHora,
+        estado: estado
+    };
+
+    try {
+        await fetch(`${urlRailway}/evaluacion/asignar/${evaluadorSeleccionado}/evaluacion/${articuloSeleccionado}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(evaluacion)
+        });
+
+        var modalAsignarEvaluador = new bootstrap.Modal(document.getElementById('modalAsignarEvaluador'));
+        modalAsignarEvaluador.hide(); 
+        alert("Evaluacion guardada exitosamente")       
+   
+    } catch (error) {
+        console.error('Error al guardar la evaluación:', error);
+    }
+}
+
 
 async function cargarTodosLosArticulos() {
     try {
@@ -116,7 +131,7 @@ async function cargarTodosLosArticulos() {
     }
 }
 
-export async function buscarArticulosPorEstado() {
+async function buscarArticulosPorEstado() {
     const estadoSeleccionado = document.getElementById('estado').value;
     try {
         const data = await buscarArticulosEstado(estadoSeleccionado);
@@ -133,7 +148,7 @@ document.addEventListener('DOMContentLoaded', cargarTodosLosArticulos);
 
 
 
-export function mostrarArticulosAprobados() {
+function mostrarArticulosAprobados() {
     findArticulosAprobados()
         .then(res => res.json())
         .then(data => {
@@ -162,6 +177,11 @@ export function mostrarArticulosAprobados() {
                     <td>
                         <a href="${articulo.articulo.url}" target="_blank">Ver Artículo</a>
                     </td>
+                    <td>
+                    <span class="my-2 mb-0 text-secondary text-xs" onclick="asignarEvaluacion(${articulo.id_articulo})">
+                            <i class="fa-solid fa-eye" style="color:blue; font-size:1rem;"></i>
+                        </span>
+                    </td>
                 </tr>`;
             }
             document.getElementById("tablaArticulosAprobados").innerHTML = body;
@@ -178,5 +198,3 @@ export function mostrarArticulosAprobados() {
 document.addEventListener('DOMContentLoaded', () => {
     mostrarArticulosAprobados();
 });
-
-console.log(body)
