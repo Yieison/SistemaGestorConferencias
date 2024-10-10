@@ -103,7 +103,7 @@ function openModalConferencias(idConferencia) {
     const myModal = new bootstrap.Modal(document.getElementById('modalConferenciaDetalles'));
 
     // Realizar la llamada fetch para obtener los detalles de la conferencia seleccionada
-    fetch(`${urlBackendConferencia}/${idConferencia}`)
+    fetch(`${urlRailway}/conferencias/${idConferencia}`)
         .then(response => response.json())
         .then(conferencia => {
             // Rellenar el contenido de la pestaña "Detalles"
@@ -128,7 +128,7 @@ function openModalConferencias(idConferencia) {
             // Mostrar los tópicos cuando se hace clic en la pestaña "Tópicos"
             document.getElementById('topics-tab').addEventListener('click', function topicsTabClickHandler() {
                 // Obtener los tópicos de la conferencia seleccionada
-                fetch(`${urlBackendConferencia}/${idConferencia}/topicos`)
+                fetch(`${urlRailway}/conferencias/${idConferencia}/topicos`)
                     .then(response => response.json())
                     .then(topicos => {
                         // Limpiar la tabla existente
