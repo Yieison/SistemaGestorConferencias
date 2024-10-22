@@ -69,4 +69,24 @@ function iniciarSesionChair() {
 }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  const togglePassword = document.getElementById('togglePassword');
+  const passwordField = document.getElementById('passwordChair');
+  const iconEye = document.getElementById('icon-eye');
+
+  togglePassword.addEventListener('click', function () {
+    // Alternar entre mostrar/ocultar contraseña
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text';
+      iconEye.src = "https://img.icons8.com/ios-glyphs/30/000000/invisible.png"; // Cambiar a ícono de "ocultar"
+    } else {
+      passwordField.type = 'password';
+      iconEye.src = "https://img.icons8.com/ios-glyphs/30/000000/visible.png"; // Cambiar a ícono de "mostrar"
+    }
+  });
+});
+
+
+
+
 

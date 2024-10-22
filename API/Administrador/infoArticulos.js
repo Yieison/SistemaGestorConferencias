@@ -31,9 +31,36 @@ function mostrarArticulos(articulos) {
 
         cellId.textContent = articulo.id_articulo;
         cellNombre.textContent = articulo.nombre;
-        cellEstado.textContent = articulo.estado;
+        //cellEstado.textContent = articulo.estado;
         cellConferencia.textContent = articulo.conferencia.nombre;
        cellVerAutor.textContent = articulo.autor.nombre + " " + articulo.autor.apellido;
+
+        // Crear el span para el estado
+        let estadoColor = "";
+        switch (articulo.estado.toLowerCase()) {
+            case "correcciones":
+                estadoColor = "badge bg-warning"; // Naranja
+                break;
+            case "aprobado":
+                estadoColor = "badge bg-success"; // Verde
+                break;
+            case "enviado":
+                estadoColor = "badge bg-info"; // Azul
+                break;
+            case "rechazado":
+                estadoColor = "badge bg-danger"; // Rojo
+                break;
+            default:
+                estadoColor = "badge bg-secondary"; // Gris por defecto
+        }
+
+        // Crear el span con la clase de estado y añadirlo a la celda de estado
+        const spanEstado = document.createElement('span');
+        spanEstado.className = estadoColor;
+        spanEstado.textContent = articulo.estado;
+        cellEstado.appendChild(spanEstado);
+
+       
         // Crear el enlace "Ver Artículo"
         const enlace = document.createElement('a');
         enlace.textContent = 'Ver Artículo';

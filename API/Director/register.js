@@ -63,7 +63,14 @@ document.addEventListener("DOMContentLoaded",function(){
 })
 
 
+
+
+
 function guardarUsuario() {
+        // Mostrar el toast de éxito
+    const toastElement = document.getElementById('successToastRegister');
+    const toast = new bootstrap.Toast(toastElement);
+
     const nombre = document.getElementById("nombre").value;
     const apellido = document.getElementById("apellido").value;
     const correo = document.getElementById("correo").value;
@@ -106,7 +113,7 @@ function guardarUsuario() {
         }
         console.log('Usuario guardado exitosamente');
         // Cerrar el modal u otra lógica de tu aplicación
-        alert('Se ha registrado exitosamente, En tu correo podras ver las credenciales');
+        toast.show();
         document.querySelector('#login-section').style.display = 'block'; // Ocultar formulario de inicio de sesión
         document.querySelector('#register-section').style.display = 'none'; // Mostrar formulario de registro
     })

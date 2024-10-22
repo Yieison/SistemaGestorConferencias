@@ -32,13 +32,14 @@ function listarComites() {
           comites.forEach(comite => {
               body += `<tr>
                   <td>${comite.id}</td>
-                  <td>${comite.nombre}</td>
+                  <td>${comite.nombreComite}</td>
                   <td>${comite.conferencia?.nombre || 'Sin conferencia'}</td>
                   <td>
                       <span class="my-2 mb-0 text-secondary text-xs" onclick="toggleUsuarios(${comite.id})">
                             <i class="fa-solid fa-eye" style="color:blue; font-size:1rem;"></i>
                         </span>
-                        <span class="my-2 mb-0 text-secondary text-xs" data-bs-toggle="modal" data-bs-target="#modalAgregarMiembro">
+                        <span class="my-2 mb-0 text-secondary text-xs" data-bs-toggle="modal" data-id="${comite.id}"
+                         onclick="guardarIdComite(this)"  data-bs-target="#modalAgregarMiembro">
                               <i class="fa-solid fa-pen-to-square" style="color:orange; font-size:1rem;"></i>    
                         </span>
                       <div id="usuarios-${comite.id}" style="display:none;" class="mt-2">
@@ -58,6 +59,18 @@ function listarComites() {
       .catch(error => {
           console.error('Error al listar comités:', error);
       });
+}
+
+let comiteIdSeleccionado = null;
+
+function guardarIdComite(element) {
+    // Obtener el ID del comite del atributo 'data-id'
+    comiteIdSeleccionado = element.getAttribute('data-id');
+    console.log("ID del Comité seleccionado: " + comiteIdSeleccionado);
+    // Si prefieres guardar este ID en un campo oculto dentro del modal:
+    document.getElementById('comiteIdDisplay').textContent = comiteIdSeleccionado;
+
+    document.getElementById('idComiteSeleccionado').value = comiteIdSeleccionado;
 }
 
 
@@ -86,7 +99,7 @@ async function obtenerConferencias() {
 }
 
 // Función para cargar los artículos en el dropdown
-async function cargarConferencias() {
+async function cargarConferenciasComite() {
     const conferencias = await obtenerConferencias();
     const conferenciasSelect = document.getElementById('selectConferenciaComite');
     conferenciasSelect.innerHTML = ''; // Limpiar opciones existentes
@@ -100,7 +113,7 @@ async function cargarConferencias() {
 
 // Llamar a la función para cargar los artículos al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
-    cargarConferencias();
+    cargarConferenciasComite();
 });
 
 
@@ -110,9 +123,10 @@ function guardarComite() {
     const nombre = document.getElementById("nombreComite").value;
     const conferencia = document.getElementById("selectConferenciaComite").value;
     
+    console.log('Nombre del comité:', nombre);
 
-    const conferenciaData = {
-        nombre: nombre
+    const comiteData = {
+        nombreComite : nombre
     };
 
     fetch(`${urlRailway}/comites/agregarComite/conferencia/${conferencia}`, {
@@ -120,15 +134,46 @@ function guardarComite() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(conferenciaData)
+        body: JSON.stringify(comiteData)
     })
     .then(response => {
         if (!response.ok) {
             throw new Error('Error al guardar la sala');
         }
-        console.log('Sala guardada exitosamente');
+        console.log('Comite guardado exitosamente');
         // Cerrar el modal u otra lógica de tu aplicación
         $('#modalComite').modal('hide');
+        $('.modal-backdrop').remove();
+    })
+    .catch(error => {
+        console.error('Error al realizar la solicitud POST:', error);
+    });
+}
+
+
+function guardarMiembro() {
+    const idComite = document.getElementById('idComiteSeleccionado').value;
+    const nombreMiembro = document.getElementById('nombreMiembro').value;
+    
+    const miembroData = {
+        nombre: nombreMiembro,
+        idComite: idComite
+    };
+
+    fetch(`${urlRailway}/usuarios/save`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(miembroData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al guardar el miembro');
+        }
+        console.log('Miembro guardado exitosamente');
+        // Cerrar el modal o hacer cualquier otra acción
+        $('#modalAgregarMiembro').modal('hide');
     })
     .catch(error => {
         console.error('Error al realizar la solicitud POST:', error);

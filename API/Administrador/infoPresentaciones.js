@@ -26,6 +26,30 @@ document.addEventListener('DOMContentLoaded', () => {
     cargarArticulosPresentacion();
 });
 
+async function obtenerSesionesPresentacion() {
+    const response = await fetch(`${urlRailway}/sesiones`);
+    const sesiones = await response.json();
+    return sesiones;
+}
+
+// Función para cargar los artículos en el dropdown
+async function cargarSesionesPresentacion() {
+    const sesiones = await obtenerSesionesPresentacion();
+    const sesionesSelect = document.getElementById('sesionesPresentacion');
+    sesionesSelect.innerHTML = ''; // Limpiar opciones existentes
+    sesiones.forEach(sesion => {
+        const option = document.createElement('option');
+        option.value = sesion.id;
+        option.textContent = `Nombre : ${sesion.nombre} : conferencia :${sesion.conferencia.nombre} : sala : ${sesion.sala.nombre}`;
+        sesionesSelect.appendChild(option);
+    });
+}
+
+// Llamar a la función para cargar los artículos al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    cargarSesionesPresentacion();
+});
+
 function guardarPresentacion() {
     const titulo = document.getElementById("titulo").value;
     const articuloSeleccionado = document.getElementById("articulosPresentacion").value;
@@ -35,6 +59,7 @@ function guardarPresentacion() {
     const horaInicio = document.getElementById("hora-inicio").value;
     const horaFin = document.getElementById("hora-fin").value;
 
+    const sesion = document.getElementById("sesionesPresentacion").value;
    
 
     const presentacionData = {
@@ -46,7 +71,7 @@ function guardarPresentacion() {
         horaFin: horaFin
     };
 
-    fetch(`${urlRailway}/presentaciones/guardar/${articuloSeleccionado}`, {
+    fetch(`${urlRailway}/presentaciones/guardar/${articuloSeleccionado}/sesion/${sesion}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -60,6 +85,9 @@ function guardarPresentacion() {
         console.log('Presentación guardada exitosamente');
         // Cerrar el modal u otra lógica de tu aplicación
         $('#modalPresentacion').modal('hide');
+        $('.modal-backdrop').remove();
+        // Mostrar la notificación de éxito
+        toast.show();
     })
     .catch(error => {
         console.error('Error al realizar la solicitud POST:', error);
@@ -80,6 +108,7 @@ async function cargarPresentaciones() {
         
         presentaciones.forEach(presentacion => {
             const row = document.createElement('tr');
+
             
             // Columnas de la tabla
             row.innerHTML = `
