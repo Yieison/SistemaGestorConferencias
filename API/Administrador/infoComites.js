@@ -46,7 +46,6 @@ function listarComites() {
                           ${Array.isArray(comite.usuarios) && comite.usuarios.length > 0
                               ? comite.usuarios.map(usuario => `
                                   <p>${usuario?.nombre || 'Desconocido'} ${usuario?.apellido || ''}  (Miembro)</p>
-                                  <p>Contacto ${usuario.correo}</p>
                               `).join('')
                               : '<p>No hay usuarios asignados</p>'}
                       </div>
