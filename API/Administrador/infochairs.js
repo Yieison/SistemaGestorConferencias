@@ -38,7 +38,6 @@ async function buscarUsuarios() {
 function mostrarUsuarios(usuarios) {
     const tablaUsuarios = document.getElementById('tablaUsuarios');
     tablaUsuarios.innerHTML = ''; // Limpiar el contenido anterior
-
     usuarios.forEach(usuario => {
         const row = `
             <tr>

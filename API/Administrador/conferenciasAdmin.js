@@ -212,6 +212,42 @@ function openModalConferencias(idConferencia) {
             .getElementById("topics-tab")
             .removeEventListener("click", topicsTabClickHandler);
         });
+        document
+        .getElementById("dates-tab")
+        .addEventListener("click", function topicsTabClickHandler() {
+          // Obtener los tópicos de la conferencia seleccionada
+          fetch(`${urlRailway}/conferencias/${idConferencia}/topicos`)
+            .then((response) => response.json())
+            .then((topicos) => {
+              // Limpiar la tabla existente
+              const tablaDocumento =
+                document.getElementById("tablaTopicosAdmin");
+              tablaDocumento.innerHTML = "";
+
+              // Rellenar la tabla con los nuevos datos
+              topicos.forEach((topico) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                                <td>${topico.id_topico}</td>
+                                <td>${topico.tema}</td>
+                                <td><i class="fa-solid fa-pen-to-square" style="color: orange; font-size: 1rem;"></i></td>
+                                <td><i class="fa-solid fa-trash" style="color: red; font-size: 1rem;"></i></td>
+                            `;
+                tablaDocumento.appendChild(row);
+              });
+            })
+            .catch((error) => {
+              console.error("Error fetching topicos:", error);
+              alert(
+                "Error al cargar los tópicos. Por favor, inténtalo de nuevo."
+              );
+            });
+
+          // Remover el event listener después de que se haya ejecutado una vez
+          document
+            .getElementById("topics-tab")
+            .removeEventListener("click", topicsTabClickHandler);
+        });
     })
     .catch((error) => {
       console.error("Error al obtener los detalles de la conferencia:", error);
@@ -500,12 +536,11 @@ function enviarEdicionConferencia(event) {
   const chairId = document.getElementById("selectChairEdit").value;
 
   const conferenciaDataEdit = {
-    nombre,
-    descripcion,
-    lugar,
-    fechaInicio,
-    fechaFin,
-    chairId,
+    nombre: nombre,
+    descripcion: descripcion,
+    lugar: lugar,
+    fecha_inicio: fechaInicio,
+    fecha_fin: fechaFin,
     // Si estás manejando archivos:
     //archivoImagen : formData.get('archivoImagen') // Este es un archivo, así que necesitas un manejo especial en backend.
   };
@@ -519,7 +554,7 @@ function enviarEdicionConferencia(event) {
     })
   );
 
-  fetch(`${urlRailway}/conferencias/editar/${idConferencia}`, {
+  fetch(`${urlRailway}/conferencias/editar/${idConferencia}/chair/${chairId}`, {
     method: "PUT", // O 'POST', dependiendo de cómo esté configurado tu backend
     headers: {
       "type": "application/json",
@@ -531,6 +566,7 @@ function enviarEdicionConferencia(event) {
         // Manejar éxito, por ejemplo, cerrar el modal y recargar la lista de conferencias
         myModalEditar.hide();
         alert("Conferencia actualizada exitosamente");
+        mostrarListadoConferencias();
       } else {
         throw new Error("Error al actualizar la conferencia");
       }

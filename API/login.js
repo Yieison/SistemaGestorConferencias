@@ -36,7 +36,7 @@ function iniciarSesionChair() {
     correo,
     password
   }
-  console.log(Usuario)
+  
   //Llamar a la funcion loginUser
   loginUser1(Usuario)
     .then(res => res.json())

@@ -246,6 +246,24 @@
                         </span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white" href="#section-convocatorias">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-regular fa-calendar"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Convocatorias
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white" href="#section-precios">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-regular fa-calendar"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Precios
+                        </span>
+                    </a>
+                </li>
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages
                     </h6>
@@ -277,33 +295,19 @@
         </div>
     </aside>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-            data-scroll="true">
-            <div class="container-fluid py-4 px-2">
-                <div class="collapse navbar-collapse mt-sm-0 mt-4 me-md-0 me-sm-4" id="navbar">
-                    <ul class="navbar-nav  justify-content-end">
-                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                                <div class="sidenav-toggler-inner">
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                </div>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    
         <div class="container-fluid py-4">
-            <div class="row" style="display: none;" id="section-proyectos">
+            <div class="row" style="display: none;" id="section-convocatorias">
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
                                 <div class="d-flex justify-content-between align-items-center px-3">
-                                    <h6 class="text-white text-capitalize">Lista Conferencias</h6>
+                                    <h6 class="text-white text-capitalize">Lista Convocatorias</h6>
+                                    <!-- Botón para agregar una nueva convocatoria -->
+                                    <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalNuevaConvocatoria">
+                                        Agregar Convocatoria
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -312,35 +316,183 @@
                                 <table class="table align-items-center text-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Empresa</th>
-                                            <th
-                                                class="text-up  percase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Tutor</th>
-                                            <th
-                                                class="text-up  percase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Cedula</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Documentos Proyecto</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Documentos Practicante</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Comentarios</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Descripcion</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Conferencia</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="listaProyectos">
+                                    <tbody id="tablaConvocatorias">
+                                        <!-- Aquí se cargarán las convocatorias -->
                                     </tbody>
-                                            
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Modal para agregar una nueva convocatoria -->
+        <div class="modal fade" id="modalNuevaConvocatoria" tabindex="-1" aria-labelledby="modalNuevaConvocatoriaLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalNuevaConvocatoriaLabel">Nueva Convocatoria</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formNuevaConvocatoria">
+                            <h6>Conferencia</h6>
+                            <div class="input-group input-group-outline my-3">
+                                <select id="selectConferenciaConvocatoria" class="form-select">
+                                    <!--Las opciones se agregan automaticamente desde javascript-->
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <input type="text" class="form-control" id="descripcion" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fechaInicioEnvio" class="form-label">Fecha Inicio Envío</label>
+                                <input type="date" class="form-control" id="fechaInicioEnvio" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fechaLimiteEnvio" class="form-label">Fecha Límite Envío</label>
+                                <input type="date" class="form-control" id="fechaLimiteEnvio" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fechaAceptacion" class="form-label">Fecha Aceptación</label>
+                                <input type="date" class="form-control" id="fechaAceptacion" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fechaPublicacion" class="form-label">Fecha Publicación</label>
+                                <input type="date" class="form-control" id="fechaPublicacion" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fechaEnvioPublicaciones" class="form-label">Fecha Envío Publicaciones</label>
+                                <input type="date" class="form-control" id="fechaEnvioPublicaciones" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Guardar Convocatoria</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          <!-- Modal para mostrar los detalles de la convocatoria -->
+<div class="modal fade" id="convocatoriaModal" tabindex="-1" aria-labelledby="convocatoriaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="convocatoriaModalLabel">Detalles de la Convocatoria</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Descripción:</strong> <span id="convocatoriaDescripcion"></span></p>
+                <p><strong>Fecha de Inicio de Envío de trabajos:</strong> <span id="convocatoriaFechaInicioEnvio"></span></p>
+                <p><strong>Fecha Límite de Envío de trabajos:</strong> <span id="convocatoriaFechaLimiteEnvio"></span></p>
+                <p><strong>Fecha de Aceptación:</strong> <span id="convocatoriaFechaAceptacion"></span></p>
+                <p><strong>Fecha de Publicación:</strong> <span id="convocatoriaFechaPublicacion"></span></p>
+                <p><strong>Fecha de Envío de Publicaciones:</strong> <span id="convocatoriaFechaEnvioPublicaciones"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-4">
+    <div class="row" style="display: none;" id="section-precios">
+        <div class="col-12">
+            <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                    <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                        <div class="d-flex justify-content-between align-items-center px-3">
+                            <h6 class="text-white text-capitalize">Lista de Precios</h6>
+                            <!-- Botón para agregar una nueva convocatoria -->
+                            <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalAgregarPrecio">
+                                Agregar Precios
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center text-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Conferencia</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Monto</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tipo de Usuario</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Etapa</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaPrecios">
+                                <!-- Aquí se cargarán las convocatorias -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para agregar precios -->
+<div class="modal fade" id="modalAgregarPrecio" tabindex="-1" aria-labelledby="modalAgregarPrecioLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalAgregarPrecioLabel">Agregar Precio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAgregarPrecio">
+                    <div class="mb-3">
+                        <label for="conferencia" class="form-label">Conferencia</label>
+                        <select class="form-select" id="conferencia" name="conferencia" required>
+                            <option selected disabled value="">Seleccione una conferencia</option>
+                            <!-- Opciones de conferencia (pueden cargarse dinámicamente desde el backend) -->
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="monto" class="form-label">Monto</label>
+                        <input type="number" class="form-control" id="monto" name="monto" placeholder="Ingrese el monto" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipoUsuario" class="form-label">Tipo de Usuario</label>
+                        <select class="form-select" id="tipoUsuario" name="tipoUsuario" required>
+                            <option selected disabled value="">Seleccione el tipo de usuario</option>
+                            <option value="Estudiante">Estudiante</option>
+                            <option value="Profesional">Profesional</option>
+                            <option value="Académico">Académico</option>
+                            <!-- Otros tipos de usuario según tus necesidades -->
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="etapa" class="form-label">Etapa</label>
+                        <select class="form-select" id="etapa" name="etapa" required>
+                            <option selected disabled value="">Seleccione la etapa</option>
+                            <option value="Temprana">Temprana</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Tardía">Tardía</option>
+                            <!-- Otros valores según tus necesidades -->
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Precio</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
 
             <div class="row" style="display: none;" id="section-conferencias">
                 <div class="col-12">
@@ -1465,7 +1617,7 @@
                                 placeholder="Palabras Clave" id="palabras-clave" name="palabras-clave" required>
                         </div>
                         <div class="input-group input-group-outline my-3">
-                            <input type="date" id="fecha" class="form-control">
+                            <input type="date" id="fecha_presentacion" class="form-control">
                         </div>
                         <div class="input-group input-group-outline my-3">
                             <select class="form-select" id="articulosPresentacion">
@@ -2101,6 +2253,7 @@
     <script src="/API/Administrador/infoPresentaciones.js"></script>
     <script src="/API/Administrador/infoSalas.js"></script>
     <script src="/API/Administrador/infoSesiones.js"></script>
+    <script src="/API/Administrador/infoConvocatorias.js"></script>
 </body>
 
 </html>

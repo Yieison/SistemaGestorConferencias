@@ -24,3 +24,11 @@
     overflow: hidden; /* Oculta el desbordamiento */
     text-overflow: ellipsis; /* Muestra "..." si el texto es demasiado largo */
 }
+
+
+.truncate-text {
+    max-width: 150px; /* Ajusta el ancho máximo según tus necesidades */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

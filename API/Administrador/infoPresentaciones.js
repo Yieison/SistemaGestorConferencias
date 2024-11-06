@@ -55,7 +55,7 @@ function guardarPresentacion() {
     const articuloSeleccionado = document.getElementById("articulosPresentacion").value;
     const resumen = document.getElementById("resumen").value;
     const palabrasClave = document.getElementById("palabras-clave").value;
-    const fecha = document.getElementById("fecha").value;
+    const fecha = document.getElementById("fecha_presentacion").value;
     const horaInicio = document.getElementById("hora-inicio").value;
     const horaFin = document.getElementById("hora-fin").value;
 

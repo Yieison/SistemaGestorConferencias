@@ -32,7 +32,7 @@ function listarComites() {
           comites.forEach(comite => {
               body += `<tr>
                   <td>${comite.id}</td>
-                  <td>${comite.nombreComite}</td>
+                  <td>${comite.nombre}</td>
                   <td>${comite.conferencia?.nombre || 'Sin conferencia'}</td>
                   <td>
                       <span class="my-2 mb-0 text-secondary text-xs" onclick="toggleUsuarios(${comite.id})">
@@ -45,7 +45,8 @@ function listarComites() {
                       <div id="usuarios-${comite.id}" style="display:none;" class="mt-2">
                           ${Array.isArray(comite.usuarios) && comite.usuarios.length > 0
                               ? comite.usuarios.map(usuario => `
-                                  <p>${usuario?.nombre || 'Desconocido'} ${usuario?.apellido || ''} (${usuario?.rol?.nombre || 'Sin rol'})</p>
+                                  <p>${usuario?.nombre || 'Desconocido'} ${usuario?.apellido || ''}  (Miembro)</p>
+                                  <p>Contacto ${usuario.correo}</p>
                               `).join('')
                               : '<p>No hay usuarios asignados</p>'}
                       </div>
@@ -126,7 +127,7 @@ function guardarComite() {
     console.log('Nombre del comité:', nombre);
 
     const comiteData = {
-        nombreComite : nombre
+        nombre : nombre
     };
 
     fetch(`${urlRailway}/comites/agregarComite/conferencia/${conferencia}`, {
@@ -151,16 +152,25 @@ function guardarComite() {
 }
 
 
-function guardarMiembro() {
-    const idComite = document.getElementById('idComiteSeleccionado').value;
-    const nombreMiembro = document.getElementById('nombreMiembro').value;
+function agregarMiembroComite() {
+    //const idComite = document.getElementById('idComiteSeleccionado').value;
+    const nombre = document.getElementById('nombreMiembro').value;
+    const apellido  = document.getElementById('apellidosMiembro').value;
+    const correo = document.getElementById('correoMiembro').value;
+    const tipoDocumento = document.getElementById('tipoDocumentoMiembro').value;
+    const documento = document.getElementById('documentoMiembro').value;
+    
     
     const miembroData = {
-        nombre: nombreMiembro,
-        idComite: idComite
+
+        nombre: nombre,
+        apellido : apellido,
+        correo : correo,
+        tipoDocumento : tipoDocumento,
+        documento : documento,
     };
 
-    fetch(`${urlRailway}/usuarios/save`, {
+    fetch(`${urlRailway}/comites/agregarMiembros/comite/${comiteIdSeleccionado}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
