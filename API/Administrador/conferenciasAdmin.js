@@ -520,9 +520,7 @@ function editarConferencia(idConferencia) {
 }
 
 function enviarEdicionConferencia(event) {
-  const myModalEditar = new bootstrap.Modal(
-    document.getElementById("modalConferenciaEditar")
-  );
+  
   event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
 
   const idConferencia = document.getElementById("idConferenciaEdit").value;
@@ -564,8 +562,12 @@ function enviarEdicionConferencia(event) {
     .then((response) => {
       if (response.ok) {
         // Manejar éxito, por ejemplo, cerrar el modal y recargar la lista de conferencias
-        myModalEditar.hide();
         alert("Conferencia actualizada exitosamente");
+        // Cerrar el modal después de la actualización exitosa
+        const myModalEditar = bootstrap.Modal.getInstance(
+          document.getElementById("modalConferenciaEditar")
+        );
+        myModalEditar.hide();
         mostrarListadoConferencias();
       } else {
         throw new Error("Error al actualizar la conferencia");
