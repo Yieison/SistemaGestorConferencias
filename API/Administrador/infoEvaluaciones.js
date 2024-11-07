@@ -161,12 +161,12 @@ function enviarEvaluacion() {
     })
       .then((response) => {
         if (response.ok) {
-        $("#modalRealizarEvaluacion").modal("hide");
-        $(".modal-backdrop").remove();
-          mostrarToast('Éxito', 'Evaluación realizada con éxito', 'success');
+        const myModalEvaluaciones = bootstrap.Modal.getInstance(
+          document.getElementById("modalRealizarEvaluacion")
+        );
+        myModalEvaluaciones.hide();
           // Actualizar la UI según sea necesario
           mostrarEvaluaciones();// Recargar la página o actualizar la tabla dinámicamente
-
         } else {
           throw new Error("Error al realizar la evaluación");
         }

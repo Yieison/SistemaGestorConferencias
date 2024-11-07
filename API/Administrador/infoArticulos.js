@@ -139,10 +139,14 @@ async function guardarEvaluacion(event) {
             body: JSON.stringify(evaluacion)
         });
 
-        var modalAsignarEvaluador = new bootstrap.Modal(document.getElementById('modalAsignarEvaluador'));
-        modalAsignarEvaluador.hide(); 
-        alert("Evaluacion guardada exitosamente")       
-   
+  
+      
+        alert("Evaluacion guardada exitosamente") 
+        const modalAsignarEvaluador = bootstrap.Modal.getInstance(
+            document.getElementById("modalAsignarEvaluador")
+          );
+          modalAsignarEvaluador.hide();       
+        mostrarEvaluaciones();
     } catch (error) {
         console.error('Error al guardar la evaluación:', error);
     }
