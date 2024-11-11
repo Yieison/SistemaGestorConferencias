@@ -56,7 +56,7 @@ function iniciarSesionChair() {
       }else if(data.rol.id_rol === 4){
         window.location.href = "../Paginas/InicioAutor.html";
       }else if(data.rol.id_rol === 5){
-        window.location.href = "../Paginas/InicioAsistente.html";
+        window.location.href = "../Paginas/inicioAsistente.html";
       } else {
         alert("usuario no autorizado")
       }
