@@ -9,7 +9,7 @@
                 sectionInfo.style.display = 'block';
     
                 var infoLink = document.querySelector('.navbar-nav a[href="#section-info"]');
-                infoLink.classList.add('active', 'bg-gradient-primary');
+                infoLink.classList.add('active', 'bg-gradient-info');
     
                 var links = document.querySelectorAll('.navbar-nav a.link');
     
@@ -28,9 +28,9 @@
                         });
                         document.getElementById(targetId).style.display = 'block';
                         links.forEach(function (link) {
-                            link.classList.remove('active', 'bg-gradient-primary');
+                            link.classList.remove('active', 'bg-gradient-info');
                         });
-                        this.classList.add('active', 'bg-gradient-primary');
+                        this.classList.add('active', 'bg-gradient-info');
                     });
                 });
             });
@@ -40,7 +40,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
         <link rel="icon" type="image/png" href="https://divisist2.ufps.edu.co/assets/img/ufps/favicon.ico">
         <title>
-            Inicio Tutor
+            Inicio Asistente
         </title>
         <!--     Fonts and icons     -->
         <link rel="stylesheet" type="text/css"
@@ -166,18 +166,18 @@
             <a class="navbar-brand m-0" target="_blank">
                 <img style="max-width: 1.2cm; min-height: 1.2cm; align-items: center; text-align: center; justify-content: center;"
                     src="../assets/img/logoS.png" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-4 font-weight-bolder text-white">Tutor</span>
+                <span class="ms-4 font-weight-bolder text-white">Asistente</span>
             </a>
         </div>
         <hr class="horizontal light mt-0 mb-2">
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link link text-white " href="#section-proyectos">
+                    <a class="nav-link link text-white " id="navConferencesAsistente" href="#section-conferencias">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">ballot</i>
                         </div>
-                        <span class="nav-link-text ms-1">Proyectos</span>
+                        <span class="nav-link-text ms-1">Conferencias</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -205,7 +205,7 @@
         </div>
         <div class="sidenav-footer position-absolute w-100 bottom-0 ">
             <div class="mx-3">
-                <a class="btn bg-gradient-primary w-100" href="../index.html" type="button">Log
+                <a class="btn bg-gradient-info w-100" href="../index.html" type="button">Log
                     Out</a>
             </div>
         </div>
@@ -226,18 +226,36 @@
                             </a>
                         </li>
                         <li class="nav-item px-3 d-flex align-items-center">
-                            <h6 class="font-weight-bolder mb-0">Tutor</h6>
+                            <h6 class="font-weight-bolder mb-0">Sistema Gestion de Conferencias</h6>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="container-fluid py-4">
+            
+                <div class="row" style="display: none;" id="section-conferencias">
+                    <div>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Buscar el nombre de una conferencia" aria-label="Search">
+                        <button class="btn btn-info btn-outline-success" type="submit">Buscar</button>
+                      </form>
+                    </div>
+                    <div class="col-12">    
+                                <div class="container mt-4">
+                                    <div class="d-flex" id="conferencesContainer">
+                                      <!-- Aquí se generarán las cards -->
+                               
+                                    </div>
+                    </div>
+                </div>
+            </div>
+       
             <div class="row" style="display: none;" id="section-proyectos">
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3" >
+                            <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3" >
                                 <div class="d-flex justify-content-between align-items-center px-3">
                                     <h6 class="text-white text-capitalize">Lista Proyectos</h6>
                                 </div>
@@ -278,7 +296,7 @@
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                            <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3">
                                 <h6 class="text-white text-capitalize ps-3">Documentos</h6>
                             </div>
                         </div>
@@ -315,7 +333,7 @@
             </div>
             <div class="row" style="display: none;" id="section-info">
                 <div class="col-12 container-fluid px-6 px-md-6">
-                    <div class="page-header min-height-250 border-radius-xl mt-3 bg-gradient-primary">
+                    <div class="page-header min-height-250 border-radius-xl mt-3 bg-gradient-info">
                     </div>
                     <div class="card card-body mx-3 mx-md-5 mt-n9">
                         <div class="row gx-4 mb-2">
@@ -378,6 +396,43 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="detailsModalLabel">Detalles de la Conferencia</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="detailsModalContent">
+                      <!-- Detalles de la conferencia aquí -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Modal para Inscribirse -->
+              <div class="modal fade" id="inscriptionModal" tabindex="-1" aria-labelledby="inscriptionModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="inscriptionModalLabel">Inscribirse a la Conferencia</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Confirmación de inscripción a la conferencia.</p>
+                      <p>Los datos de inscripción se enviarán al sistema.</p>
+                      <p>Podra ver el estado de su inscripcion en la seccion de inscripciones</p>
+                      <p>Debera cargar el soporte de pago</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" onclick="enviarInscripcion()">Confirmar Inscripción</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            
             
             <footer class="footer py-4 align-items">
                 <div class="container-fluid">
@@ -429,7 +484,7 @@
                  </table>
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                 <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cerrar</button>
              </div>
          </div>
           
@@ -573,9 +628,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../API/main.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../API/Director/tutor.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
@@ -839,5 +892,6 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
+    <script src="/API/Asistente/asistenteConferencias.js"></script>
 </body>
 </html>

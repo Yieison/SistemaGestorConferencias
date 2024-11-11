@@ -40,7 +40,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
         <link rel="icon" type="image/png" href="https://divisist2.ufps.edu.co/assets/img/ufps/favicon.ico">
         <title>
-            Inicio Empresa
+            Inicio Autor
         </title>
         <!--     Fonts and icons     -->
         <link rel="stylesheet" type="text/css"
@@ -155,6 +155,7 @@
                 }
             }
         </style>
+        
     </head>
 <body>
     <aside
@@ -173,11 +174,35 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link link text-white " href="#section-proyectos">
+                    <a class="nav-link link text-white" id="navConferences" href="#section-conferencias">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">ballot</i>
                         </div>
-                        <span class="nav-link-text ms-1">Articulos</span>
+                        <span class="nav-link-text ms-1">Conferencias</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-inscripciones">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">ballot</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Inscripciones</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-articulos-subir">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">ballot</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Enviar Articulos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-articulos-lista">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">ballot</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Articulos Enviados</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -185,7 +210,7 @@
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">ballot</i>
                         </div>
-                        <span class="nav-link-text ms-1">Listar Documentos</span>
+                        <span class="nav-link-text ms-1">Presentaciones</span>
                     </a>
                 </li>
                 <li class="nav-item mt-3">
@@ -211,35 +236,15 @@
         </div>
     </aside>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-            data-scroll="true">
-            <div class="container-fluid py-4 px-2">
-                <div class="collapse navbar-collapse mt-sm-0 mt-4 me-md-0 me-sm-4" id="navbar">
-                    <ul class="navbar-nav  justify-content-end">
-                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                                <div class="sidenav-toggler-inner">
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item px-3 d-flex align-items-center">
-                            <h6 class="font-weight-bolder mb-0">Articulos</h6>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+      
         <div class="container-fluid py-4">
-            <div class="row" style="display: none;" id="section-proyectos">
+            <div class="row" style="display: none;" id="section-inscripciones">
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3" >
                                 <div class="d-flex justify-content-between align-items-center px-3">
-                                    <h6 class="text-white text-capitalize">Lista Proyectos</h6>
+                                    <h6 class="text-white text-capitalize">Lista Inscripciones</h6>
                                     <button type="button" class="btn btn-sm btn-light text-rose" data-bs-toggle="modal" data-bs-target="#modalProyecto">
                                         Agregar Proyecto
                                     </button>
@@ -251,28 +256,16 @@
                                 <table class="table align-items-center text-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Empresa</th>
-                                            <th
-                                                class="text-up  percase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Tutor</th>
-                                            <th
-                                                class="text-up  percase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Cedula</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Estado Postulacio</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Documentos</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Cargar</th>
-                                            <th class="text-secondary opacity-7"></th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nombre de la Conferencia</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha de Inicio</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha de Fin</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Asistente</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Estado</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="listaProyectos">
+                                    <tbody id="listaInscripciones">
+                                        <!-- Aquí se cargarán las filas dinámicamente -->
                                     </tbody>
                                             
                                 </table>
@@ -281,6 +274,171 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="container-fluid py-4">
+            <div class="row" style="display: none;" id="section-conferencias">
+                <div>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar el nombre de una conferencia" aria-label="Search">
+                    <button class="btn btn-info btn-outline-success" type="submit">Buscar</button>
+                  </form>
+                </div>
+                <div class="col-12">    
+                            <div class="container mt-4">
+                                <div class="d-flex" id="conferencesContainer">
+                                  <!-- Aquí se generarán las cards -->
+                           
+                                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="row" style="display: none;" id="section-articulos-subir">
+            <div class="d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm mt-5">
+                    <div class="card-header text-center bg-info text-white">
+                        <h2>Subir Artículo</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="uploadForm" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="titulo">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="titulo" required>
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="descripcion">Descripción</label>
+                                <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+                            </div>
+        
+                            <div class="form-group mt-3">
+                                <label for="archivo">Selecciona el archivo</label>
+                                <input type="file" class="form-control-file" id="archivo" name="archivo" required>
+                            </div>
+        
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-success">Guardar Artículo</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="row" style="display: none;" id="section-articulos-lista">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                            <h6 class="text-white text-capitalize ps-3">Lista Articulos</h6>
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pb-2">
+                        <div class="m-2 d-flex align-items-center">
+                            <select class="m-2 form-select w-25" id="estado" onchange="buscarArticulosPorEstado()">
+                                <option value="">Todos</option>
+                                <option value="ENVIADO">Enviado</option>
+                                <option value="APROBADO">Aprobado</option>
+                                <option value="CORRECCIONES">Correcciones</option>
+                                <option value="RECHAZADO">Rechazado</option>
+                                <option value="PRESENTADO">Presentado</option>
+                                <option value="PUBLICADO">Publicado</option>
+                            </select>
+                        </div>
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center text-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Id</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Nombre</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Estado</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Conferencia</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Detalles</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Autor</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Evaluacion
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-articulos-autor"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailsModalLabel">Detalles de la Conferencia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Información básica de la conferencia -->
+          <div id="detailsModalContent">
+            <!-- Información básica se cargará aquí -->
+          </div>
+  
+          <!-- Pestañas -->
+          <ul class="nav nav-tabs" id="conferenceTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" id="topics-tab" data-bs-toggle="tab" href="#topics" role="tab" aria-controls="topics" aria-selected="true">Tópicos</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" id="prices-tab" data-bs-toggle="tab" href="#prices" role="tab" aria-controls="prices" aria-selected="false">Precios</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" id="committees-tab" data-bs-toggle="tab" href="#committees" role="tab" aria-controls="committees" aria-selected="false">Comités</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" id="call-tab" data-bs-toggle="tab" href="#call" role="tab" aria-controls="call" aria-selected="false">Convocatoria</a>
+            </li>
+          </ul>
+  
+          <!-- Contenido de las pestañas -->
+          <div class="tab-content mt-2" id="conferenceTabsContent">
+            <div class="tab-pane fade show active" id="topics" role="tabpanel" aria-labelledby="topics-tab">
+              <div id="topicsContent">Cargando tópicos...</div>
+            </div>
+            <div class="tab-pane fade" id="prices" role="tabpanel" aria-labelledby="prices-tab">
+              <div id="pricesContent">Cargando precios...</div>
+            </div>
+            <div class="tab-pane fade" id="committees" role="tabpanel" aria-labelledby="committees-tab">
+              <div id="committeesContent">Cargando comités...</div>
+            </div>
+            <div class="tab-pane fade" id="call" role="tabpanel" aria-labelledby="call-tab">
+              <div id="callContent">Cargando convocatoria...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
             <div class="row" style="display: none;" id="section-coordinadores">
                 <div class="col-12">
                     <div class="card my-4">
@@ -320,6 +478,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row" style="display: none;" id="section-info">
                 <div class="col-12 container-fluid px-6 px-md-6">
                     <div class="page-header min-height-250 border-radius-xl mt-3 bg-gradient-info">
@@ -410,6 +569,51 @@
             
         </div>
     </main>
+
+    <!-- Modal para Ver Detalles -->
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailsModalLabel">Detalles de la Conferencia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="detailsModalContent">
+          <!-- Detalles de la conferencia aquí -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal para Inscribirse -->
+  <div class="modal fade" id="inscriptionModal" tabindex="-1" aria-labelledby="inscriptionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="inscriptionModalLabel">Inscribirse a la Conferencia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Confirmación de inscripción a la conferencia.</p>
+          <p>Los datos de inscripción se enviarán al sistema.</p>
+          <p>Podra ver el estado de su inscripcion en la seccion de inscripciones</p>
+          <p>Debera cargar el soporte de pago</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="enviarInscripcion()">Confirmar Inscripción</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
      <!-- Modal docs-->
      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -584,271 +788,16 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../API/main.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../API/Director/empresa.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
-    <script>
-        var ctx = document.getElementById("chart-bars").getContext("2d");
-
-        new Chart(ctx, {
-            type: "bar",
-            data: {
-                labels: ["M", "T", "W", "T", "F", "S", "S"],
-                datasets: [{
-                    label: "Sales",
-                    tension: 0.4,
-                    borderWidth: 0,
-                    borderRadius: 4,
-                    borderSkipped: false,
-                    backgroundColor: "rgba(255, 255, 255, .8)",
-                    data: [50, 20, 10, 22, 50, 10, 40],
-                    maxBarThickness: 6
-                },],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: true,
-                            drawOnChartArea: true,
-                            drawTicks: false,
-                            borderDash: [5, 5],
-                            color: 'rgba(255, 255, 255, .2)'
-                        },
-                        ticks: {
-                            suggestedMin: 0,
-                            suggestedMax: 500,
-                            beginAtZero: true,
-                            padding: 10,
-                            font: {
-                                size: 14,
-                                weight: 300,
-                                family: "Roboto",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                            color: "#fff"
-                        },
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
-                            display: true,
-                            drawOnChartArea: true,
-                            drawTicks: false,
-                            borderDash: [5, 5],
-                            color: 'rgba(255, 255, 255, .2)'
-                        },
-                        ticks: {
-                            display: true,
-                            color: '#f8f9fa',
-                            padding: 10,
-                            font: {
-                                size: 14,
-                                weight: 300,
-                                family: "Roboto",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                },
-            },
-        });
-
-
-        var ctx2 = document.getElementById("chart-line").getContext("2d");
-
-        new Chart(ctx2, {
-            type: "line",
-            data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                datasets: [{
-                    label: "Mobile apps",
-                    tension: 0,
-                    borderWidth: 0,
-                    pointRadius: 5,
-                    pointBackgroundColor: "rgba(255, 255, 255, .8)",
-                    pointBorderColor: "transparent",
-                    borderColor: "rgba(255, 255, 255, .8)",
-                    borderColor: "rgba(255, 255, 255, .8)",
-                    borderWidth: 4,
-                    backgroundColor: "transparent",
-                    fill: true,
-                    data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-                    maxBarThickness: 6
-
-                }],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: true,
-                            drawOnChartArea: true,
-                            drawTicks: false,
-                            borderDash: [5, 5],
-                            color: 'rgba(255, 255, 255, .2)'
-                        },
-                        ticks: {
-                            display: true,
-                            color: '#f8f9fa',
-                            padding: 10,
-                            font: {
-                                size: 14,
-                                weight: 300,
-                                family: "Roboto",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                            borderDash: [5, 5]
-                        },
-                        ticks: {
-                            display: true,
-                            color: '#f8f9fa',
-                            padding: 10,
-                            font: {
-                                size: 14,
-                                weight: 300,
-                                family: "Roboto",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                },
-            },
-        });
-
-        var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
-
-        new Chart(ctx3, {
-            type: "line",
-            data: {
-                labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                datasets: [{
-                    label: "Mobile apps",
-                    tension: 0,
-                    borderWidth: 0,
-                    pointRadius: 5,
-                    pointBackgroundColor: "rgba(255, 255, 255, .8)",
-                    pointBorderColor: "transparent",
-                    borderColor: "rgba(255, 255, 255, .8)",
-                    borderWidth: 4,
-                    backgroundColor: "transparent",
-                    fill: true,
-                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                    maxBarThickness: 6
-
-                }],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
-                },
-                interaction: {
-                    intersect: false,
-                    mode: 'index',
-                },
-                scales: {
-                    y: {
-                        grid: {
-                            drawBorder: false,
-                            display: true,
-                            drawOnChartArea: true,
-                            drawTicks: false,
-                            borderDash: [5, 5],
-                            color: 'rgba(255, 255, 255, .2)'
-                        },
-                        ticks: {
-                            display: true,
-                            padding: 10,
-                            color: '#f8f9fa',
-                            font: {
-                                size: 14,
-                                weight: 300,
-                                family: "Roboto",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                    x: {
-                        grid: {
-                            drawBorder: false,
-                            display: false,
-                            drawOnChartArea: false,
-                            drawTicks: false,
-                            borderDash: [5, 5]
-                        },
-                        ticks: {
-                            display: true,
-                            color: '#f8f9fa',
-                            padding: 10,
-                            font: {
-                                size: 14,
-                                weight: 300,
-                                family: "Roboto",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
-                    },
-                },
-            },
-        });
-    </script>
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
+    <script src="/API/Autor/AutorConferencias.js"></script>
+    <script src="/API/Autor/InscripcionAutor.js"></script>
+    <script src="/API/Autor/AutorArticulo.js"></script>
 </body>
 </html>

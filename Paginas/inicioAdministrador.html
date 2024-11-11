@@ -171,6 +171,12 @@
             }
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // Llama a la función con el rol requerido para esta página
+          verificarAutenticacion(1); // Por ejemplo, 1 para Administrador
+        });
+      </script>
 </head>
 
 <body>
@@ -190,80 +196,96 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link link text-white " href="#section-conferencias">
+                    <a class="nav-link link text-white" href="#section-conferencias">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">ballot</i>
+                            <i class="fa-solid fa-chalkboard"></i>
                         </div>
                         <span class="nav-link-text ms-1">Conferencias</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link link text-white " href="#section-usuarios">
+                    <a class="nav-link link text-white" href="#section-usuarios">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">ballot</i>
+                            <i class="fa-solid fa-users"></i>
                         </div>
                         <span class="nav-link-text ms-1">Ver Usuarios</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link link text-white " href="#section-evaluaciones">
+                    <a class="nav-link link text-white " href="#section-inscripciones">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-square-check"></i>
+                            <i class="fa-solid fa-pen"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Evaluaciones</span>
+                        <span class="nav-link-text ms-1">Inscripciones</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link link text-white " href="#section-articulo">
+                    <a class="nav-link link text-white" href="#section-salas">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-book"></i>
+                            <i class="fa-solid fa-door-open"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Articulos</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-white " href="#section-presentaciones">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-person-chalkboard"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Presentaciones</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-white " href="#section-comites">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fa-solid fa-users"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Comites</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-white" href="#section-programa">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fa-regular fa-calendar"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Ver Programacion
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link text-white" href="#section-convocatorias">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fa-regular fa-calendar"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Convocatorias
-                        </span>
+                        <span class="nav-link-text ms-1">Salas</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link link text-white" href="#section-precios">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fa-regular fa-calendar"></i>
+                            <i class="fa-solid fa-tags"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Precios
-                        </span>
+                        <span class="nav-link-text ms-1">Precios</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white" href="#section-comites">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Comites</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white" href="#section-convocatorias">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Convocatorias</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white" href="#section-evaluaciones">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-check-double"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Evaluaciones</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white" href="#section-articulo">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-file-alt"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Artículos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white" href="#section-presentaciones">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Presentaciones</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white" href="#section-programa">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Ver Programación</span>
+                    </a>
+                </li>
+                
+             
+                
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages
                     </h6>
@@ -289,7 +311,7 @@
         </div>
         <div class="sidenav-footer position-absolute w-100 bottom-0 ">
             <div class="mx-3">
-                <a class="btn bg-gradient-info w-100" href="../index.html" type="button">Log
+                <a class="btn bg-gradient-info w-100" onclick="logout()" type="button">Log
                     Out</a>
             </div>
         </div>
@@ -542,6 +564,44 @@
                 </div>
             </div>
 
+            <div class="row" style="display: none;" id="section-salas">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                                <div class="d-flex justify-content-between align-items-center px-3">
+                                    <h6 class="text-white text-capitalize">Lista Salas</h6>
+                                    <!-- Botón para agregar una nueva convocatoria -->
+                                    <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalSalas">
+                                        Agregar Salas
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sala</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tipo</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Institucion</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaSalas">
+                                        <!-- Aquí se cargarán las convocatorias -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
             <div class="row" style="display: none;" id="section-articulo">
                 <div class="col-12">
                     <div class="card my-4">
@@ -597,6 +657,43 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="row" style="display: none;" id="section-inscripciones">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3" >
+                                <div class="d-flex justify-content-between align-items-center px-3">
+                                    <h6 class="text-white text-capitalize">Lista Inscripciones</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nombre de la Conferencia</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha de Inicio</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha de Fin</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Asistente</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Estado</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="listaInscripcionesAdministrador">
+                                        <!-- Aquí se cargarán las filas dinámicamente -->
+                                    </tbody>
+                                            
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
             <div class="row" style="display: none;" id="section-evaluaciones">
                 <div class="col-12">
@@ -948,42 +1045,58 @@
         </div>
 
         <div class="row" style="display : none;" id="section-programa">
-            <div class="text-center">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            10:00 - 12:00 | Sesión A: Introducción a ECMAScript
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Auditorio Estorgio Colmenares</h5>
-                            <p class="card-text">
-                                <strong>10:00 - 10:30</strong> | Presentación: JavaScript Moderno - John Doe
-                            </p>
-                            <p class="card-text">
-                                <strong>10:30 - 11:00</strong> | Evento: Refrigerio (Café y galletas)
-                            </p>
-                            <p class="card-text">
-                                <strong>11:00 - 12:00</strong> | Presentación: Introducción a ES16 - Jane Doe
-                            </p>
-                        </div>
+            <div class="conference-container">
+                <!-- Para cada conferencia obtenida del backend -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h3>Conferencia: <span id="nombre-conferencia">Conferencia sobre Javascript IV</span></h3>
+                        <p>Lugar: <span id="lugar-conferencia">Auditorio biblioteca Eduardo Cote Lamus</span></p>
+                        <p>Fecha: <span id="fecha-inicio">2024-11-14</span> a <span id="fecha-fin">2024-11-22</span></p>
+                        <p>Descripción: <span id="descripcion-conferencia">La Conferencia Internacional de Innovación y Tecnología...</span></p>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            11:00 - 13:00 | Sesión B: Deep Dive en ECMAScript
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Auditorio San Pablo</h5>
-                            <p class="card-text">
-                                <strong>11:00 - 12:00</strong> | Presentación: Módulos en JavaScript - Alex Smith
-                            </p>
-                            <p class="card-text">
-                                <strong>12:00 - 12:30</strong> | Evento: Almuerzo
-                            </p>
-                            <p class="card-text">
-                                <strong>12:30 - 13:00</strong> | Presentación: Async/Await Avanzado - Emily White
-                            </p>
+                    <div class="card-body">
+                        <!-- Sección para mostrar todas las sesiones de esta conferencia -->
+                        <div class="accordion" id="accordion-sesiones-conferencia">
+                            <!-- Aquí recorrerás cada sesión de la conferencia -->
+                            
+                            <!-- Por ejemplo, para la primera sesión -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingSesion1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSesion1" aria-expanded="true" aria-controls="collapseSesion1">
+                                        Sesión: Sesion A - <span id="fechaDiaSesion">2024-10-18</span> (06:00:00 - 14:30:00)
+                                    </button>
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSesion1" aria-expanded="true" aria-controls="collapseSesion1">
+                                        Sesión: Sesion A - <span id="fechaDiaSesion">2024-10-18</span> (06:00:00 - 14:30:00)
+                                    </button>
+                                </h2>
+                                <div id="collapseSesion1" class="accordion-collapse collapse show" aria-labelledby="headingSesion1" data-bs-parent="#accordion-sesiones-conferencia">
+                                    <div class="accordion-body">
+                                        <!-- Botones de opciones para la sesión -->
+                                        <button class="btn btn-primary mb-2" onclick="verProgramacion(1)">Ver Programación</button>
+                                        <button class="btn btn-success mb-2" onclick="mostrarModalAgregarPresentacion(1)">Agregar Presentación</button>
+                                        <button class="btn btn-warning mb-2" onclick="mostrarModalAgregarEvento(1)">Agregar Evento</button>
+            
+                                        <!-- Tabla de programación de eventos y presentaciones de la sesión -->
+                                        <div class="programacion" id="programacionSesion1" style="display: none;">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre</th>
+                                                        <th>Hora de Inicio</th>
+                                                        <th>Hora de Fin</th>
+                                                        <th>Tipo</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="eventos-presentaciones-sesion1">
+                                                    <!-- Filas de eventos/presentaciones -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Repite la estructura de <div class="accordion-item"> para cada sesión -->
                         </div>
                     </div>
                 </div>
@@ -1532,6 +1645,55 @@
             </div>
         </div>
     </div>
+
+
+    <div class="modal fade" id="modalEditarSala" tabindex="-1" aria-labelledby="modalEditarSalaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditarSalaLabel">Editar Sala</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEditarSala">
+                        <div class="mb-3">
+                            <label for="nombreSala" class="form-label">Nombre de la Sala</label>
+                            <input type="text" class="form-control" id="nombreSala" name="nombreSala" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="capacidadSala" class="form-label">Capacidad</label>
+                            <input type="number" class="form-control" id="capacidadSala" name="capacidadSala" required>
+                        </div>
+                        <!-- Puedes agregar más campos aquí según necesites -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="actualizarSala()">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="modalEliminarSala" tabindex="-1" aria-labelledby="modalEliminarSalaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEliminarSalaLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro de que deseas eliminar esta sala? Esta acción no se puede deshacer.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" onclick="confirmarEliminacionSala()">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
 
     <!-- Modal EDITAR CONFERENCIA -->
@@ -2254,6 +2416,9 @@
     <script src="/API/Administrador/infoSalas.js"></script>
     <script src="/API/Administrador/infoSesiones.js"></script>
     <script src="/API/Administrador/infoConvocatorias.js"></script>
+    <script src="/API/Administrador/infoPrograma.js"></script>
+    <script src="/API/auth/auth.js"></script>
+    <script src="/API/Administrador/infoInscripciones.js"></script>
 </body>
 
 </html>

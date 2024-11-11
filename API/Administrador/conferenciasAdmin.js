@@ -575,3 +575,6 @@ function enviarEdicionConferencia(event) {
     })
     .catch((error) => console.error("Error:", error));
 }
+
+
+

@@ -133,7 +133,6 @@ async function cargarPresentaciones() {
         
     } catch (error) {
         console.error('Error al cargar las presentaciones:', error);
-        alert('Error al cargar las presentaciones. Inténtalo de nuevo más tarde.');
     }
 }
 

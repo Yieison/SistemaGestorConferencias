@@ -51,13 +51,14 @@ cargarConferencias();
                     <td class = "truncate-text" data-bs-toggle="tooltip" title="Descripción completa de la convocatoria">${convocatoria.descripcion}</td>
                     <td>${convocatoria.conferencia.nombre}</td>
                     <td>
-                        <span class="my-2 mb-0 text-secondary text-xs" onclick="toggleConvocatorias(${convocatoria.id})">
-                              <i class="fa-solid fa-eye" style="color:blue; font-size:1rem;"></i>
-                          </span>
-                          <span class="my-2 mb-0 text-secondary text-xs" data-bs-toggle="modal" data-id="${convocatoria.id}"
-                           onclick="guardarIdComite(this)"  data-bs-target="#modalAgregarMiembro">
-                                <i class="fa-solid fa-pen-to-square" style="color:orange; font-size:1rem;"></i>    
-                          </span>
+                        <button class="btn btn-sm btn-info text-white px-2 my-2 mb-0 text-xs" onclick="toggleConvocatorias(${convocatoria.id})">
+                          <i class="fa-solid fa-eye" style="font-size: 0.9rem;"></i> Ver
+                        </button>
+
+                        <button class="btn btn-sm btn-warning text-white px-2 my-2 mb-0 text-xs" data-bs-toggle="modal" data-id="${convocatoria.id}"
+                           onclick="guardarIdComite(this)" data-bs-target="#modalEditarConvocatoria">
+                        <i class="fa-solid fa-pen-to-square" style="font-size: 0.9rem;"></i> Editar 
+                        </button>
                     </td>
                 </tr>`;
             });

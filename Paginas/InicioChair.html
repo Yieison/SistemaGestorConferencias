@@ -35,7 +35,13 @@
                 });
             });
         });
-    </script>
+    </script>´
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // Llama a la función con el rol requerido para esta página
+          verificarAutenticacion(2); // Por ejemplo, 1 para Administrador
+        });
+      </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
@@ -189,6 +195,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link link text-white " href="#section-topicos">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-100">person</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Topicos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link link text-white " href="#section-asistentes">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-100">person</i>
@@ -291,27 +305,7 @@
         </div>
     </aside>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-            data-scroll="true">
-            <div class="container-fluid py-4 px-2">
-                <div class="collapse navbar-collapse mt-sm-0 mt-4 me-md-0 me-sm-4" id="navbar">
-                    <ul class="navbar-nav  justify-content-end">
-                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                                <div class="sidenav-toggler-inner">
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item px-3 d-flex align-items-center">
-                            <h6 class="font-weight-bolder mb-0">Chair</h6>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+     
         <div class="container-fluid py-4">
 
             <div class="row" id="section-evaluador" style="display: none;">
@@ -558,6 +552,105 @@
                 </div>
             </div>
 
+
+
+            <div class="row" style="display: none;" id="section-inscripciones">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3" >
+                                <div class="d-flex justify-content-between align-items-center px-3">
+                                    <h6 class="text-white text-capitalize">Lista Inscripciones</h6>
+                                    <button type="button" class="btn btn-sm btn-light text-rose" data-bs-toggle="modal" data-bs-target="#modalProyecto">
+                                        Agregar Proyecto
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0">
+                                <table class="table align-items-center text-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nombre de la Conferencia</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha de Inicio</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha de Fin</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Asistente</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Estado</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="listaInscripcionesChair">
+                                        <!-- Aquí se cargarán las filas dinámicamente -->
+                                    </tbody>
+                                            
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" style="display: none;" id="section-topicos">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3" >
+                            <div class="d-flex justify-content-between align-items-center px-3">
+                                <h6 class="text-white text-capitalize">Lista Topicos</h6>
+                                <button class="btn btn-light mb-3" data-bs-toggle="modal" data-bs-target="#topicoModal">Agregar Tópico</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center text-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tema</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Conferencia</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-topicos">
+                                    <!-- Aquí se cargarán las filas dinámicamente -->
+                                </tbody>
+                                        
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="topicoModal" tabindex="-1" aria-labelledby="topicoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="topicoModalLabel">Agregar Tópico</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="topicoForm" onsubmit="agregarTopico(event)">
+                        <div class="mb-3">
+                            <label for="tema" class="form-label">Tema</label>
+                            <input type="text" class="form-control" id="tema" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="conferencia" class="form-label">Conferencia</label>
+                            <select class="form-select" id="conferencia" required>
+                                <option value="" disabled selected>Seleccione una conferencia</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-info">Agregar Tópico</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
             <div class="row" style="display: none;" id="asignar-evaluador">
                 <div class="col-12">
                     <div class="card my-4">
@@ -1244,6 +1337,10 @@
     <script src="../API/Director/Presentacion.js"></script>
     <script src="/API/Chair/chairConferencia.js"></script>
     <script src="/API/Director/coordinador.js"></script>
+    <script src="/API/Chair/chairTopicos.js"></script>
+    <script src="/API/Chair/chairInscripciones.js"></script>
+    <script src="/API/Chair/chairEvaluaciones.js"></script>
+    <script src="/API/auth/auth.js"></script>
 </body>
 
 </html>

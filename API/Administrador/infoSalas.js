@@ -49,9 +49,67 @@ function guardarSala() {
         }
         console.log('Sala guardada exitosamente');
         // Cerrar el modal u otra lógica de tu aplicación
-        $('#modalSala').modal('hide');
+        $('#modalSalas').modal('hide');
+        $(".modal-backdrop").remove();
+        listarSalas();
     })
     .catch(error => {
         console.error('Error al realizar la solicitud POST:', error);
     });
 }
+
+
+async function findSalas() {
+    const result = await fetch(`${urlRailway}/salas`, {
+      method: 'GET'
+    });
+    return result;
+}
+
+function listarSalas() {
+    findSalas()
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al obtener las salas');
+            }
+            return response.json();
+        })
+        .then(salas => {
+            const tableBody = document.getElementById("tablaSalas");
+            
+            // Verificar si el tbody existe
+            if (!tableBody) {
+                throw new Error('No se encontró el elemento tbody en la tabla');
+            }
+            let body = "";
+            salas.forEach(sala => {
+                body += `<tr>
+                    <td>${sala.id}</td>
+                    <td class = "truncate-text" data-bs-toggle="tooltip" title="Descripción completa de la convocatoria">${sala.nombre}</td>
+                    <td>${sala.tipo}</td>
+                    <td>${sala.institucion.nombreInstitucion}</td>
+                    <td>
+                       <button class="btn btn-sm btn-warning text-white px-2 my-2 mb-0 text-xs" data-bs-toggle="modal" data-id="${sala.id}"
+                        onclick="guardarIdComite(this)" data-bs-target="#modalEditarSala">
+                    <i class="fa-solid fa-pen-to-square" style="font-size: 0.9rem;"></i> 
+                        </button>
+
+                    <button class="btn btn-sm btn-danger text-white px-2 my-2 mb-0 text-xs" data-bs-toggle="modal" data-bs-target="#modalEliminarSala" onclick="eliminarSala(${sala.id})">
+                        <i class="fa-solid fa-trash" style="font-size: 0.9rem;"></i> 
+                    </button>
+                    </td>
+                </tr>`;
+            });
+  
+            // Asignar el contenido al tbody
+            tableBody.innerHTML = body;
+        })
+        .catch(error => {
+            console.error('Error al listar comités:', error);
+        });
+  }
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    listarSalas();
+  });

@@ -35,13 +35,15 @@ function listarComites() {
                   <td>${comite.nombre}</td>
                   <td>${comite.conferencia?.nombre || 'Sin conferencia'}</td>
                   <td>
-                      <span class="my-2 mb-0 text-secondary text-xs" onclick="toggleUsuarios(${comite.id})">
-                            <i class="fa-solid fa-eye" style="color:blue; font-size:1rem;"></i>
-                        </span>
-                        <span class="my-2 mb-0 text-secondary text-xs" data-bs-toggle="modal" data-id="${comite.id}"
-                         onclick="guardarIdComite(this)"  data-bs-target="#modalAgregarMiembro">
-                              <i class="fa-solid fa-pen-to-square" style="color:orange; font-size:1rem;"></i>    
-                        </span>
+           <button class="btn btn-sm btn-info text-white px-2 my-2 mb-0 text-xs" onclick="toggleUsuarios(${comite.id})">
+    <i class="fa-solid fa-eye" style="font-size: 0.9rem;"></i> Ver usuarios
+</button>
+
+<button class="btn btn-sm btn-success text-white px-2 my-2 mb-0 text-xs" data-bs-toggle="modal" data-id="${comite.id}"
+    onclick="guardarIdComite(this)" data-bs-target="#modalAgregarMiembro">
+    <i class="fa-solid fa-user-plus" style="font-size: 0.9rem;"></i> Agregar miembro
+</button>
+
                       <div id="usuarios-${comite.id}" style="display:none;" class="mt-2">
                           ${Array.isArray(comite.usuarios) && comite.usuarios.length > 0
                               ? comite.usuarios.map(usuario => `
@@ -183,6 +185,8 @@ function agregarMiembroComite() {
         console.log('Miembro guardado exitosamente');
         // Cerrar el modal o hacer cualquier otra acción
         $('#modalAgregarMiembro').modal('hide');
+        $('.modal-backdrop').remove();
+        listarComites();
     })
     .catch(error => {
         console.error('Error al realizar la solicitud POST:', error);
