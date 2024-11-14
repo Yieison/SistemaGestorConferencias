@@ -16,10 +16,11 @@ async function buscarArticulosEstado(estado = '') {
     return result.json();
 }
 
-function mostrarArticulos(articulos) {
+async function mostrarArticulos(articulos) {
     const tablaArticulos = document.getElementById('tabla-articulos');
     tablaArticulos.innerHTML = ''; // Limpiar el contenido anterior
-    articulos.forEach(articulo => {
+
+    for (const articulo of articulos) {
         const row = tablaArticulos.insertRow();
         const cellId = row.insertCell(0);
         const cellNombre = row.insertCell(1);
@@ -31,57 +32,71 @@ function mostrarArticulos(articulos) {
 
         cellId.textContent = articulo.id_articulo;
         cellNombre.textContent = articulo.nombre;
-        //cellEstado.textContent = articulo.estado;
-        cellConferencia.textContent = articulo.conferencia.nombre;
-       cellVerAutor.textContent = articulo.autor.nombre + " " + articulo.autor.apellido;
+
+        // Obtener el nombre de la conferencia, ya sea directamente o mediante una consulta adicional
+        let nombreConferencia = "Desconocido";
+        if (articulo.conferencia) {
+            if (articulo.conferencia.nombre) {
+                nombreConferencia = articulo.conferencia.nombre;
+            } else {
+                try {
+                    const conferenciaResponse = await fetch(`${urlRailway}/conferencias/${articulo.conferencia}`);
+                    const conferencia = await conferenciaResponse.json();
+                    nombreConferencia = conferencia.nombre || "Desconocido";
+                } catch (error) {
+                    console.error("Error al obtener la conferencia: ", error);
+                }
+            }
+        }
+        cellConferencia.textContent = nombreConferencia;
+
+        // Mostrar el nombre completo del autor
+        const nombreAutor = articulo.autor ? `${articulo.autor.nombre} ${articulo.autor.apellido}` : "Autor desconocido";
+        cellVerAutor.textContent = nombreAutor;
 
         // Crear el span para el estado
-        let estadoColor = "";
-        switch (articulo.estado.toLowerCase()) {
-            case "correcciones":
-                estadoColor = "badge bg-warning"; // Naranja
-                break;
-            case "aprobado":
-                estadoColor = "badge bg-success"; // Verde
-                break;
-            case "enviado":
-                estadoColor = "badge bg-info"; // Azul
-                break;
-            case "rechazado":
-                estadoColor = "badge bg-danger"; // Rojo
-                break;
-            default:
-                estadoColor = "badge bg-secondary"; // Gris por defecto
-        }
-
-        // Crear el span con la clase de estado y añadirlo a la celda de estado
         const spanEstado = document.createElement('span');
-        spanEstado.className = estadoColor;
+        spanEstado.className = getEstadoColor(articulo.estado.toLowerCase());
         spanEstado.textContent = articulo.estado;
         cellEstado.appendChild(spanEstado);
 
-       
         // Crear el enlace "Ver Artículo"
         const enlace = document.createElement('a');
         enlace.textContent = 'Ver Artículo';
         enlace.href = articulo.url;
-        enlace.target = '_blank'; // Para abrir en una nueva pestaña
+        enlace.target = '_blank'; // Abrir en una nueva pestaña
         cellVerArticulo.appendChild(enlace);
+
+        // Crear el botón "Asignar Evaluación"
         const span = document.createElement('span');
         span.classList.add('my-2', 'mb-0', 'text-secondary', 'text-xs');
         span.innerHTML = '<button class="btn btn-warning btn-sm" style="font-size: 0.75rem; display: flex; align-items: center; padding: 0.2rem 0.5rem;">' +
-    '<i class="fa-solid fa-pen-to-square" style="font-size: 0.75rem; margin-right: 0.3rem;"></i>' +
-    'Asignar Evaluación' +
-    '</button>';
+            '<i class="fa-solid fa-pen-to-square" style="font-size: 0.75rem; margin-right: 0.3rem;"></i>' +
+            'Asignar Evaluación' +
+            '</button>';
         span.onclick = function() {
-            asignarEvaluacion(articulo.id_articulo); // Llamar a la función de edición pasando el id del artículo
+            asignarEvaluacion(articulo.id_articulo); // Llamar a la función de asignación pasando el id del artículo
         };
-    
-        // Añadir el <span> a la celda de la fila
         cellEvaluacion.appendChild(span);
-
-    });
+    }
 }
+
+// Función auxiliar para obtener el color del estado
+function getEstadoColor(estado) {
+    switch (estado) {
+        case "correcciones":
+            return "badge bg-warning"; // Naranja
+        case "aprobado":
+            return "badge bg-success"; // Verde
+        case "enviado":
+            return "badge bg-info"; // Azul
+        case "rechazado":
+            return "badge bg-danger"; // Rojo
+        default:
+            return "badge bg-secondary"; // Gris por defecto
+    }
+}
+
 
 let idArticuloGlobal;
 
