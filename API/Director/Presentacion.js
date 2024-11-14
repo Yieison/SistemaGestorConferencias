@@ -1,6 +1,6 @@
 const urlBackendArticle = "http://localhost:8080/articulos"
 
-const urlBackendPresentaciones = "http://localhost:8080/presentaciones"
+const urlBackendPresentaciones = "https://remarkable-commitment-production.up.railway.app/presentaciones"
 
 
 // Función para obtener artículos desde la API
@@ -106,7 +106,7 @@ async function cargarPresentaciones() {
         
     } catch (error) {
         console.error('Error al cargar las presentaciones:', error);
-        alert('Error al cargar las presentaciones. Inténtalo de nuevo más tarde.');
+        //alert('Error al cargar las presentaciones. Inténtalo de nuevo más tarde.');
     }
 }
 

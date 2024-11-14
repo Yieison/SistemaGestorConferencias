@@ -49,6 +49,8 @@ async function agregarTopico(event) {
             alert("Tópico agregado exitosamente.");
             document.getElementById("topicoForm").reset();
             $('#topicoModal').modal('hide'); // Cerrar el modal después de agregar el tópico
+            $(".modal-backdrop").remove();
+            getTopicos();
         } else {
             alert("Error al agregar el tópico.");
         }
