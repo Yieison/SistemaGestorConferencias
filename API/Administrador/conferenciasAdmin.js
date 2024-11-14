@@ -286,7 +286,7 @@ function crearConferencia(event) {
   event.preventDefault();
 
   const nombre = document.getElementById("nombreConferencia").value;
-  const descripcion = document.getElementById("descripcion").value;
+  const descripcion = document.getElementById("descripcionConferencia").value;
   const lugar = document.getElementById("lugar").value;
   const fechaInicio = document.getElementById("fechaInicio").value;
   const fechaFin = document.getElementById("fechaFin").value;
