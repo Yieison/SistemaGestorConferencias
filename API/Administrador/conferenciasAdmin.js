@@ -354,7 +354,7 @@ const toastElement = document.getElementById("successToastChair");
 const toastChair = new bootstrap.Toast(toastElement);
 
 function guardarChair() {
-  const nombre = document.getElementById("nombre").value;
+  const nombre = document.getElementById("nombreChair").value;
   const apellido = document.getElementById("apellido").value;
   const correo = document.getElementById("correo").value;
   const contraseña = document.getElementById("contraseña").value;
