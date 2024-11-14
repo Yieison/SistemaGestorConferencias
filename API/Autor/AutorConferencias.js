@@ -60,6 +60,8 @@ function enviarInscripcion() {
 
   let idUsuario = usuario.id_usuarios;
 
+  console.log(idUsuario);
+
   // Obtener la fecha actual en formato ISO
   let fecha = new Date().toISOString();
 
