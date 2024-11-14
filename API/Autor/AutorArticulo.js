@@ -232,3 +232,20 @@ function subirArticulo(event) {
         });
 }
 
+
+
+// Obtener los datos del usuario desde localStorage
+let usuario = JSON.parse(localStorage.getItem('Data'));
+
+// Verificar si el usuario existe en localStorage antes de intentar acceder a sus propiedades
+if (usuario) {
+    document.getElementById('nombreUsuarioEmp').textContent = usuario.nombre || "N/A";
+    document.getElementById('correoEmp').textContent = usuario.correo || "N/A";
+    document.getElementById('rolUsuarioEmp').textContent = usuario.rol.nombre || "N/A";
+    document.getElementById('apellidoEmp').textContent = usuario.apellido || "N/A";
+    document.getElementById('cedulaEmp').textContent = usuario.documento || "N/A";
+} else {
+    console.error("No se encontraron datos de usuario en localStorage.");
+}
+
+
