@@ -154,10 +154,11 @@ function guardarComite() {
         if (!response.ok) {
             throw new Error('Error al guardar la sala');
         }
-        console.log('Comite guardado exitosamente');
+        alert('Comite guardado exitosamente');
         // Cerrar el modal u otra lógica de tu aplicación
         $('#modalComite').modal('hide');
         $('.modal-backdrop').remove();
+        listarComites();
     })
     .catch(error => {
         console.error('Error al realizar la solicitud POST:', error);
