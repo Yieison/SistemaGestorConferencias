@@ -84,7 +84,7 @@ cargarConferencias();
 
   function toggleConvocatorias(convocatoriaId) {
     // Llamada a la API para obtener los detalles de la convocatoria
-    fetch(`${urlRailway}/${convocatoriaId}`)
+    fetch(`${urlRailway}/convocatorias/${convocatoriaId}`)
         .then(response => response.json())
         .then(data => {
             // Cargar datos en el modal

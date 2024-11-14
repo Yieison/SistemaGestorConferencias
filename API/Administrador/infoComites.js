@@ -44,10 +44,22 @@ function listarComites() {
     <i class="fa-solid fa-user-plus" style="font-size: 0.9rem;"></i> Agregar miembro
 </button>
 
-                      <div id="usuarios-${comite.id}" style="display:none;" class="mt-2">
+                      <div id="usuarios-${comite.id}" style="display:none;" class="mt-2 ">
                           ${Array.isArray(comite.usuarios) && comite.usuarios.length > 0
                               ? comite.usuarios.map(usuario => `
-                                  <p>${usuario?.nombre || 'Desconocido'} ${usuario?.apellido || ''}  (Miembro)</p>
+                            <!-- <p>${usuario?.nombre || 'Desconocido'} ${usuario?.apellido || ''} (Miembro)</p> -->
+
+                                <div class="d-flex justify-content-center align-items-center mb-2">
+                                    <p class="mb-0 me-3">${usuario?.nombre || 'Desconocido'} ${usuario?.apellido || ''} (Miembro)</p>
+                                <div>
+                                <button class="btn btn-sm btn-primary text-white p-1 me-1" style="font-size: 0.8rem;" onclick="editarUsuario(${usuario.id})">
+                                <i class="fa fa-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger text-white p-1" style="font-size: 0.8rem;" onclick="eliminarUsuario(${usuario.id})">
+                                 <i class="fa fa-trash"></i>
+                                </button>
+                                </div>
+                            </div>
                               `).join('')
                               : '<p>No hay usuarios asignados</p>'}
                       </div>

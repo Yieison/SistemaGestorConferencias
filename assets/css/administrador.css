@@ -32,3 +32,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+#campoURL .form-control {
+    width: 100%; /* Asegura que el campo ocupe el mismo espacio que los otros campos */
+}
+
+/* Eliminar borde rojo en campos de texto */
+#urlReunion:invalid {
+    border-color: #ced4da !important; /* Color predeterminado del borde */
+}
+
+/* Si quieres quitar también el color rojo del borde al hacer foco */
+#urlReunion:focus:invalid {
+    border-color: #ced4da !important; /* Asegúrate de que el borde sea el normal */
+}

@@ -3,7 +3,7 @@ const urlBackendPresentaciones = "http://localhost:8080/presentaciones"
 
 // Función para obtener artículos desde la API
 async function obtenerArticulosPresentacion() {
-    const response = await fetch(`${urlRailway}/articulos`);
+    const response = await fetch(`${urlRailway}/articulos/estado/APROBADO`);
     const articulos = await response.json();
     return articulos;
 }
@@ -40,7 +40,7 @@ async function cargarSesionesPresentacion() {
     sesiones.forEach(sesion => {
         const option = document.createElement('option');
         option.value = sesion.id;
-        option.textContent = `Nombre : ${sesion.nombre} : conferencia :${sesion.conferencia.nombre} : sala : ${sesion.sala.nombre}`;
+        option.textContent = `Nombre : ${sesion.nombre} : conferencia :${sesion.conferencia.nombre} : sala : ${sesion.sala.nombre} : hora inicio : ${sesion.horaInicio} : hora fin : ${sesion.horaFin}`;
         sesionesSelect.appendChild(option);
     });
 }
@@ -55,7 +55,6 @@ function guardarPresentacion() {
     const articuloSeleccionado = document.getElementById("articulosPresentacion").value;
     const resumen = document.getElementById("resumen").value;
     const palabrasClave = document.getElementById("palabras-clave").value;
-    const fecha = document.getElementById("fecha_presentacion").value;
     const horaInicio = document.getElementById("hora-inicio").value;
     const horaFin = document.getElementById("hora-fin").value;
 
@@ -66,7 +65,6 @@ function guardarPresentacion() {
         titulo: titulo,
         resumen: resumen,
         palabras_clave: palabrasClave,
-        fecha_presentacion: fecha,
         horaInicio: horaInicio,
         horaFin: horaFin
     };
@@ -87,10 +85,11 @@ function guardarPresentacion() {
         $('#modalPresentacion').modal('hide');
         $('.modal-backdrop').remove();
         // Mostrar la notificación de éxito
-        toast.show();
+        cargarPresentaciones();
     })
     .catch(error => {
         console.error('Error al realizar la solicitud POST:', error);
+        alert("ha ocurrido un error al subir la presentacion, la presentacion se cruza con con otras presentaciones o eventos")
     });
 }
 

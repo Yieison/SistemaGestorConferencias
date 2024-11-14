@@ -296,22 +296,33 @@
         </div>
 
         <div class="row" style="display: none;" id="section-articulos-subir">
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center" style="height: 100vh;">
             <div class="col-md-6">
-                <div class="card shadow-sm mt-5">
+                <div class="card shadow-sm">
                     <div class="card-header text-center bg-info text-white">
                         <h2>Subir Artículo</h2>
                     </div>
                     <div class="card-body">
-                        <form id="uploadForm" enctype="multipart/form-data">
+                        <form id="uploadForm" onsubmit="return subirArticulo(event)">
+                            <h6>Conferencia</h6>
+                            <div class="input-group input-group-outline my-3">
+                                <select id="selectConferenciaUsuario" class="form-select">
+                                    <!--Las opciones se agregan automaticamente desde javascript-->
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label for="titulo">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" name="titulo" required>
                             </div>
         
                             <div class="form-group">
-                                <label for="descripcion">Descripción</label>
-                                <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+                                <label for="descripcion">Resumen</label>
+                                <textarea class="form-control" id="resumen" name="resumen" rows="3" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="descripcion">Palabras Clave</label>
+                                <textarea class="form-control" id="palabrasClave" name="palabrasClave" rows="3" required></textarea>
                             </div>
         
                             <div class="form-group mt-3">

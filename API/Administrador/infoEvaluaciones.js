@@ -9,79 +9,95 @@ async function findEvaluaciones() {
     return result;
 }
 
-function mostrarEvaluaciones() {
-    findEvaluaciones()
-        .then((res) => res.json())
-        .then((data) => {
-            let body = "";
-            // Dado que el JSON ya devuelve los artículos aprobados
-            const articulosAprobados = Array.isArray(data) ? data : [data];
+async function mostrarEvaluaciones() {
+  try {
+      const res = await findEvaluaciones();
+      const data = await res.json();
+      let body = "";
 
-            for (const articulo of articulosAprobados) {
-                let estadoColor = "";
-                switch (articulo.estado.toLowerCase()) {
-                    case "pendiente":
-                        estadoColor = "badge bg-warning"; // Naranja
-                        break;
-                    case "aprobado":
-                        estadoColor = "badge bg-success"; // Verde
-                        break;
-                    case "correcciones":
-                        estadoColor = "badge bg-primary"; // Azul
-                        break;
-                    case "rechazado":
-                        estadoColor = "badge bg-danger"; // Rojo
-                        break;
-                    default:
-                        estadoColor = "badge bg-secondary"; // Color gris por defecto
-                }
-                body += `<tr>
-                    <td>
-                        <h6 class="mb-0 text-sm">${articulo.id}</h6>
-                    </td>
-                    <td>
-                        <p class="text-xs text-secondary mb-0">${new Date(
-                    articulo.fechaHora
-                ).toLocaleString()}</p>
-                    </td>
-                    <td>
-                    <p class="text-xs text-secondary mb-0">${articulo.evaluador.nombre} ${articulo.evaluador.apellido}</p>
-                    </td>
-                    <td>
-                    <div class="nombre-articulo">
-                    <p class="text-xs text-secondary mb-0">${articulo.articulo.nombre}</p>
-                    </div>                    
-                    </td>
-                    <td>
-                        <a href="${articulo.articulo.url
-                    }" target="_blank">Ver Artículo</a>
-                    </td>
-                    <td>
-                     <span class="${estadoColor}">${articulo.estado}</span> <!-- Aquí va el span de estado -->
-                    </td>
-                   <td>
-                        <i class="fa-solid fa-comment" style="cursor: pointer;" onclick="toggleComentario(${articulo.id})"></i>
-                        <div id="comentario-${articulo.id}" class="comentario" style="display: none;">
-                        <p class="text-xs text-secondary mb-0">${articulo.comentario}</p> <!-- Aquí se mostrará el comentario -->
-                        </div>
-                    </td>
-                    <td>
-                    <span class="my-2 mb-0 text-secondary text-xs" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="realizarEvaluacion(${articulo.id
-                    })">
-                    <i class="fa-solid fa-pen-to-square" style="color:orange; font-size:1rem;"></i>
-                    </span>
-                    </td>
-                </tr>`;
-            }
-            document.getElementById("tablaEvaluaciones").innerHTML = body;
+      const articulosAprobados = Array.isArray(data) ? data : [data];
 
-            // Mostrar la sección de artículos aprobados
-            document.getElementById("section-articulos-aprobado").style.display =
-                "block";
-        })
-        .catch((e) => {
-            console.log(e);
-        });
+      for (const articulo of articulosAprobados) {
+          let nombreCompleto = '';
+          let Rol = '';
+          
+          if (articulo.evaluador) {
+              if (articulo.evaluador.nombre && articulo.evaluador.apellido) {
+                  nombreCompleto = `${articulo.evaluador.nombre} ${articulo.evaluador.apellido}`;
+              } else {
+                  // Si solo tiene el id del evaluador, hacemos la consulta para obtener los datos completos
+                  try {
+                      const evaluadorResponse = await fetch(`${urlRailway}/usuarios/${articulo.evaluador}`);
+                      const asistente = await evaluadorResponse.json(); // Esperamos a que la promesa se resuelva
+                      nombreCompleto = `${asistente.nombre} ${asistente.apellido}`;
+                  } catch (error) {
+                      console.error("Error al obtener el asistente: ", error);
+                      nombreCompleto = "Desconocido"; // Valor predeterminado en caso de error
+                  }
+              }
+          } else {
+              nombreCompleto = "Desconocido"; // Si no existe el evaluador
+          }
+
+          let estadoColor = "";
+          switch (articulo.estado.toLowerCase()) {
+              case "pendiente":
+                  estadoColor = "badge bg-warning"; // Naranja
+                  break;
+              case "aprobado":
+                  estadoColor = "badge bg-success"; // Verde
+                  break;
+              case "correcciones":
+                  estadoColor = "badge bg-primary"; // Azul
+                  break;
+              case "rechazado":
+                  estadoColor = "badge bg-danger"; // Rojo
+                  break;
+              default:
+                  estadoColor = "badge bg-secondary"; // Color gris por defecto
+          }
+
+          body += `<tr>
+              <td>
+                  <h6 class="mb-0 text-sm">${articulo.id}</h6>
+              </td>
+              <td>
+                  <p class="text-xs text-secondary mb-0">${new Date(articulo.fechaHora).toLocaleString()}</p>
+              </td>
+              <td>
+                  <p class="text-xs text-secondary mb-0">${nombreCompleto}</p>
+              </td>
+              <td>
+                  <div class="nombre-articulo">
+                  <p class="text-xs text-secondary mb-0">${articulo.articulo.nombre}</p>
+                  </div>                    
+              </td>
+              <td>
+                  <a href="${articulo.articulo.url}" target="_blank">Ver Artículo</a>
+              </td>
+              <td>
+                  <span class="${estadoColor}">${articulo.estado}</span>
+              </td>
+              <td>
+                  <i class="fa-solid fa-comment" style="cursor: pointer;" onclick="toggleComentario(${articulo.id})"></i>
+                  <div id="comentario-${articulo.id}" class="comentario" style="display: none;">
+                      <p class="text-xs text-secondary mb-0">${articulo.comentario}</p>
+                  </div>
+              </td>
+              <td>
+                  <span class="my-2 mb-0 text-secondary text-xs" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="realizarEvaluacion(${articulo.id})">
+                  <i class="fa-solid fa-pen-to-square" style="color:orange; font-size:1rem;"></i>
+                  </span>
+              </td>
+          </tr>`;
+      }
+      
+      document.getElementById("tablaEvaluaciones").innerHTML = body;
+      document.getElementById("section-articulos-aprobado").style.display = "block";
+
+  } catch (e) {
+      console.log(e);
+  }
 }
 
 
@@ -166,7 +182,7 @@ function enviarEvaluacion() {
           mostrarToast('Éxito', 'Evaluación realizada con éxito', 'success');
           // Actualizar la UI según sea necesario
           mostrarEvaluaciones();// Recargar la página o actualizar la tabla dinámicamente
-
+          cargarArticulosPresentacion();
         } else {
           throw new Error("Error al realizar la evaluación");
         }

@@ -1,28 +1,23 @@
-const urlBackendeva = "https://remarkable-commitment-production.up.railway.app/usuarios";
+const urlBackendeva =  "https://remarkable-commitment-production.up.railway.app/usuarios";
 
 
 let usuarios = [];
 
-
-
-
 async function buscarUsuariosporRol(rol = '') {
-    const url = rol === "TODOS" || !rol ?  urlBackendeva : `${urlBackendeva}/findUsuarios/${rol}`;
+    const url = rol === "TODOS" || !rol ? urlBackendeva : `${urlBackendeva}/findUsuarios/${rol}`;
     const result = await fetch(url, { method: 'GET' });
     return result.json();
 }
 
 async function findListUsuarios() {
-    const result = await fetch(urlBackendeva, {
-        method: 'GET'
-    });
-    return result.json;
+    const result = await fetch(urlBackendeva, { method: 'GET' });
+    return result.json(); // Asegúrate de invocar el método json() aquí
 }
 
 async function cargarUsuarios() {
     try {
         usuarios = await findListUsuarios(); // Llama a la función para obtener todos los usuarios
-        mostrarUsuarios(usuarios);
+        mostrarUsuarios(usuarios); // Muestra todos los usuarios
     } catch (error) {
         console.error('Error:', error);
     }
@@ -32,7 +27,7 @@ async function buscarUsuarios() {
     const rolSeleccionado = document.getElementById('rol').value;
     try {
         const data = await buscarUsuariosporRol(rolSeleccionado);
-        mostrarUsuarios(data);
+        mostrarUsuarios(data); // Muestra los usuarios según el rol seleccionado
     } catch (error) {
         console.error('Error:', error);
     }
@@ -41,6 +36,10 @@ async function buscarUsuarios() {
 function mostrarUsuarios(usuarios) {
     const tablaUsuarios = document.getElementById('tablaUsuarios');
     tablaUsuarios.innerHTML = ''; // Limpiar el contenido anterior
+
+    if (usuarios.length === 0) {
+        tablaUsuarios.innerHTML = '<tr><td colspan="7">No se encontraron usuarios</td></tr>';
+    }
 
     usuarios.forEach(usuario => {
         const row = `
@@ -78,24 +77,15 @@ function mostrarUsuarios(usuarios) {
 
 function filtrarPersonas() {
     const nombreBusqueda = document.getElementById('nombre').value.toLowerCase();
-    const personasFiltradas = usuarios.filter(usuario => usuario.nombre.toLowerCase().includes(nombreBusqueda));
-     cargarUsuarios(personasFiltradas);
+    const personasFiltradas = usuarios.filter(usuario =>
+        usuario.nombre.toLowerCase().includes(nombreBusqueda) || usuario.apellido.toLowerCase().includes(nombreBusqueda)
+    );
+    mostrarUsuarios(personasFiltradas); // Muestra solo los usuarios filtrados
 }
-
-
-
 
 // Llama a la función al cargar la página
-
-function mostrarInformacion() {
-    document.getElementById("section-usuarios").style.display = 'none';
-    document.getElementById("section-info").style.display = 'block';
-}
-
-// Mostrar la información del usuario al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
-    mostrarInformacion();
-    cargarUsuarios();
+    cargarUsuarios(); // Carga todos los usuarios al iniciar
 });
 
 // Agrega un evento de entrada al campo de búsqueda para filtrar en tiempo real

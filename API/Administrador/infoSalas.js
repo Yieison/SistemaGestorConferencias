@@ -29,11 +29,19 @@ function guardarSala() {
     const nombre = document.getElementById("nombreSala").value;
     const institucion = document.getElementById("selectInstitucion").value;
     const tipo = document.getElementById("selectTipoSala").value;
-    
+    const url = document.getElementById("urlSala").value;
+
+    if (!url && tipo === 'virtual') {
+        console.log(url)
+        console.log("La URL no se ha proporcionado");
+        return; // Evitar guardar si la URL está vacía cuando se selecciona virtual
+    }
+
 
     const salaData = {
         nombre: nombre,
         tipo: tipo,
+        urlSala : url
     };
 
     fetch(`${urlRailway}/salas/agregarSala/${institucion}`, {
@@ -85,9 +93,14 @@ function listarSalas() {
             salas.forEach(sala => {
                 body += `<tr>
                     <td>${sala.id}</td>
-                    <td class = "truncate-text" data-bs-toggle="tooltip" title="Descripción completa de la convocatoria">${sala.nombre}</td>
+                    <td >${sala.nombre}</td>
                     <td>${sala.tipo}</td>
                     <td>${sala.institucion.nombreInstitucion}</td>
+                    <td><span id="url-sala-${sala.id}" class="url-sala">
+                    <i class="fa fa-copy" onclick="copiarUrl('${sala.urlSala}')" style="cursor: pointer; margin-left: 10px;"></i>
+                    ${sala.urlSala.length > 50 ? sala.urlSala.substring(0, 35) + '...' : sala.urlSala}
+                    </span>
+                        
                     <td>
                        <button class="btn btn-sm btn-warning text-white px-2 my-2 mb-0 text-xs" data-bs-toggle="modal" data-id="${sala.id}"
                         onclick="guardarIdComite(this)" data-bs-target="#modalEditarSala">
@@ -110,6 +123,28 @@ function listarSalas() {
   }
 
 
+  
+
+
+
+function copiarUrl(url) {
+    // Crea un campo de texto temporal
+    const input = document.createElement('input');
+    input.value = url;  // La URL a copiar
+    document.body.appendChild(input);
+    input.select();  // Selecciona el contenido del campo de texto
+    document.execCommand('copy');  // Copia el contenido al portapapeles
+    document.body.removeChild(input);  // Elimina el campo temporal
+
+    // Opcional: mensaje de confirmación
+    alert("URL copiada al portapapeles");
+}
+
+
+
+
   document.addEventListener('DOMContentLoaded', () => {
     listarSalas();
   });
+
+

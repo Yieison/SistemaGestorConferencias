@@ -5,6 +5,11 @@ async function obtenerSalasSesiones() {
     return salas;
 }
 
+
+async function obtenerSesionesConferencia(){
+    
+}
+
 // Función para cargar los artículos en el dropdown
 async function cargarSalas() {
     const salas = await obtenerSalasSesiones();
@@ -57,7 +62,7 @@ function guardarSesion() {
 
     const sesionData = {
         nombre: nombre,
-        fechaDia: fecha,
+        fechaDia : fecha,
         horaInicio : horaInicio,
         horaFin : horaFin,
 

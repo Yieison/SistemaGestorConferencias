@@ -157,3 +157,78 @@ function mostrarArticulosAprobados() {
 document.addEventListener('DOMContentLoaded', () => {
     mostrarArticulosAprobados();
 });
+
+
+
+async function findInscripciones(){
+    let usuario = JSON.parse(localStorage.getItem('Data'));
+
+    let idUsuario = usuario.id_usuarios;
+
+const response = await fetch(`${urlBackendConferencia}/inscripciones/usuario/${idUsuario}`);
+const inscripciones = await response.json();
+return inscripciones;
+}
+
+async function cargarConferenciasUsuario(){
+    const inscripciones = await findInscripciones();
+    const conferenciasSelect = document.getElementById('selectConferenciaUsuario');
+    conferenciasSelect.innerHTML = ''; // Limpiar opciones existentes
+    inscripciones.forEach(inscripcion => {
+        const option = document.createElement('option');
+        option.value = inscripcion.conferencia.id_conferencia;
+        option.textContent = ` ${inscripcion.conferencia.nombre}`;
+        conferenciasSelect.appendChild(option);
+    }); 
+}
+
+cargarConferenciasUsuario();
+
+function subirArticulo(event) {
+    event.preventDefault();
+
+    const titulo = document.getElementById("nombre").value;
+    const resumen = document.getElementById("resumen").value;
+    const palabrasclave = document.getElementById("palabrasClave").value;
+    const archivo = document.getElementById("archivo").files[0];
+
+    const articuloData = {
+        nombre : titulo,
+        resumen : resumen,
+        palabrasClave : palabrasclave
+    }
+    
+
+
+
+    const formData = new FormData();
+    formData.append("file", archivo);
+    formData.append(
+        "articulo",
+        new Blob([JSON.stringify(articuloData)], { type: "application/json" })
+      );
+    
+    
+
+    const idConferencia= document.getElementById("selectConferenciaUsuario").value; // Aquí debes obtener el id de la conferencia correctamente
+    let usuario = JSON.parse(localStorage.getItem('Data'));
+
+    let idAutor = usuario.id_usuarios;; // Aquí debes obtener el id del autor correctamente
+
+    fetch(`${urlBackendConferencia}/articulos/save/${idConferencia}/autor/${idAutor}`, {
+        method: "POST",
+        body: formData,
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Error al guardar el artículo");
+            }
+            alert("Artículo guardado exitosamente");
+            // Limpiar formulario
+            document.getElementById("uploadForm").reset();
+        })
+        .catch((error) => {
+            console.error("Error al subir el artículo:", error);
+        });
+}
+

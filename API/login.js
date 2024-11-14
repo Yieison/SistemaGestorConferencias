@@ -1,5 +1,7 @@
 const urlBackendeva = "https://remarkable-commitment-production.up.railway.app/usuarios";
 
+const urlLocal = "https://remarkable-commitment-production.up.railway.app/usuarios";
+
 /**
 async function loginUser(loginDTO) {
   const result = await fetch(urlBackend + "usuarios/iniciarSesion", {
@@ -14,7 +16,7 @@ async function loginUser(loginDTO) {
   */
 
 async function loginUser1(Usuario) {
-  const result = await fetch(urlBackendeva + "/iniciarSesion", {
+  const result = await fetch(urlLocal + "/iniciarSesion", {
     method: 'POST',
     body: JSON.stringify(Usuario),
     headers: {

@@ -69,7 +69,10 @@ function mostrarArticulos(articulos) {
         cellVerArticulo.appendChild(enlace);
         const span = document.createElement('span');
         span.classList.add('my-2', 'mb-0', 'text-secondary', 'text-xs');
-        span.innerHTML = '<i class="fa-solid fa-pen-to-square" style="color: orange; font-size: 1rem;"></i>';
+        span.innerHTML = '<button class="btn btn-warning btn-sm" style="font-size: 0.75rem; display: flex; align-items: center; padding: 0.2rem 0.5rem;">' +
+    '<i class="fa-solid fa-pen-to-square" style="font-size: 0.75rem; margin-right: 0.3rem;"></i>' +
+    'Asignar Evaluación' +
+    '</button>';
         span.onclick = function() {
             asignarEvaluacion(articulo.id_articulo); // Llamar a la función de edición pasando el id del artículo
         };

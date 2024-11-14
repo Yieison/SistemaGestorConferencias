@@ -1,5 +1,5 @@
 const urlBackendConferencia =
-  "https://remarkable-commitment-production.up.railway.app/conferencias";
+ "https://remarkable-commitment-production.up.railway.app/conferencias";
 const urlRailway = "https://remarkable-commitment-production.up.railway.app";
 
 /* document.addEventListener('DOMContentLoaded', () => {

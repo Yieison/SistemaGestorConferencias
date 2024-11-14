@@ -47,7 +47,11 @@ const inscripciones = [
 
 async function cargarInscripciones() {
 
-    const response = await fetch(`${urlBackendConferencia}/inscripciones`);
+    let usuario = JSON.parse(localStorage.getItem('Data'));
+
+    let idUsuario = usuario.id_usuarios;
+
+    const response = await fetch(`${urlBackendConferencia}/inscripciones/usuario/${idUsuario}`);
     const inscripciones = await response.json();
     listaInscripciones.innerHTML = ""; // Limpiar el contenido antes de agregar nuevas filas
 
@@ -58,7 +62,7 @@ async function cargarInscripciones() {
             <td>${inscripcion.conferencia.nombre}</td>
             <td>${inscripcion.conferencia.fecha_inicio}</td>
             <td>${inscripcion.conferencia.fecha_fin}</td>
-            <td>${inscripcion.asistente.nombre} ${inscripcion.asistente.apellido}</td>
+            <td>${usuario.nombre} ${usuario.apellido}</td>
             <td>${inscripcion.estado}</td>
             <td>
                 <button class="btn btn-primary btn-sm" onclick="realizarPago(${inscripcion.id})">
@@ -76,3 +80,6 @@ async function cargarInscripciones() {
 
 // Llama a esta función al cargar la página para mostrar las inscripciones
 cargarInscripciones();
+
+
+

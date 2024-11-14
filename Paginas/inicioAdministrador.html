@@ -173,10 +173,10 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-          // Llama a la función con el rol requerido para esta página
-          verificarAutenticacion(1); // Por ejemplo, 1 para Administrador
+            // Llama a la función con el rol requerido para esta página
+            verificarAutenticacion(1); // Por ejemplo, 1 para Administrador
         });
-      </script>
+    </script>
 </head>
 
 <body>
@@ -283,9 +283,9 @@
                         <span class="nav-link-text ms-1">Ver Programación</span>
                     </a>
                 </li>
-                
-             
-                
+
+
+
                 <li class="nav-item mt-3">
                     <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages
                     </h6>
@@ -317,7 +317,7 @@
         </div>
     </aside>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    
+
         <div class="container-fluid py-4">
             <div class="row" style="display: none;" id="section-convocatorias">
                 <div class="col-12">
@@ -327,7 +327,8 @@
                                 <div class="d-flex justify-content-between align-items-center px-3">
                                     <h6 class="text-white text-capitalize">Lista Convocatorias</h6>
                                     <!-- Botón para agregar una nueva convocatoria -->
-                                    <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalNuevaConvocatoria">
+                                    <button class="btn btn-light btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#modalNuevaConvocatoria">
                                         Agregar Convocatoria
                                     </button>
                                 </div>
@@ -338,10 +339,18 @@
                                 <table class="table align-items-center text-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Descripcion</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Conferencia</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Id</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Descripcion</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Conferencia</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tablaConvocatorias">
@@ -354,9 +363,10 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Modal para agregar una nueva convocatoria -->
-        <div class="modal fade" id="modalNuevaConvocatoria" tabindex="-1" aria-labelledby="modalNuevaConvocatoriaLabel" aria-hidden="true">
+        <div class="modal fade" id="modalNuevaConvocatoria" tabindex="-1" aria-labelledby="modalNuevaConvocatoriaLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -392,188 +402,56 @@
                                 <input type="date" class="form-control" id="fechaPublicacion" required>
                             </div>
                             <div class="mb-3">
-                                <label for="fechaEnvioPublicaciones" class="form-label">Fecha Envío Publicaciones</label>
+                                <label for="fechaEnvioPublicaciones" class="form-label">Fecha Envío
+                                    Publicaciones</label>
                                 <input type="date" class="form-control" id="fechaEnvioPublicaciones" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Guardar Convocatoria</button>
+                            <button type="submit" class="btn btn-info">Guardar Convocatoria</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
 
-          <!-- Modal para mostrar los detalles de la convocatoria -->
-<div class="modal fade" id="convocatoriaModal" tabindex="-1" aria-labelledby="convocatoriaModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="convocatoriaModalLabel">Detalles de la Convocatoria</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Descripción:</strong> <span id="convocatoriaDescripcion"></span></p>
-                <p><strong>Fecha de Inicio de Envío de trabajos:</strong> <span id="convocatoriaFechaInicioEnvio"></span></p>
-                <p><strong>Fecha Límite de Envío de trabajos:</strong> <span id="convocatoriaFechaLimiteEnvio"></span></p>
-                <p><strong>Fecha de Aceptación:</strong> <span id="convocatoriaFechaAceptacion"></span></p>
-                <p><strong>Fecha de Publicación:</strong> <span id="convocatoriaFechaPublicacion"></span></p>
-                <p><strong>Fecha de Envío de Publicaciones:</strong> <span id="convocatoriaFechaEnvioPublicaciones"></span></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid py-4">
-    <div class="row" style="display: none;" id="section-precios">
-        <div class="col-12">
-            <div class="card my-4">
-                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
-                        <div class="d-flex justify-content-between align-items-center px-3">
-                            <h6 class="text-white text-capitalize">Lista de Precios</h6>
-                            <!-- Botón para agregar una nueva convocatoria -->
-                            <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalAgregarPrecio">
-                                Agregar Precios
-                            </button>
-                        </div>
+        <!-- Modal para mostrar los detalles de la convocatoria -->
+        <div class="modal fade" id="convocatoriaModal" tabindex="-1" aria-labelledby="convocatoriaModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="convocatoriaModalLabel">Detalles de la Convocatoria</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-                <div class="card-body px-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center text-center mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Conferencia</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Monto</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tipo de Usuario</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Etapa</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tablaPrecios">
-                                <!-- Aquí se cargarán las convocatorias -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal para agregar precios -->
-<div class="modal fade" id="modalAgregarPrecio" tabindex="-1" aria-labelledby="modalAgregarPrecioLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalAgregarPrecioLabel">Agregar Precio</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="formAgregarPrecio">
-                    <div class="mb-3">
-                        <label for="conferencia" class="form-label">Conferencia</label>
-                        <select class="form-select" id="conferencia" name="conferencia" required>
-                            <option selected disabled value="">Seleccione una conferencia</option>
-                            <!-- Opciones de conferencia (pueden cargarse dinámicamente desde el backend) -->
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="monto" class="form-label">Monto</label>
-                        <input type="number" class="form-control" id="monto" name="monto" placeholder="Ingrese el monto" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tipoUsuario" class="form-label">Tipo de Usuario</label>
-                        <select class="form-select" id="tipoUsuario" name="tipoUsuario" required>
-                            <option selected disabled value="">Seleccione el tipo de usuario</option>
-                            <option value="Estudiante">Estudiante</option>
-                            <option value="Profesional">Profesional</option>
-                            <option value="Académico">Académico</option>
-                            <!-- Otros tipos de usuario según tus necesidades -->
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="etapa" class="form-label">Etapa</label>
-                        <select class="form-select" id="etapa" name="etapa" required>
-                            <option selected disabled value="">Seleccione la etapa</option>
-                            <option value="Temprana">Temprana</option>
-                            <option value="Normal">Normal</option>
-                            <option value="Tardía">Tardía</option>
-                            <!-- Otros valores según tus necesidades -->
-                        </select>
+                    <div class="modal-body">
+                        <p><strong>Descripción:</strong> <span id="convocatoriaDescripcion"></span></p>
+                        <p><strong>Fecha de Inicio de Envío de trabajos:</strong> <span
+                                id="convocatoriaFechaInicioEnvio"></span></p>
+                        <p><strong>Fecha Límite de Envío de trabajos:</strong> <span
+                                id="convocatoriaFechaLimiteEnvio"></span></p>
+                        <p><strong>Fecha de Aceptación:</strong> <span id="convocatoriaFechaAceptacion"></span></p>
+                        <p><strong>Fecha de Publicación:</strong> <span id="convocatoriaFechaPublicacion"></span></p>
+                        <p><strong>Fecha de Envío de Publicaciones:</strong> <span
+                                id="convocatoriaFechaEnvioPublicaciones"></span></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar Precio</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-        
-
-            <div class="row" style="display: none;" id="section-conferencias">
-                <div class="col-12">
-                    <div class="card my-4">
-                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Lista Conferencias</h6>
-                            </div>
-                        </div>
-                        <div class="card-body px-0 pb-2">
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center text-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Imagen Conferencia</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Id</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Chair Asignado</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Nombre</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Fecha Inicio</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Fecha Fin</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Estado</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Acciones</th>
-                                    </thead>
-                                    <tbody id="tablaConferencias">
-                                        <!-- Aquí se insertarán los datos -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="row" style="display: none;" id="section-salas">
+        <div class="container-fluid py-4">
+            <div class="row" style="display: none;" id="section-precios">
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
                                 <div class="d-flex justify-content-between align-items-center px-3">
-                                    <h6 class="text-white text-capitalize">Lista Salas</h6>
+                                    <h6 class="text-white text-capitalize">Lista de Precios</h6>
                                     <!-- Botón para agregar una nueva convocatoria -->
-                                    <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalSalas">
-                                        Agregar Salas
+                                    <button class="btn btn-light btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#modalAgregarPrecio">
+                                        Agregar Precios
                                     </button>
                                 </div>
                             </div>
@@ -583,14 +461,24 @@
                                 <table class="table align-items-center text-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sala</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tipo</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Institucion</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Id</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Conferencia</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Monto</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Tipo de Usuario</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Etapa</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="tablaSalas">
+                                    <tbody id="tablaPrecios">
                                         <!-- Aquí se cargarán las convocatorias -->
                                     </tbody>
                                 </table>
@@ -600,94 +488,196 @@
                 </div>
             </div>
         </div>
-        
 
-            <div class="row" style="display: none;" id="section-articulo">
-                <div class="col-12">
-                    <div class="card my-4">
-                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Lista Articulos</h6>
-                            </div>
-                        </div>
-                        <div class="card-body px-0 pb-2">
-                            <div class="m-2 d-flex align-items-center">
-                                <select class="m-2 form-select w-25" id="estado" onchange="buscarArticulosPorEstado()">
-                                    <option value="">Todos</option>
-                                    <option value="ENVIADO">Enviado</option>
-                                    <option value="APROBADO">Aprobado</option>
-                                    <option value="CORRECCIONES">Correcciones</option>
-                                    <option value="RECHAZADO">Rechazado</option>
-                                    <option value="PRESENTADO">Presentado</option>
-                                    <option value="PUBLICADO">Publicado</option>
+        <!-- Modal para agregar precios -->
+        <div class="modal fade" id="modalAgregarPrecio" tabindex="-1" aria-labelledby="modalAgregarPrecioLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalAgregarPrecioLabel">Agregar Precio</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formAgregarPrecio">
+                            <div class="mb-3">
+                                <label for="conferencia" class="form-label">Conferencia</label>
+                                <select class="form-select" id="conferencia" name="conferencia" required>
+                                    <option selected disabled value="">Seleccione una conferencia</option>
+                                    <!-- Opciones de conferencia (pueden cargarse dinámicamente desde el backend) -->
                                 </select>
                             </div>
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center text-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Id</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Nombre</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Estado</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Conferencia</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Detalles</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Autor</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Evaluacion
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tabla-articulos"></tbody>
-                                </table>
+                            <div class="mb-3">
+                                <label for="monto" class="form-label">Monto</label>
+                                <input type="number" class="form-control" id="monto" name="monto"
+                                    placeholder="Ingrese el monto" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="tipoUsuario" class="form-label">Tipo de Usuario</label>
+                                <select class="form-select" id="tipoUsuario" name="tipoUsuario" required>
+                                    <option selected disabled value="">Seleccione el tipo de usuario</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                    <option value="Profesional">Profesional</option>
+                                    <option value="Académico">Académico</option>
+                                    <!-- Otros tipos de usuario según tus necesidades -->
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="etapa" class="form-label">Etapa</label>
+                                <select class="form-select" id="etapa" name="etapa" required>
+                                    <option selected disabled value="">Seleccione la etapa</option>
+                                    <option value="Temprana">Temprana</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Tardía">Tardía</option>
+                                    <!-- Otros valores según tus necesidades -->
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Guardar Precio</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row" style="display: none;" id="section-conferencias">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                            <h6 class="text-white text-capitalize ps-3">Lista Conferencias</h6>
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center text-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Imagen Conferencia</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Id</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Chair Asignado</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Nombre</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Fecha Inicio</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Fecha Fin</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Estado</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Acciones</th>
+                                </thead>
+                                <tbody id="tablaConferencias">
+                                    <!-- Aquí se insertarán los datos -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-
-            <div class="row" style="display: none;" id="section-inscripciones">
-                <div class="col-12">
-                    <div class="card my-4">
-                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3" >
-                                <div class="d-flex justify-content-between align-items-center px-3">
-                                    <h6 class="text-white text-capitalize">Lista Inscripciones</h6>
-                                </div>
+        <div class="row" style="display: none;" id="section-salas">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                            <div class="d-flex justify-content-between align-items-center px-3">
+                                <h6 class="text-white text-capitalize">Lista Salas</h6>
+                                <!-- Botón para agregar una nueva convocatoria -->
+                                <button class="btn btn-light btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#modalSalas">
+                                    Agregar Salas
+                                </button>
                             </div>
                         </div>
-                        <div class="card-body px-0 pb-2">
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center text-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nombre de la Conferencia</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha de Inicio</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha de Fin</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Asistente</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Estado</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="listaInscripcionesAdministrador">
-                                        <!-- Aquí se cargarán las filas dinámicamente -->
-                                    </tbody>
-                                            
-                                </table>
-                            </div>
+                    </div>
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center text-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Id</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Sala</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Tipo</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Institucion</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Url</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaSalas">
+                                    <!-- Aquí se cargarán las convocatorias -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="row" style="display: none;" id="section-articulo">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                            <h6 class="text-white text-capitalize ps-3">Lista Articulos</h6>
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pb-2">
+                        <div class="m-2 d-flex align-items-center">
+                            <select class="m-2 form-select w-25" id="estado" onchange="buscarArticulosPorEstado()">
+                                <option value="">Todos</option>
+                                <option value="ENVIADO">Enviado</option>
+                                <option value="APROBADO">Aprobado</option>
+                                <option value="CORRECCIONES">Correcciones</option>
+                                <option value="RECHAZADO">Rechazado</option>
+                                <option value="PRESENTACION">Presentacion</option>
+                                <option value="PUBLICADO">Publicado</option>
+                            </select>
+                        </div>
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center text-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Id</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Nombre</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Estado</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Conferencia</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Detalles</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Autor</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Evaluacion
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla-articulos"></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -695,270 +685,321 @@
         </div>
 
 
-            <div class="row" style="display: none;" id="section-evaluaciones">
-                <div class="col-12">
-                    <div class="card my-4">
-                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Lista Evaluaciones</h6>
-                            </div>
-                        </div>
-                        <div class="card-body px-0 pb-2">
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center text-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Id Articulo</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Fecha de evaluacion</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Evaluador</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Nombre articulo</th>
-
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Detalles articulo</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Estado</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Comentarios</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Realizar Evaluacion</th>
-
-                                            <th class="text-secondary opacity-7"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tablaEvaluaciones">
-                                    </tbody>
-                                </table>
+        <div class="row" style="display: none;" id="section-inscripciones">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3">
+                            <div class="d-flex justify-content-between align-items-center px-3">
+                                <h6 class="text-white text-capitalize">Lista Inscripciones</h6>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Modal para Realizar Evaluación -->
-            <div class="modal fade" id="modalRealizarEvaluacion" tabindex="-1"
-                aria-labelledby="modalRealizarEvaluacionLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalRealizarEvaluacionLabel">Realizar Evaluación</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="formRealizarEvaluacion">
-                                <div class="mb-3">
-                                    <label for="nuevoEstado" class="form-label">Nuevo Estado</label>
-                                    <select class="form-select" id="nuevoEstado" required>
-                                        <option value="" disabled selected>Seleccione un estado</option>
-                                        <option value="APROBADO">Aprobado</option>
-                                        <option value="RECHAZADO">Rechazado</option>
-                                        <option value="PENDIENTE">Pendiente</option>
-                                        <option value="CORRECCIONES">Correcciones</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="comentariosEvaluacion" class="form-label">Comentarios</label>
-                                    <textarea class="form-control" id="comentariosEvaluacion" rows="3"
-                                        placeholder="Ingrese comentarios" required></textarea>
-                                </div>
-                                <input type="hidden" id="idEvaluacion">
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-info" onclick="enviarEvaluacion()">Guardar
-                                Evaluación</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Toast de Notificación Reutilizable -->
-            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-                <div id="toastNotificacion" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="toast-header">
-                        <strong class="me-auto" id="toastTitle">Notificación</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                    <div class="toast-body" id="toastBody">
-                        Este es un mensaje.
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Modal para mostrar el comentario -->
-            <div class="modal fade" id="modalComentario" tabindex="-1" aria-labelledby="modalComentarioLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalComentarioLabel">Comentario</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Aquí se mostrará el comentario -->
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-
-
-
-
-            <div class="row" style="display: none;" id="section-comites">
-                <div class="col-12">
-                    <div class="card my-4">
-                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Lista Comites</h6>
-                            </div>
-                        </div>
-                        <div class="card-body px-0 pb-2">
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center text-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Id Comite</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Nombre Comite</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Conferencia</th>
-                                            <th
-                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Usuarios del comite</th>
-
-                                            <th class="text-secondary opacity-7"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tablaComites">
-                                        <!-- Aquí irán los datos dinámicos -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Modal -->
-            <div class="modal fade" id="modalAsignarEvaluador" tabindex="-1"
-                aria-labelledby="modalAsignarEvaluadorLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header bg-gradient-info text-white">
-                            <h5 class="modal-title" id="modalAsignarEvaluadorLabel">Asignar Evaluación</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="form-evaluacion">
-                                <div class="mb-3">
-                                    <label for="evaluador" class="form-label">Selecciona un evaluador:</label>
-                                    <select class="form-select" id="evaluador" name="evaluador">
-                                        <!-- Las opciones se agregarán dinámicamente desde JavaScript -->
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="fecha">Fecha Limite de Evaluación:</label>
-                                    <input type="date" id="fecha" name="fecha" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="hora">Hora Limite de Evaluación:</label>
-                                    <input type="time" id="hora" name="hora" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="estado">Estado</label>
-                                    <input type="text" id="estado" name="estado" class="form-control" value="Pendiente"
-                                        readonly>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn bg-gradient-info"
-                                onclick="guardarEvaluacion(event)">Asignar Evaluación</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" id="section-usuarios" style="display: none;">
-                <div class="col-12">
-                    <div class="card my-4">
-                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3">Lista Usuarios</h6>
-                            </div>
-                        </div>
-                        <div class="card-body px-0 pb-2">
-                            <div class="m-2 d-flex align-items-center">
-                                <select class="m-2 form-select w-25" id="rol" onchange="buscarUsuarios()">
-                                    <option value="TODOS">Todos</option>
-                                    <option value="CHAIR">Chairs</option>
-                                    <option value="EVALUADOR">Evaluadores</option>
-                                    <option value="AUTOR">Autores</option>
-                                    <option value="ASISTENTE">Asistentes</option>
-                                </select>
-                                <div class="m-2 d-flex align-items-center">
-                                    <input type="text" id="nombre" placeholder="Buscar por nombre"
-                                        class="form-control w-75">
-                                    <!-- El botón es opcional, puedes usar un evento en el input para buscar en tiempo real -->
-                                </div>
-                            </div>
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center text-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Id Usuario</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Tipo de Documento</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Documento</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Nombre</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Correo</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center text-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Nombre de la Conferencia</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Asistente</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Rol</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tablaUsuarios">
-                                        <!-- Aquí se insertarán los datos -->
-                                    </tbody>
-                                </table>
-                            </div>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Fecha Inscripcion </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Estado</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listaInscripcionesAdministrador">
+                                    <!-- Aquí se cargarán las filas dinámicamente -->
+                                </tbody>
+                                        
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
+
+        <!-- Modal -->
+<div class="modal fade" id="modalEstado" tabindex="-1" aria-labelledby="modalEstadoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEstadoLabel">Cambiar Estado de Inscripción</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Deseas aprobar o rechazar esta inscripción?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="enviarEstado('CANCELADA')">Rechazar</button>
+                <button type="button" class="btn btn-success" onclick="enviarEstado('APROBADA')">Aprobar</button>
+                <input type="hidden" id="inscripcionId">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+        <div class="row" style="display: none;" id="section-evaluaciones">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                            <h6 class="text-white text-capitalize ps-3">Lista Evaluaciones</h6>
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center text-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Id Articulo</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Fecha de evaluacion</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Evaluador</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Nombre articulo</th>
+
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Detalles articulo</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Estado</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Comentarios</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Realizar Evaluacion</th>
+
+                                        <th class="text-secondary opacity-7"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaEvaluaciones">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para Realizar Evaluación -->
+        <div class="modal fade" id="modalRealizarEvaluacion" tabindex="-1"
+            aria-labelledby="modalRealizarEvaluacionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalRealizarEvaluacionLabel">Realizar Evaluación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="formRealizarEvaluacion">
+                            <div class="mb-3">
+                                <label for="nuevoEstado" class="form-label">Nuevo Estado</label>
+                                <select class="form-select" id="nuevoEstado" required>
+                                    <option value="" disabled selected>Seleccione un estado</option>
+                                    <option value="APROBADO">Aprobado</option>
+                                    <option value="RECHAZADO">Rechazado</option>
+                                    <option value="PENDIENTE">Pendiente</option>
+                                    <option value="CORRECCIONES">Correcciones</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="comentariosEvaluacion" class="form-label">Comentarios</label>
+                                <textarea class="form-control" id="comentariosEvaluacion" rows="3"
+                                    placeholder="Ingrese comentarios" required></textarea>
+                            </div>
+                            <input type="hidden" id="idEvaluacion">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-info" onclick="enviarEvaluacion()">Guardar
+                            Evaluación</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Toast de Notificación Reutilizable -->
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div id="toastNotificacion" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto" id="toastTitle">Notificación</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body" id="toastBody">
+                    Este es un mensaje.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal para mostrar el comentario -->
+        <div class="modal fade" id="modalComentario" tabindex="-1" aria-labelledby="modalComentarioLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalComentarioLabel">Comentario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Aquí se mostrará el comentario -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row" style="display: none;" id="section-comites">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                            <h6 class="text-white text-capitalize ps-3">Lista Comites</h6>
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center text-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Id Comite</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Nombre Comite</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Conferencia</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Usuarios del comite</th>
+
+                                        <th class="text-secondary opacity-7"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaComites">
+                                    <!-- Aquí irán los datos dinámicos -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modalAsignarEvaluador" tabindex="-1" aria-labelledby="modalAsignarEvaluadorLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-gradient-info text-white">
+                        <h5 class="modal-title" id="modalAsignarEvaluadorLabel">Asignar Evaluación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form-evaluacion">
+                            <div class="mb-3">
+                                <label for="evaluador" class="form-label">Selecciona un evaluador:</label>
+                                <select class="form-select" id="evaluador" name="evaluador">
+                                    <!-- Las opciones se agregarán dinámicamente desde JavaScript -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha">Fecha Limite de Evaluación:</label>
+                                <input type="date" id="fecha" name="fecha" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="hora">Hora Limite de Evaluación:</label>
+                                <input type="time" id="hora" name="hora" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <input type="text" id="estado" name="estado" class="form-control" value="Pendiente"
+                                    readonly>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn bg-gradient-info" onclick="guardarEvaluacion(event)">Asignar
+                            Evaluación</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="section-usuarios" style="display: none;">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3">
+                            <h6 class="text-white text-capitalize ps-3">Lista Usuarios</h6>
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pb-2">
+                        <div class="m-2 d-flex align-items-center">
+                            <select class="m-2 form-select w-25" id="rol" onchange="buscarUsuarios()">
+                                <option value="TODOS">Todos</option>
+                                <option value="CHAIR">Chairs</option>
+                                <option value="EVALUADOR">Evaluadores</option>
+                                <option value="AUTOR">Autores</option>
+                                <option value="ASISTENTE">Asistentes</option>
+                            </select>
+                            <div class="m-2 d-flex align-items-center">
+                                <input type="text" id="nombre" placeholder="Buscar por nombre"
+                                    class="form-control w-75">
+                                <!-- El botón es opcional, puedes usar un evento en el input para buscar en tiempo real -->
+                            </div>
+                        </div>
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center text-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Id Usuario</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Tipo de Documento</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Documento</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Nombre</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Correo</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Rol</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaUsuarios">
+                                    <!-- Aquí se insertarán los datos -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
 
 
@@ -1052,30 +1093,41 @@
                         <h3>Conferencia: <span id="nombre-conferencia">Conferencia sobre Javascript IV</span></h3>
                         <p>Lugar: <span id="lugar-conferencia">Auditorio biblioteca Eduardo Cote Lamus</span></p>
                         <p>Fecha: <span id="fecha-inicio">2024-11-14</span> a <span id="fecha-fin">2024-11-22</span></p>
-                        <p>Descripción: <span id="descripcion-conferencia">La Conferencia Internacional de Innovación y Tecnología...</span></p>
+                        <p>Descripción: <span id="descripcion-conferencia">La Conferencia Internacional de Innovación y
+                                Tecnología...</span></p>
                     </div>
                     <div class="card-body">
                         <!-- Sección para mostrar todas las sesiones de esta conferencia -->
                         <div class="accordion" id="accordion-sesiones-conferencia">
                             <!-- Aquí recorrerás cada sesión de la conferencia -->
-                            
+
                             <!-- Por ejemplo, para la primera sesión -->
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingSesion1">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSesion1" aria-expanded="true" aria-controls="collapseSesion1">
-                                        Sesión: Sesion A - <span id="fechaDiaSesion">2024-10-18</span> (06:00:00 - 14:30:00)
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseSesion1" aria-expanded="true"
+                                        aria-controls="collapseSesion1">
+                                        Sesión: Sesion A - <span id="fechaDiaSesionConferencia">2024-10-18</span> (06:00:00 -
+                                        14:30:00)
                                     </button>
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSesion1" aria-expanded="true" aria-controls="collapseSesion1">
-                                        Sesión: Sesion A - <span id="fechaDiaSesion">2024-10-18</span> (06:00:00 - 14:30:00)
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseSesion1" aria-expanded="true"
+                                        aria-controls="collapseSesion1">
+                                        Sesión: Sesion A - <span id="fechaDiaSesionConferenci">2024-10-18</span> (06:00:00 -
+                                        14:30:00)
                                     </button>
                                 </h2>
-                                <div id="collapseSesion1" class="accordion-collapse collapse show" aria-labelledby="headingSesion1" data-bs-parent="#accordion-sesiones-conferencia">
+                                <div id="collapseSesion1" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingSesion1" data-bs-parent="#accordion-sesiones-conferencia">
                                     <div class="accordion-body">
                                         <!-- Botones de opciones para la sesión -->
-                                        <button class="btn btn-primary mb-2" onclick="verProgramacion(1)">Ver Programación</button>
-                                        <button class="btn btn-success mb-2" onclick="mostrarModalAgregarPresentacion(1)">Agregar Presentación</button>
-                                        <button class="btn btn-warning mb-2" onclick="mostrarModalAgregarEvento(1)">Agregar Evento</button>
-            
+                                        <button class="btn btn-primary mb-2" onclick="verProgramacion(1)">Ver
+                                            Programación</button>
+                                        <button class="btn btn-success mb-2"
+                                            onclick="mostrarModalAgregarPresentacion(1)">Agregar Presentación</button>
+                                        <button class="btn btn-warning mb-2"
+                                            onclick="mostrarModalAgregarEvento(1)">Agregar Evento</button>
+
                                         <!-- Tabla de programación de eventos y presentaciones de la sesión -->
                                         <div class="programacion" id="programacionSesion1" style="display: none;">
                                             <table class="table table-bordered">
@@ -1095,7 +1147,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- Repite la estructura de <div class="accordion-item"> para cada sesión -->
                         </div>
                     </div>
@@ -1372,7 +1424,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form role="form" class="text-start" id="formDatosSalas">
+                    <form role="form" class="text-start" id="formDatosSala">
                         <div class="input-group input-group-outline my-3">
                             <input type="text" class="form-control form-control-lg input-animate" placeholder="Nombre"
                                 id="nombreSala" name="nombreSala" required>
@@ -1384,12 +1436,19 @@
                             </select>
                         </div>
                         <div class="input-group input-group-outline my-3">
-                            <select id="selectTipoSala" class="form-select">
+                            <select id="selectTipoSala" class="form-select" >
                                 <option value="presencial">Presencial</option>
                                 <option value="virtual">Virtual</option>
                             </select>
                         </div>
-                        <input type="hidden" value="5" id="rol" name="rol">
+                        <!-- Campo URL de la reunión que inicialmente estará oculto -->
+                        <div class="input-group input-group-outline my-3">
+                            <input type="text" name ="urlReunion" id="urlSala" class="form-control form-control-lg input-animate" placeholder="Ingrese la URL">
+                        </div>
+
+                        <!-- Campo oculto con valor 'no aplica' cuando no se elige 'virtual' -->
+                        <input type="hidden" id="tipoSalaHidden" value="no aplica">
+
                         <button type="button"
                             class="btn-info btn btn-lg btn-gradient-info w-100 my-4 mb-2 btn-animate rainbow-bg"
                             onclick="guardarSala()">
@@ -1647,7 +1706,8 @@
     </div>
 
 
-    <div class="modal fade" id="modalEditarSala" tabindex="-1" aria-labelledby="modalEditarSalaLabel" aria-hidden="true">
+    <div class="modal fade" id="modalEditarSala" tabindex="-1" aria-labelledby="modalEditarSalaLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1676,7 +1736,8 @@
     </div>
 
 
-    <div class="modal fade" id="modalEliminarSala" tabindex="-1" aria-labelledby="modalEliminarSalaLabel" aria-hidden="true">
+    <div class="modal fade" id="modalEliminarSala" tabindex="-1" aria-labelledby="modalEliminarSalaLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1693,7 +1754,7 @@
             </div>
         </div>
     </div>
-    
+
 
 
     <!-- Modal EDITAR CONFERENCIA -->
@@ -1778,9 +1839,11 @@
                             <input type="text" class="form-control form-control-lg input-animate"
                                 placeholder="Palabras Clave" id="palabras-clave" name="palabras-clave" required>
                         </div>
+                        <!--
                         <div class="input-group input-group-outline my-3">
                             <input type="date" id="fecha_presentacion" class="form-control">
                         </div>
+                    -->
                         <div class="input-group input-group-outline my-3">
                             <select class="form-select" id="articulosPresentacion">
                                 <!-- Las opciones se agregarán dinámicamente desde JavaScript -->
@@ -2413,7 +2476,7 @@
     <script src="/API/Administrador/infoArticulos.js"></script>
     <script src="/API/Administrador/infoComites.js"></script>
     <script src="/API/Administrador/infoPresentaciones.js"></script>
-    <script src="/API/Administrador/infoSalas.js"></script>
+    <script src="/API/Administrador/infoSalas.js" defer></script>
     <script src="/API/Administrador/infoSesiones.js"></script>
     <script src="/API/Administrador/infoConvocatorias.js"></script>
     <script src="/API/Administrador/infoPrograma.js"></script>
