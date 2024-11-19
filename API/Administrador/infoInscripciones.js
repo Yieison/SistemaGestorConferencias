@@ -114,3 +114,60 @@ async function enviarEstado(estado) {
         alert('Error en la conexión');
     }
 }
+
+
+async function verPago(idInscripcion) {
+    // Elementos del modal
+    const modalLabel = document.getElementById('modalVerPagoLabel');
+    const modalBody = document.getElementById('modalVerPagoBody');
+
+    // Configurar el título del modal y mostrar cargando
+    modalLabel.textContent = 'Detalles del Pago';
+    modalBody.innerHTML = '<p>Cargando detalles del pago...</p>';
+
+    try {
+        // Petición al backend
+        const response = await fetch(`${urlRailway}/pagos/inscripcion/${idInscripcion}`);
+        
+        // Manejar errores de la respuesta
+        if (!response.ok) {
+            modalBody.innerHTML = '<p>No se pudo cargar la información del pago.</p>';
+            return;
+        }
+
+        // Procesar la respuesta
+        const pagos = await response.json();
+
+        // Validar si hay pagos asociados
+        if (pagos.length === 0) {
+            modalBody.innerHTML = '<p>No hay pagos registrados para esta inscripción.</p>';
+            return;
+        }
+
+        // Generar contenido dinámico para cada pago
+        let contenido = '';
+        pagos.forEach(pago => {
+            contenido += `
+                <div class="mb-4">
+                    <p><strong>Monto:</strong> ${pago.monto}</p>
+                    <p><strong>Estado:</strong> ${pago.estado_pago}</p>
+                    <p><strong>Fecha:</strong> ${new Date(pago.inscripcion.fechaInscripcion).toLocaleDateString()}</p>
+                    <p><strong>Conferencia:</strong> ${pago.inscripcion.conferencia.nombre}</p>
+                    <p><strong>Comprobante:</strong></p>
+                    <img src="${pago.urlSoporte}" alt="Comprobante" class="img-fluid mb-3" style="max-width: 300px; height: auto;">
+                    <hr>
+                </div>
+            `;
+        });
+
+        // Insertar contenido en el modal
+        modalBody.innerHTML = contenido;
+
+    } catch (error) {
+        console.error('Error al cargar los detalles del pago:', error);
+        modalBody.innerHTML = '<p>Ocurrió un error al cargar los detalles del pago.</p>';
+    }
+
+    // Mostrar el modal
+    $('#modalVerPago').modal('show');
+}

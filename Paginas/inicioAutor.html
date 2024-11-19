@@ -276,6 +276,28 @@
             </div>
         </div>
 
+        <!-- Modal para pagos -->
+<div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalPagoLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalPagoBody">
+                <!-- El contenido se cargará dinámicamente -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="modalPagoActionButton" style="display: none;">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
         <div class="container-fluid py-4">
             <div class="row" style="display: none;" id="section-conferencias">
                 <div>
@@ -810,5 +832,6 @@
     <script src="/API/Autor/AutorConferencias.js"></script>
     <script src="/API/Autor/InscripcionAutor.js"></script>
     <script src="/API/Autor/AutorArticulo.js"></script>
+    <script src="/API/Autor/AutorPagos.js"></script>
 </body>
 </html>

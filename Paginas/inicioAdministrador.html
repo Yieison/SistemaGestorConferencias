@@ -473,9 +473,6 @@
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Tipo de Usuario</th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Etapa</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tablaPrecios">
@@ -502,7 +499,7 @@
                         <form id="formAgregarPrecio">
                             <div class="mb-3">
                                 <label for="conferencia" class="form-label">Conferencia</label>
-                                <select class="form-select" id="conferencia" name="conferencia" required>
+                                <select class="form-select" id="conferenciaPrecios" name="conferenciaPrecios" required>
                                     <option selected disabled value="">Seleccione una conferencia</option>
                                     <!-- Opciones de conferencia (pueden cargarse dinámicamente desde el backend) -->
                                 </select>
@@ -516,26 +513,15 @@
                                 <label for="tipoUsuario" class="form-label">Tipo de Usuario</label>
                                 <select class="form-select" id="tipoUsuario" name="tipoUsuario" required>
                                     <option selected disabled value="">Seleccione el tipo de usuario</option>
-                                    <option value="Estudiante">Estudiante</option>
-                                    <option value="Profesional">Profesional</option>
-                                    <option value="Académico">Académico</option>
+                                    <option value="Asistente">Asistente</option>
+                                    <option value="Autor">Autor</option>
                                     <!-- Otros tipos de usuario según tus necesidades -->
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="etapa" class="form-label">Etapa</label>
-                                <select class="form-select" id="etapa" name="etapa" required>
-                                    <option selected disabled value="">Seleccione la etapa</option>
-                                    <option value="Temprana">Temprana</option>
-                                    <option value="Normal">Normal</option>
-                                    <option value="Tardía">Tardía</option>
-                                    <!-- Otros valores según tus necesidades -->
                                 </select>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary"
                                     data-bs-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-primary">Guardar Precio</button>
+                                <button  onclick="guardarPrecios(event)" type="submit" class="btn btn-primary">Guardar Precio</button>
                             </div>
                         </form>
                     </div>
@@ -745,6 +731,26 @@
         </div>
     </div>
 </div>
+
+
+        <!-- Modal Ver Pago -->
+<div class="modal fade" id="modalVerPago" tabindex="-1" aria-labelledby="modalVerPagoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalVerPagoLabel">Detalles del Pago</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalVerPagoBody">
+                <!-- Aquí se cargará dinámicamente la información del pago -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
@@ -2482,6 +2488,7 @@
     <script src="/API/Administrador/infoPrograma.js"></script>
     <script src="/API/auth/auth.js"></script>
     <script src="/API/Administrador/infoInscripciones.js"></script>
+    <script src="/API/Administrador/infoPrecios.js"></script>
 </body>
 
 </html>

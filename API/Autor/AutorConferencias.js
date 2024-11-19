@@ -105,13 +105,23 @@ async function showDetails(id) {
       // Cargar información básica en el modal
       const modalContent = document.getElementById('detailsModalContent');
       modalContent.innerHTML = `
-        <h5>${conference.nombre}</h5>
-        <p><strong>Descripción:</strong> ${conference.descripcion}</p>
-        <p><strong>Lugar:</strong> ${conference.lugar}</p>
-        <p><strong>Estado:</strong> ${conference.estado}</p>
-        <p><strong>Fecha Inicio:</strong> ${conference.fecha_inicio}</p>
-        <p><strong>Fecha Fin:</strong> ${conference.fecha_fin}</p>
-      `;
+      <div style="display: flex; gap: 20px; align-items: flex-start;">
+        <!-- Imagen de la conferencia -->
+        <div>
+          <img src="${conference.imagenUrl}" alt="Imagen de la Conferencia" style="max-width: 150px; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+        </div>
+
+        <!-- Detalles de la conferencia -->
+        <div>
+          <h5>${conference.nombre}</h5>
+          <p><strong>Descripción:</strong> ${conference.descripcion}</p>
+          <p><strong>Lugar:</strong> ${conference.lugar}</p>
+          <p><strong>Estado:</strong> ${conference.estado}</p>
+          <p><strong>Fecha Inicio:</strong> ${conference.fecha_inicio}</p>
+          <p><strong>Fecha Fin:</strong> ${conference.fecha_fin}</p>
+        </div>
+      </div>
+    `;
       
       // Cargar el contenido de las pestañas (tópicos, precios, comités, convocatoria)
       loadTabContent(id);
@@ -138,9 +148,18 @@ async function showDetails(id) {
     const pricesContainer = document.getElementById('pricesContent');
     pricesContainer.innerHTML = 'Cargando precios...';
     try {
-      const pricesResponse = await fetch(`${urlBackendConferencia}/conferencias/${id}/precios`);
+      const pricesResponse = await fetch(`${urlBackendConferencia}/precios/${id}`);
       const prices = await pricesResponse.json();
-      pricesContainer.innerHTML = prices.map(price => `<p>${price.descripcion}: ${price.costo}</p>`).join('');
+      pricesContainer.innerHTML = `
+      <h6>Valor de la Inscripcion:</h6>
+      <ol>
+        ${prices
+          .map(
+            (price) =>
+              `<li>Monto: <strong>${price.monto}</strong> - Tipo de Usuario: <strong>${price.tipoUsuario}</strong></li>`
+          )
+          .join('')}
+      </ol>`;
     } catch (error) {
       pricesContainer.innerHTML = 'Error al cargar los precios.';
     }
@@ -149,23 +168,40 @@ async function showDetails(id) {
     const committeesContainer = document.getElementById('committeesContent');
     committeesContainer.innerHTML = 'Cargando comités...';
     try {
-      const committeesResponse = await fetch(`${urlBackendConferencia}/conferencias/${id}/comites`);
+      const committeesResponse = await fetch(`${urlBackendConferencia}/comites/conferencia/${id}`);
       const committees = await committeesResponse.json();
-      committeesContainer.innerHTML = committees.map(committee => `<p>${committee.nombre}</p>`).join('');
+      committeesContainer.innerHTML = committees.map(comite => `<p>${comite.nombre}</p>`).join('');
     } catch (error) {
       committeesContainer.innerHTML = 'Error al cargar los comités.';
     }
   
-    // Cargar convocatoria
-    const callContainer = document.getElementById('callContent');
-    callContainer.innerHTML = 'Cargando convocatoria...';
-    try {
-      const callResponse = await fetch(`${urlBackendConferencia}/conferencias/${id}/convocatoria`);
-      const call = await callResponse.json();
-      callContainer.innerHTML = `<p>${call.descripcion}</p>`;
-    } catch (error) {
-      callContainer.innerHTML = 'Error al cargar la convocatoria.';
-    }
+   // Cargar convocatoria
+const callContainer = document.getElementById('callContent');
+callContainer.innerHTML = 'Cargando convocatoria...';
+
+try {
+  const callResponse = await fetch(`${urlBackendConferencia}/convocatorias/conferencia/${id}`);
+  const calls = await callResponse.json(); // Asumiendo que la respuesta es un array de convocatorias
+  
+  if (calls.length > 0) {
+    // Si hay convocatorias, las mostramos
+    callContainer.innerHTML = calls.map(call => `
+      <div class="call-item">
+        <p><strong>Descripcion:</strong> ${call.descripcion}</p>
+        <p><strong>Fecha Inicio Envío de trabajos:</strong> ${call.fechaInicioEnvio}</p>
+        <p><strong>Fecha Límite Envío de envio de trabajos:</strong> ${call.fechaLimiteEnvio}</p>
+        <p><strong>Fecha Aceptación de articulos:</strong> ${call.fechaAceptacion}</p>
+        <p><strong>Fecha Publicación:</strong> ${call.fechaPublicacion}</p>
+        <p><strong>Fecha Envío Presentaciones:</strong> ${call.fechaEnvioPublicaciones}</p>
+      </div>
+    `).join('');
+  } else {
+    callContainer.innerHTML = 'No hay convocatorias disponibles.';
+  }
+} catch (error) {
+  callContainer.innerHTML = 'Error al cargar la convocatoria.';
+}
+
   }
   
 
