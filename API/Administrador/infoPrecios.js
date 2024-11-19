@@ -109,7 +109,6 @@ cargarConferencias();
             });
         } catch (error) {
             console.error("Error al listar precios:", error);
-            alert("Hubo un problema al cargar los precios.");
         }
     }
     
