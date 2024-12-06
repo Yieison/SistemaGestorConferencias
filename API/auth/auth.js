@@ -24,5 +24,5 @@ function verificarAutenticacion(rolRequerido) {
   function logout() {
     localStorage.removeItem("Data"); // Limpia los datos del usuario
     window.location.href = "/";
- // Redirige al usuario al login
+    console.log("");
   }
