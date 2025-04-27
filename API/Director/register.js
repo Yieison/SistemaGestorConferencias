@@ -1,6 +1,6 @@
 //creo constantes para manejar los endpoint al servidor
-const urlBackendRegistro = "http://localhost:8080/usuarios"
-const urlRailway = "https://remarkable-commitment-production.up.railway.app"
+const urlBackendRegistro = "https://backendsistemagestorconferencia-production.up.railway.app/usuarios"
+const urlRailway = "https://backendsistemagestorconferencia-production.up.railway.app/"
 
 
 document.addEventListener("DOMContentLoaded",function(){

@@ -1,6 +1,6 @@
-const urlBackendArticle = "http://localhost:8080/articulos"
+const urlBackendArticle = "https://backendsistemagestorconferencia-production.up.railway.app/articulos"
 
-const urlBackendPresentaciones = "https://remarkable-commitment-production.up.railway.app/presentaciones"
+const urlBackendPresentaciones = "https://backendsistemagestorconferencia-production.up.railway.app/presentaciones"
 
 
 // Función para obtener artículos desde la API

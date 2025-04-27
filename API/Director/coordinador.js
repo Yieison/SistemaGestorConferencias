@@ -3,7 +3,7 @@ var userData = userDataString ? JSON.parse(userDataString) : null;
 
 var idUsuario = userData.id_usuarios;
 
-var urlBackend = "http://localhost:8080/";
+var urlBackend = "https://backendsistemagestorconferencia-production.up.railway.app";
 cargarInformacion()
 
 async function getTutorId(idUsuario) {
