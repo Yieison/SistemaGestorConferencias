@@ -1,5 +1,5 @@
-const urlBackendConferencia = "http://localhost:8080/conferencias"
-const urlRailway = "https://remarkable-commitment-production.up.railway.app"
+const urlBackendConferencia = "https://backendsistemagestorconferencia-production.up.railway.app/conferencias"
+const urlRailway = "https://backendsistemagestorconferencia-production.up.railway.app"
 
 // Obtener los datos del usuario desde localStorage
 var userDataString = localStorage.getItem('Data');

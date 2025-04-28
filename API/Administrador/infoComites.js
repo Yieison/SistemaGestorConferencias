@@ -1,4 +1,4 @@
-const urlBackendComites = "http://localhost:8080/comites";
+const urlBackendComites = "https://backendsistemagestorconferencia-production.up.railway.app/comites";
 
 
 // Mantener el método findComites tal como está

@@ -1,5 +1,5 @@
-const urlBackendaprobados = "http://localhost:8080/evaluacion";
-const urlBackendEvaluadores = "http://localhost:8080"
+const urlBackendaprobados = "https://backendsistemagestorconferencia-production.up.railway.app/evaluacion";
+const urlBackendEvaluadores = "https://backendsistemagestorconferencia-production.up.railway.app"
 
 
 async function findEvaluaciones() {

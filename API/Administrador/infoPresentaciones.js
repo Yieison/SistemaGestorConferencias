@@ -1,4 +1,4 @@
-const urlBackendPresentaciones = "http://localhost:8080/presentaciones"
+const urlBackendPresentaciones = "https://backendsistemagestorconferencia-production.up.railway.app/presentaciones"
 
 
 // Función para obtener artículos desde la API

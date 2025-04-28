@@ -1,10 +1,10 @@
-const urlBackendeva = "http://localhost:8080/usuarios";
+const urlBackendeva = "https://backendsistemagestorconferencia-production.up.railway.app/usuarios";
 
 
 let usuarios = [];
 
 async function buscarUsuariosporRol(rol = '') {
-    const url = rol === "TODOS" || !rol ?  urlBackendeva : `http://localhost:8080/usuarios/findUsuarios/${rol}`;
+    const url = rol === "TODOS" || !rol ?  urlBackendeva : `https://backendsistemagestorconferencia-production.up.railway.app/usuarios/findUsuarios/${rol}`;
     const result = await fetch(url, { method: 'GET' });
     return result.json();
 }

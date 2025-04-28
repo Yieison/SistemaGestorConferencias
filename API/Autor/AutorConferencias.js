@@ -1,5 +1,5 @@
 // URL del backend
-const urlBackendConferencia = "https://remarkable-commitment-production.up.railway.app";
+const urlBackendConferencia = "https://backendsistemagestorconferencia-production.up.railway.app";
 
 // Función para cargar conferencias desde el backend
 async function loadConferences() {

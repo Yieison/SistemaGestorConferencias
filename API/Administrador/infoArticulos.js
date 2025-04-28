@@ -1,5 +1,5 @@
-const url = "http://localhost:8080/evaluacion";
-const urlBackendEvaluadoresArticulos = "http://localhost:8080";
+const url = "https://backendsistemagestorconferencia-production.up.railway.app/evaluacion";
+const urlBackendEvaluadoresArticulos = "https://backendsistemagestorconferencia-production.up.railway.app";
 
 
 

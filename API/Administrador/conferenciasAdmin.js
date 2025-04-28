@@ -1,6 +1,6 @@
 const urlBackendConferencia =
- "https://remarkable-commitment-production.up.railway.app/conferencias";
-const urlRailway = "https://remarkable-commitment-production.up.railway.app";
+ "https://backendsistemagestorconferencia-production.up.railway.app/conferencias";
+const urlRailway = "https://backendsistemagestorconferencia-production.up.railway.app";
 
 /* document.addEventListener('DOMContentLoaded', () => {
     // Manejador para los enlaces del menú de navegación
